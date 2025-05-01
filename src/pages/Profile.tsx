@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Edit, Flag, Check, Shield, Award, Trophy } from "lucide-react";
-import Link from 'next/link'; // Added import for Link component
+import { Link } from 'react-router-dom'; // Added import for Link component
 
 const countries = [
   "Sénégal", "Côte d'Ivoire", "Mali", "Cameroun", "Ghana", "Nigeria", 

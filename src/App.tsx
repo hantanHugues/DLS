@@ -21,17 +21,20 @@ import Rewards from "./pages/Rewards";
 import ValidatorDashboard from "./pages/ValidatorDashboard";
 import TwoFactorSetup from "./pages/TwoFactorSetup";
 import Sponsorship from "./pages/Sponsorship";
-import { Navigate } from "react-router-dom";
-import React, { createContext, useState } from 'react';
+import About from "./pages/About";
+import TermsPage from "./pages/Terms";
+import PrivacyPage from "./pages/Privacy";
+import CookiesPage from "./pages/Cookies";
+import SupportPage from "./pages/Support";
+import { createContext, useState } from 'react';
 
 
 const queryClient = new QueryClient();
 
-// Placeholder AuthProvider component.  Replace with your actual implementation.
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Placeholder authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   const login = () => setIsAuthenticated(true);
   const logout = () => setIsAuthenticated(false);
@@ -69,7 +72,12 @@ const App = () => (
             <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
             <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
             <Route path="/sponsorship" element={<Sponsorship />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/cookies" element={<CookiesPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
