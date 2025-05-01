@@ -14,14 +14,28 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
+    if (!validateEmail(email)) {
+      toast({
+        title: "Format d'email invalide",
+        description: "Veuillez entrer une adresse email valide",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+    
     try {
       await authService.login(email, password);
-      // Redirection vers le tableau de bord après connexion
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } catch (error) {
       toast({
         title: "Erreur de connexion",

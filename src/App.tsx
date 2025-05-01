@@ -43,11 +43,21 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/otp-verification" element={<OTPVerification />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/tournaments" element={<Tournaments />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            <Route path="/tournament-payment" element={<TournamentPayment />} />
+            <Route path="/tournament-rules" element={<TournamentRules />} />
+            <Route path="/match-details/:id" element={<MatchDetails />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/disputes" element={<Disputes />} />
+            <Route path="/rewards" element={<Rewards />} />
+            <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
+            <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
+            <Route path="/sponsorship" element={<Sponsorship />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
