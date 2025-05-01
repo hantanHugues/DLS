@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Tournaments from "./pages/Tournaments";
 import NotFound from "./pages/NotFound";
+import OTPVerification from "./pages/OTPVerification";
 import React, { createContext, useState } from 'react';
 
 
