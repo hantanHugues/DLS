@@ -33,11 +33,18 @@ const Login = () => {
       return;
     }
     
-    try {
-      await authService.login(email, password);
-      navigate('/dashboard', { replace: true });
-    } catch (error) {
-      toast({
+    if (email && password) {
+      // Simulation de connexion réussie
+      navigate('/dashboard');
+      return;
+    }
+    
+    toast({
+      title: "Erreur",
+      description: "Veuillez remplir tous les champs",
+      variant: "destructive"
+    });
+    setIsLoading(false);
         title: "Erreur de connexion",
         description: error.message,
         variant: "destructive"
