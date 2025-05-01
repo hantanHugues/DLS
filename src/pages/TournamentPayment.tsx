@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -13,7 +12,7 @@ export default function TournamentPayment() {
       <main className="flex-grow">
         <div className="container mx-auto p-6">
           <h1 className="text-3xl font-bold mb-6">Inscription au Tournoi</h1>
-          
+
           <Card className="mb-6">
             <CardHeader>
               <CardTitle>Frais d'inscription</CardTitle>

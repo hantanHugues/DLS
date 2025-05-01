@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Edit, Flag, Check, Shield, Award, Trophy } from "lucide-react";
+import Link from 'next/link'; // Added import for Link component
 
 const countries = [
   "Sénégal", "Côte d'Ivoire", "Mali", "Cameroun", "Ghana", "Nigeria", 
@@ -71,6 +72,12 @@ const Profile = () => {
       <main className="flex-grow bg-gray-50 dark:bg-gray-900 py-8 px-4">
         <div className="container">
           <div className="mb-6">
+            <div className="flex gap-6 mb-8">
+              <Link href="/profile" className="text-asc-purple hover:underline">Mon Profil</Link>
+              <Link href="/statistics" className="text-gray-600 hover:text-asc-purple">Statistiques</Link>
+              <Link href="/disputes" className="text-gray-600 hover:text-asc-purple">Litiges</Link>
+              <Link href="/two-factor-setup" className="text-gray-600 hover:text-asc-purple">Sécurité 2FA</Link>
+            </div>
             <h1 className="text-3xl font-bold mb-2">Mon profil</h1>
             <p className="text-gray-500 dark:text-gray-400">Gérez vos informations personnelles et préférences</p>
           </div>
@@ -259,14 +266,14 @@ const Profile = () => {
                     {languages.map((language) => {
                       const userLanguage = userInfo.languageProficiency.find(l => l.id === language.id);
                       const isSelected = !!userLanguage;
-                      
+
                       return (
                         <div key={language.id} className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             {isSelected && <Check className="h-4 w-4 text-green-500" />}
                             <span>{language.name}</span>
                           </div>
-                          
+
                           {isSelected && (
                             <div className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm">
                               {userLanguage.level}
@@ -292,12 +299,12 @@ const Profile = () => {
                       <Label htmlFor="current-password">Mot de passe actuel</Label>
                       <Input id="current-password" type="password" />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="new-password">Nouveau mot de passe</Label>
                       <Input id="new-password" type="password" />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="confirm-password">Confirmer le nouveau mot de passe</Label>
                       <Input id="confirm-password" type="password" />
@@ -322,7 +329,7 @@ const Profile = () => {
                     </div>
                     <Button variant="outline">Configurer</Button>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-medium">Application d'authentification</p>
