@@ -1,11 +1,12 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -13,6 +14,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,28 +25,29 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    if (!validateEmail(email)) {
+    try {
+      if (!validateEmail(email)) {
+        toast({
+          title: "Format d'email invalide",
+          description: "Veuillez entrer une adresse email valide",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      if (email && password) {
+        // Simulation de connexion réussie
+        navigate('/dashboard');
+        return;
+      }
+      
       toast({
-        title: "Format d'email invalide",
-        description: "Veuillez entrer une adresse email valide",
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs",
         variant: "destructive"
       });
-      setIsLoading(false);
-      return;
-    }
-    
-    if (email && password) {
-      // Simulation de connexion réussie
-      navigate('/dashboard');
-      return;
-    }
-    
-    toast({
-      title: "Erreur",
-      description: "Veuillez remplir tous les champs",
-      variant: "destructive"
-    });
-    setIsLoading(false);
+    } catch (error: any) {
+      toast({
         title: "Erreur de connexion",
         description: error.message,
         variant: "destructive"
