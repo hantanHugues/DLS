@@ -14,16 +14,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      await authService.login(email, password);
+      // Redirection vers le tableau de bord après connexion
+      navigate('/dashboard');
+    } catch (error) {
+      toast({
+        title: "Erreur de connexion",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
       setIsLoading(false);
-      // In a real app, login logic would go here
-      console.log("Login attempt with:", { email, password });
-    }, 1500);
+    }
   };
 
   return (
