@@ -11,6 +11,17 @@ import Profile from "./pages/Profile";
 import Tournaments from "./pages/Tournaments";
 import NotFound from "./pages/NotFound";
 import OTPVerification from "./pages/OTPVerification";
+import ResetPassword from "./pages/ResetPassword";
+import TournamentPayment from "./pages/TournamentPayment";
+import TournamentRules from "./pages/TournamentRules";
+import MatchDetails from "./pages/MatchDetails";
+import Statistics from "./pages/Statistics";
+import Disputes from "./pages/Disputes";
+import Rewards from "./pages/Rewards";
+import ValidatorDashboard from "./pages/ValidatorDashboard";
+import TwoFactorSetup from "./pages/TwoFactorSetup";
+import Sponsorship from "./pages/Sponsorship";
+import { Navigate } from "react-router-dom";
 import React, { createContext, useState } from 'react';
 
 
