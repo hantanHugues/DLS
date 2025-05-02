@@ -116,12 +116,45 @@ const TournamentsInfo = () => {
             </div>
           </div>
 
-          <div className="text-center">
-            <Link to="/tournaments">
-              <Button size="lg" className="bg-asc-purple hover:bg-asc-purple/90">
-                Voir les Tournois Disponibles
-              </Button>
-            </Link>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold mb-6 text-center">Tournois Disponibles</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <TournamentCard
+                  id="t1"
+                  title="ASC Premier League"
+                  description="Le tournoi phare de l'ASC avec les meilleurs joueurs africains de DLS."
+                  prize="350 000 FCFA"
+                  players={24}
+                  maxPlayers={32}
+                  date="15 Mai 2025"
+                  status="open"
+                  image="/tournament-1.jpg"
+                />
+                <TournamentCard
+                  id="t2"
+                  title="Tournoi Continental"
+                  description="Affrontez les meilleurs joueurs du continent africain."
+                  prize="150 000 FCFA"
+                  players={12}
+                  maxPlayers={24}
+                  date="20 Mai 2025"
+                  status="upcoming"
+                  image="/tournament-2.jpg"
+                />
+                <TournamentCard
+                  id="t3"
+                  title="Championnat Régional"
+                  description="Représentez votre région dans ce tournoi passionnant."
+                  prize="100 000 FCFA"
+                  players={8}
+                  maxPlayers={16}
+                  date="1 Juin 2025"
+                  status="upcoming"
+                  image="/tournament-3.jpg"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
