@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Edit, Flag, Check, Shield, Award, Trophy, GameController, Star, Plus } from "lucide-react";
+import { User, Edit, Flag, Check, Shield, Award, Trophy, Gamepad, Star, Plus } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const pseudonyms = [
@@ -96,7 +96,7 @@ const Profile = () => {
                   )}
                 </div>
                 <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-2">
-                  <GameController className="h-4 w-4 text-white" />
+                  <Gamepad className="h-4 w-4 text-white" />
                 </div>
               </div>
 
