@@ -7,23 +7,6 @@ import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom
 import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Index from "./pages/Index";
-
-const AuthenticatedLayout = () => {
-  const { isAuthenticated } = useAuth();
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
-
-  return (
-    <div className="flex min-h-screen">
-      <AuthenticatedSidebar />
-      <div className="flex-1">
-        <Outlet />
-      </div>
-    </div>
-  );
-};
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -49,6 +32,23 @@ import SupportPage from "./pages/Support";
 
 const queryClient = new QueryClient();
 
+const AuthenticatedLayout = () => {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return (
+    <div className="flex min-h-screen">
+      <AuthenticatedSidebar />
+      <div className="flex-1">
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -64,8 +64,6 @@ const App = () => {
 };
 
 const AppContent = () => {
-  const { isAuthenticated } = useAuth();
-
   return (
     <BrowserRouter>
       <Routes>
@@ -75,10 +73,9 @@ const AppContent = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/otp-verification" element={<OTPVerification />} />
-        
+
         {/* Pages authentifiées avec sidebar */}
         <Route element={<AuthenticatedLayout />}>
-        }>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/tournaments" element={<Tournaments />} />
@@ -91,29 +88,14 @@ const AppContent = () => {
           <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
           <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
-            <Route path="/otp-verification" element={<OTPVerification />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/tournaments" element={<Tournaments />} />
-            <Route path="/tournament-payment" element={<TournamentPayment />} />
-            <Route path="/tournament-rules" element={<TournamentRules />} />
-            <Route path="/match-details/:id" element={<MatchDetails />} />
-            <Route path="/statistics" element={<Statistics />} />
-            <Route path="/disputes" element={<Disputes />} />
-            <Route path="/rewards" element={<Rewards />} />
-            <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
-            <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
-            <Route path="/sponsorship" element={<Sponsorship />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/cookies" element={<CookiesPage />} />
-            <Route path="/support" element={<SupportPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
+          <Route path="/about" element={<About />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
+          <Route path="/support" element={<SupportPage />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 };
