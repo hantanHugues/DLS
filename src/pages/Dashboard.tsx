@@ -127,9 +127,11 @@ const Dashboard = () => {
                 </div>
               </div>
               <div>
-                <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-asc-purple to-purple-600">
-                  JoueurASC
-                </h1>
+                <Link to="/profile">
+                  <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-asc-purple to-purple-600 hover:opacity-80 transition-opacity">
+                    JoueurASC
+                  </h1>
+                </Link>
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                   <Award className="h-4 w-4" />
                   <span>Paysan ASC</span>
