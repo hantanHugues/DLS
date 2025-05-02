@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, TrendingUp, Users, Medal, Calendar, Target, Award } from "lucide-react"
+import { Trophy, TrendingUp, Users, Medal, Calendar } from "lucide-react"
 import { motion } from "framer-motion"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
@@ -38,14 +38,16 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card className="bg-gradient-to-br from-purple-500 to-purple-600">
+              <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-4">
-                    <Trophy className="h-8 w-8 text-white" />
-                    <div className="text-white">
-                      <p className="text-sm opacity-90">Total Victoires</p>
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Trophy className="h-8 w-8 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Total Victoires</p>
                       <p className="text-2xl font-bold">47</p>
-                      <p className="text-xs opacity-75">+5 ce mois</p>
+                      <p className="text-xs text-primary">+5 ce mois</p>
                     </div>
                   </div>
                 </CardContent>
@@ -57,14 +59,16 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Card className="bg-gradient-to-br from-blue-500 to-blue-600">
+              <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-4">
-                    <Medal className="h-8 w-8 text-white" />
-                    <div className="text-white">
-                      <p className="text-sm opacity-90">Classement</p>
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Medal className="h-8 w-8 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Classement</p>
                       <p className="text-2xl font-bold">#42</p>
-                      <p className="text-xs opacity-75">+15 positions</p>
+                      <p className="text-xs text-primary">+15 positions</p>
                     </div>
                   </div>
                 </CardContent>
@@ -76,14 +80,16 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Card className="bg-gradient-to-br from-green-500 to-green-600">
+              <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-4">
-                    <Award className="h-8 w-8 text-white" />
-                    <div className="text-white">
-                      <p className="text-sm opacity-90">Tournois Gagnés</p>
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Calendar className="h-8 w-8 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Tournois Gagnés</p>
                       <p className="text-2xl font-bold">3</p>
-                      <p className="text-xs opacity-75">+1 ce mois</p>
+                      <p className="text-xs text-primary">+1 ce mois</p>
                     </div>
                   </div>
                 </CardContent>
@@ -95,14 +101,16 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="bg-gradient-to-br from-yellow-500 to-yellow-600">
+              <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-4">
-                    <Calendar className="h-8 w-8 text-white" />
-                    <div className="text-white">
-                      <p className="text-sm opacity-90">Matchs Joués</p>
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Users className="h-8 w-8 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Matchs Joués</p>
                       <p className="text-2xl font-bold">63</p>
-                      <p className="text-xs opacity-75">+8 ce mois</p>
+                      <p className="text-xs text-primary">+8 ce mois</p>
                     </div>
                   </div>
                 </CardContent>
@@ -128,7 +136,7 @@ export default function Statistics() {
                     {matchHistory.map((match) => (
                       <div 
                         key={match.id} 
-                        className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all"
+                        className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary transition-all"
                       >
                         <div className="flex items-center justify-between">
                           <div>
@@ -137,7 +145,7 @@ export default function Statistics() {
                           </div>
                           <div className="text-right">
                             <p className={`font-medium ${
-                              match.result === "Victoire" ? "text-green-500" : "text-red-500"
+                              match.result === "Victoire" ? "text-primary" : "text-red-500"
                             }`}>
                               {match.result}
                             </p>
@@ -171,7 +179,7 @@ export default function Statistics() {
                         <div className="flex flex-col-reverse space-y-reverse space-y-1">
                           <div
                             style={{ height: `${(data.wins / data.matchs) * 300}px` }}
-                            className="w-16 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-lg"
+                            className="w-16 bg-primary/80 rounded-t-lg"
                           />
                         </div>
                         <div className="text-center">
