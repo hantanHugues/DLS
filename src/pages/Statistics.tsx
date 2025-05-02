@@ -173,7 +173,7 @@ export default function Statistics() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-[200px] relative flex items-end justify-between px-4">
+                  <div className="h-[300px] relative flex items-end justify-between px-4">
                     {monthlyStats.map((data, index) => (
                       <div key={index} className="flex flex-col items-center gap-2">
                         <div className="flex gap-1">
