@@ -1,13 +1,12 @@
-
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield, Menu } from "lucide-react";
 import { Button } from "./ui/button";
-import { Sidebar } from "./ui/sidebar";
 
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const menuItems = [
     { title: "Tableau de bord", icon: <BarChart2 className="h-5 w-5" />, href: "/dashboard" },
@@ -18,47 +17,6 @@ export function AuthenticatedSidebar() {
     { title: "Litiges", icon: <AlertTriangle className="h-5 w-5" />, href: "/disputes" },
     { title: "Parrainage", icon: <Users className="h-5 w-5" />, href: "/sponsorship" },
     { title: "Espace Validateur", icon: <Shield className="h-5 w-5" />, href: "/validator-dashboard" }
-  ];
-    {
-      title: "Tableau de bord",
-      icon: <BarChart2 className="h-4 w-4" />,
-      href: "/dashboard"
-    },
-    {
-      title: "Mon Profil",
-      icon: <User className="h-4 w-4" />,
-      href: "/profile"
-    },
-    {
-      title: "Mes Tournois",
-      icon: <Trophy className="h-4 w-4" />,
-      href: "/tournaments"
-    },
-    {
-      title: "Statistiques",
-      icon: <LineChart className="h-4 w-4" />,
-      href: "/statistics"
-    },
-    {
-      title: "Récompenses",
-      icon: <Gift className="h-4 w-4" />,
-      href: "/rewards"
-    },
-    {
-      title: "Litiges",
-      icon: <AlertTriangle className="h-4 w-4" />,
-      href: "/disputes"
-    },
-    {
-      title: "Parrainage",
-      icon: <Users className="h-4 w-4" />,
-      href: "/sponsorship"
-    },
-    {
-      title: "Espace Validateur",
-      icon: <Shield className="h-4 w-4" />,
-      href: "/validator-dashboard"
-    }
   ];
 
   return (

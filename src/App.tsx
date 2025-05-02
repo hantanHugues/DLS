@@ -32,16 +32,15 @@ import SupportPage from "./pages/Support";
 
 const queryClient = new QueryClient();
 
-import { Sidebar, SidebarProvider } from "./components/ui/sidebar";
 
 const AuthenticatedLayout = () => {
   return (
-    <div className="flex min-h-screen">
-      <AuthenticatedSidebar />
-      <div className="flex-1 p-4">
-        <Outlet />
+    <div className="relative min-h-screen">
+        <AuthenticatedSidebar />
+        <div className="p-4 lg:ml-64">
+          <Outlet />
+        </div>
       </div>
-    </div>
   );
 };
 
