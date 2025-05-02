@@ -26,7 +26,7 @@ const Header = () => {
           <Link to="/tournament-rules" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Règlement
           </Link>
-          <Link to="/sponsorship" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
+          <Link to="/sponsorship-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Parrainage
           </Link>
           <Link to="/rewards" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">

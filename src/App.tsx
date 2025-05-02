@@ -82,6 +82,7 @@ const AppContent = () => {
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
           <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
+          <Route path="/sponsorship-info" element={<SponsorshipInfo />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/about" element={<About />} />
           <Route path="/terms" element={<TermsPage />} />
