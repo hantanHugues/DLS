@@ -32,12 +32,20 @@ import SupportPage from "./pages/Support";
 
 const queryClient = new QueryClient();
 
+import { Sidebar, SidebarProvider } from "./components/ui/sidebar";
+
 const AuthenticatedLayout = () => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
   return (
-    <SidebarProvider> {/* Assuming SidebarProvider is imported and available */}
+    <SidebarProvider>
       <div className="flex min-h-screen">
         <AuthenticatedSidebar />
-        <div className="flex-1">
+        <div className="flex-1 p-4">
           <Outlet />
         </div>
       </div>

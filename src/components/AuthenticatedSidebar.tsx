@@ -1,9 +1,9 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield, Menu } from "lucide-react";
 import { Button } from "./ui/button";
-import { SidebarProvider } from "./ui/sidebar";
+import { Sidebar } from "./ui/sidebar";
 
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(true);
