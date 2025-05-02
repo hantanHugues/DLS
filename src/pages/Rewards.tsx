@@ -20,6 +20,9 @@ const mockHistory: RewardHistory[] = [
   { date: "2024-01-20", tournament: "Tournoi Janvier", position: 2, amount: 100000, status: "claimed" },
 ]
 
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
 export default function Rewards() {
   const [activeTab, setActiveTab] = useState("current")
 
@@ -35,7 +38,9 @@ export default function Rewards() {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="container mx-auto p-6 flex-grow">
       <h1 className="text-3xl font-bold mb-6">Récompenses & Prix</h1>
       
       <Alert className="mb-6">
@@ -206,6 +211,8 @@ export default function Rewards() {
           </Card>
         </TabsContent>
       </Tabs>
+    </div>
+      <Footer />
     </div>
   )
 }

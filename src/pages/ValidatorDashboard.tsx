@@ -3,9 +3,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
 export default function ValidatorDashboard() {
   return (
-    <div className="container mx-auto p-6">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="container mx-auto p-6 flex-grow">
       <h1 className="text-3xl font-bold mb-6">Tableau de bord Validateur</h1>
       
       <div className="grid gap-6">
@@ -35,6 +40,8 @@ export default function ValidatorDashboard() {
           </CardContent>
         </Card>
       </div>
+    </div>
+      <Footer />
     </div>
   )
 }
