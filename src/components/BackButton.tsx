@@ -1,10 +1,15 @@
 
 import { ArrowLeft } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 export const BackButton = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+
+  if (location.pathname === '/profile') {
+    return null
+  }
 
   return (
     <Button
