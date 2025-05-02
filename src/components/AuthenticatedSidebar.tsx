@@ -1,16 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield, Menu } from "lucide-react";
 import { Button } from "./ui/button";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-} from "@/components/ui/sidebar";
 
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -68,27 +59,23 @@ export function AuthenticatedSidebar() {
       >
         <Menu className="h-6 w-6" />
       </Button>
-      
-      <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-200 lg:translate-x-0`}>
-        <Sidebar>
-          <SidebarHeader className="border-b p-4">
-            <Trophy className="h-8 w-8 text-asc-purple" />
-          </SidebarHeader>
-          <SidebarContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.href}>
-                  <Link to={item.href} className="w-full">
-                    <SidebarMenuButton className="w-full justify-start gap-2">
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </SidebarMenuButton>
-                  </Link>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarContent>
-        </Sidebar>
+
+      <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-200 lg:translate-x-0 w-64 h-screen bg-white dark:bg-gray-800 border-r`}>
+        <div className="p-4 border-b">
+          <Trophy className="h-8 w-8 text-asc-purple" />
+        </div>
+        <nav className="space-y-2 p-4">
+          {menuItems.map((item) => (
+            <Link 
+              key={item.href} 
+              to={item.href}
+              className="flex items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              {item.icon}
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </nav>
       </div>
     </>
   );
