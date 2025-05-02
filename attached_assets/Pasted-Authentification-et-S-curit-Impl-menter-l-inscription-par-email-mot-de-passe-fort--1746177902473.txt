@@ -1,0 +1,834 @@
+Authentification et Sécurité 
+
+ 
+
+[ ] Implémenter l’inscription par email + mot de passe fort. 
+
+ 
+
+[ ] Ajouter l’inscription via Oauth (Google, Facebook). 
+
+ 
+
+[ ] Vérification obligatoire par email via OTP à 6 chiffres. 
+
+ 
+
+[ ] Développer la fonction de réinitialisation du mot de passe. 
+
+ 
+
+[ ] Intégrer l’option 2FA (authentification à deux facteurs) par SMS ou app tierce. 
+
+ 
+
+[ ] Sécuriser toutes les requêtes API avec SSL/TLS. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion du Profil Joueur 
+
+ 
+
+[ ] Mise en place du pseudo unique obligatoire à l’inscription. 
+
+ 
+
+[ ] Permettre l’ajout de pseudonymes communautaires secondaires. 
+
+ 
+
+[ ] Téléversement d’avatar personnalisé (avec compression automatique). 
+
+ 
+
+[ ] Gestion de badges automatiques (liés aux niveaux, exploits et victoires). 
+
+ 
+
+[ ] Stockage d’informations secondaires : biographie, pays, fuseau horaire, niveau linguistique. 
+
+ 
+
+[ ] Protection des données personnelles conformément au RGPD. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Tableau de Bord Joueur 
+
+ 
+
+[ ] Vue d’ensemble des tournois (passés, en cours, futurs). 
+
+ 
+
+[ ] Widgets graphiques pour : 
+
+ 
+
+Taux de victoire 
+
+ 
+
+Matchs joués 
+
+ 
+
+Progression mensuelle 
+
+ 
+
+ 
+
+[ ] Historique détaillé des matchs et résultats accessibles. 
+
+ 
+
+[ ] Accès rapide aux tournois favoris. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Participation aux Tournois 
+
+ 
+
+[ ] Système de recherche de tournois par communauté et par filtre (date, popularité, etc.). 
+
+ 
+
+[ ] Indicateurs d’état des tournois : Ouvert, En cours, Complet, À venir. 
+
+ 
+
+[ ] Affichage clair des frais d’inscription par tournoi. 
+
+ 
+
+[ ] Intégration de paiement sécurisée (Flutterwave, PayDunya, MTN MoMo). 
+
+ 
+
+[ ] Gestion des statuts d’inscription : En attente, Confirmé, Annulé. 
+
+ 
+
+[ ] Notifications automatiques par email et Telegram à chaque étape. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion des Matchs 
+
+ 
+
+[ ] Génération automatique d’un code de match unique de 10 lettres pour chaque confrontation. 
+
+ 
+
+[ ] Programmation stricte des horaires de matchs. 
+
+ 
+
+[ ] Relance obligatoire avec le même code en cas de match nul. 
+
+ 
+
+[ ] Affichage du programme des matchs par tour et par date. 
+
+ 
+
+[ ] Envoi automatique de rappels avant match : 
+
+ 
+
+24h avant 
+
+ 
+
+1h avant 
+
+ 
+
+5 minutes avant 
+
+ 
+
+ 
+
+[ ] Accès rapide aux règles de tournoi depuis le tableau de bord. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Système de Parrainage 
+
+ 
+
+[ ] Mise en place de l’invitation personnalisée via lien unique. 
+
+ 
+
+[ ] Détection automatique de l’activité des filleuls (2 tournois successifs, 1 mois max d’écart). 
+
+ 
+
+[ ] Calcul et attribution automatiques des statuts : 
+
+ 
+
+Paysan ASC 
+
+ 
+
+Roturier ASC 
+
+ 
+
+Noble ASC 
+
+ 
+
+Chef de Caste 
+
+ 
+
+Gouverneur ASC 
+
+ 
+
+Roi ASC 
+
+ 
+
+Empereur ASC 
+
+ 
+
+Emblème ASC 
+
+ 
+
+ 
+
+[ ] Gestion des commissions sur gains et recharges en backend (calcul automatique). 
+
+ 
+
+[ ] Sécurisation du tracking des filleuls sur la durée. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Système de Litiges 
+
+ 
+
+7.1 Dépôt de litige 
+
+ 
+
+[ ] Formulaire de litige disponible 10 minutes après match uniquement. 
+
+ 
+
+[ ] Champs obligatoires : Motif + Explication max 500 caractères. 
+
+ 
+
+[ ] Obligation de preuve (image, vidéo, document). 
+
+ 
+
+[ ] Rejet automatique en l’absence de preuve. 
+
+ 
+
+ 
+
+7.2 Transmission aux validateurs 
+
+ 
+
+[ ] Diffusion immédiate aux validateurs disponibles. 
+
+ 
+
+[ ] Délai maximum de réponse pour les validateurs : 10 minutes. 
+
+ 
+
+ 
+
+7.3 Validation 
+
+ 
+
+[ ] 3 options fixes disponibles : 
+
+ 
+
+Attribuer la victoire au Joueur A 
+
+ 
+
+Attribuer la victoire au Joueur B 
+
+ 
+
+Demander un match à rejouer 
+
+ 
+
+ 
+
+[ ] Blocage de toute autre interaction entre validateurs et joueurs. 
+
+ 
+
+ 
+
+7.4 Sélection et Rémunération 
+
+ 
+
+[ ] Sélection automatique des 5 premiers validateurs valides. 
+
+ 
+
+[ ] Versement de 25 FCFA par validation correcte. 
+
+ 
+
+ 
+
+7.5 Résolution automatique 
+
+ 
+
+[ ] Application automatique du résultat selon majorité des votes. 
+
+ 
+
+[ ] Mise à jour immédiate des classements. 
+
+ 
+
+ 
+
+7.6 Sanctions contre validateurs 
+
+ 
+
+[ ] Suivi des erreurs de validation. 
+
+ 
+
+[ ] Suspension/bannissement progressif en fonction du nombre d’erreurs. 
+
+ 
+
+ 
+
+7.7 Lutte contre les abus de litige 
+
+ 
+
+[ ] Compteur de litiges infondés pour chaque joueur. 
+
+ 
+
+[ ] Sanctions automatiques après : 
+
+ 
+
+2 abus : Avertissement 
+
+ 
+
+3 abus : Suspension 1 mois 
+
+ 
+
+5 abus : Suspension 3 mois 
+
+ 
+
+6 abus : Bannissement définitif 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion des Récompenses 
+
+ 
+
+[ ] Attribution automatique des prix : 
+
+ 
+
+1er : 200 000 FCFA 
+
+ 
+
+2ème : 100 000 FCFA 
+
+ 
+
+3ème : 50 000 FCFA 
+
+ 
+
+ 
+
+[ ] Gestion spéciale pour le Prix Légendaire de 5 millions FCFA (manuel selon critères spécifiques). 
+
+ 
+
+[ ] Historique des paiements et justificatifs accessibles aux joueurs. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Statistiques Globales 
+
+ 
+
+[ ] Statistiques détaillées par joueur : 
+
+ 
+
+Matchs joués 
+
+ 
+
+Victoires 
+
+ 
+
+Défaites 
+
+ 
+
+Taux de victoire 
+
+ 
+
+Progression par mois 
+
+ 
+
+Historique complet des affrontements 
+
+ 
+
+ 
+
+[ ] Graphiques dynamiques et téléchargeables. 
+
+
+Forme 
+
+2. Fonctionnalités Clés 
+
+2.1. Vérification de Compte 
+
+Inscription via email et mot de passe fort ou via OAuth (Google, Facebook). 
+
+Vérification obligatoire de l’adresse email via OTP. 
+
+Réinitialisation du mot de passe disponible. 
+
+Option 2FA (authentification à deux facteurs) par SMS ou application d’authentification pour plus de sécurité. 
+
+2.2. Profil Joueur 
+
+Création d’un pseudo global obligatoire, avec possibilité d’ajouter des pseudonymes communautaires secondaires. 
+
+Avatar personnalisé et badges spéciaux en fonction des niveaux, exploits et tournois remportés. 
+
+Informations complémentaires : biographie courte, pays, fuseau horaire, et niveau linguistique. 
+
+2.3. Tableau de Bord Personnel 
+
+Vue d’ensemble des communautés et tournois disponibles. 
+
+Accès rapide aux tournois passés, en cours et futurs. 
+
+Statistiques sous forme graphique : taux de victoire, matchs joués, progression mensuelle. 
+
+Historique complet des tournois et des résultats de matchs. 
+
+Forme 
+
+3. Participation aux Tournois 
+
+3.1. Découverte 
+
+Recherche des tournois par communauté et par filtre de jeu. 
+
+Étiquettes visuelles distinctes : Ouvert, En cours, Complet, À venir. 
+
+3.2. Inscription et Paiement 
+
+Sélection du tournoi avec frais d’inscription affichés clairement. 
+
+Paiement via intégration sécurisée Flutterwave, PayDunya ou MTN MoMo. 
+
+Confirmation des inscriptions avec trois statuts : En attente, Confirmé, Annulé. 
+
+Forme 
+
+4. Gestion des Matchs 
+
+Tous les matchs se jouent à l'heure précisée par l'organisation. 
+
+Un code de match unique de 10 lettres est généré automatiquement pour chaque confrontation. 
+
+En cas de match nul, une relance immédiate avec le même code est obligatoire. 
+
+Le programme des matchs est visible par tour et date. 
+
+Rappels automatiques envoyés par email et Telegram : 24h, 1h et 5 minutes avant le début du match. 
+
+Accès libre aux règles spécifiques de chaque tournoi directement depuis son espace joueur. 
+
+Forme 
+
+5. Système de Parrainage 
+
+Le système de parrainage de l'Afrique Sociale Cup est conçu pour stimuler la croissance communautaire tout en récompensant équitablement les parrains engagés. 
+
+5.1. Définition d'un Filleul Actif 
+
+Un filleul est considéré comme actif lorsqu’il a participé à au moins deux tournois successifs, sans interruption de plus d’un mois entre deux participations. 
+
+5.2. Récompenses par Paliers 
+
+À partir de trois filleuls actifs, le joueur débloque le premier palier de récompenses et progresse ensuite au fil de son réseau : 
+
+Avec 3 filleuls actifs, le parrain atteint le statut Paysan ASC. Il bénéficie d'un mois d'accès gratuit aux tournois premium ainsi que d’une commission de 1% sur tous les gains de ses filleuls à vie, calculée et déduite des recettes d’ASC. À cela s’ajoute 1% de toutes les recharges effectuées par ses filleuls, également prélevé du côté d’ASC. 
+
+Avec 10 filleuls actifs, il devient Roturier ASC et obtient trois mois d'accès gratuits aux tournois premium, avec 2% des gains et 2% des recharges de ses filleuls à vie, toujours déduits des revenus de l'ASC. 
+
+Avec 50 filleuls actifs, il accède au rang de Noble ASC et bénéficie de trois mois gratuits supplémentaires, ainsi que d'une commission de 5% sur les gains et 5% sur les recharges de ses filleuls. 
+
+À 100 filleuls actifs, il devient Chef de Caste, débloquant six mois gratuits et recevant 10% sur les gains et 5% sur les recharges de ses filleuls, toujours à vie. 
+
+À 500 filleuls actifs, le joueur obtient le titre prestigieux de Gouverneur ASC, avec douze mois gratuits, et touche 15% sur les gains ainsi que 10% sur les recharges de ses filleuls, de manière permanente. 
+
+À 1000 filleuls actifs, il est élevé au rang de Roi ASC, bénéficiant de dix-huit mois gratuits, avec 20% de commissions sur les gains et 15% sur les recharges. 
+
+Lorsqu’il atteint 5000 filleuls actifs, le parrain devient Empereur ASC. Ce rang historique lui garantit 0,5% des parts de l’ASC en tant qu’actionnaire symbolique, ainsi que 25% des gains générés par ses filleuls à vie. 
+
+Enfin, avec 10000 filleuls actifs, il obtient le titre suprême de Légende ASC, avec 1% des parts de l’ASC, cumulant également 25% des gains de ses filleuls sans aucune limitation de durée. 
+
+Important : toutes les commissions et parts sont calculées uniquement sur le chiffre généré par les filleuls actifs, et sont toujours déduites sur les marges de l'ASC, sans impact négatif sur les gains des joueurs ordinaires. 
+
+Forme 
+
+6. Système de Validation des Litiges 
+
+6.1 Objectif 
+
+ 
+
+Le système de litiges vise à garantir une résolution rapide, équitable et transparente des différends pouvant survenir après les matchs. Le processus doit assurer une expérience fluide tant pour les joueurs que pour les validateurs. 
+
+ 
+
+ 
+
+ 
+
+6.2 Dépôt d’un litige 
+
+ 
+
+Les joueurs disposent d’un délai maximum de 10 minutes après la fin de leur match pour ouvrir un litige. 
+
+ 
+
+Le formulaire de dépôt doit comporter : 
+
+ 
+
+Motif du litige (déconnexion, triche, contestation de score, etc.) 
+
+ 
+
+Brève explication limitée à 500 caractères. 
+
+ 
+
+ 
+
+La preuve est obligatoire : capture(s) d’écran, vidéo du match ou tout autre élément pertinent. 
+
+Absence de preuve = rejet automatique du litige. 
+
+ 
+
+Une fois accepté, le litige est envoyé dans le tableau de bord des validateurs. 
+
+ 
+
+ 
+
+ 
+
+6.3 Transmission aux validateurs 
+
+ 
+
+Le litige est diffusé à plus de 1000 validateurs disponibles. 
+
+ 
+
+Temps de réponse maximum pour les validateurs : 10 minutes. 
+
+ 
+
+Passé ce délai, le validateur est automatiquement exclu du traitement. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.4 Options de validation 
+
+ 
+
+Chaque validateur doit choisir UNE des trois options : 
+
+ 
+
+Attribuer la victoire au Joueur A. 
+
+ 
+
+ 
+
+Attribuer la victoire au Joueur B. 
+
+ 
+
+ 
+
+Demander un match à rejouer. 
+
+ 
+
+ 
+
+ 
+
+Une fois validé, le choix est irrévocable. 
+
+Aucun contact entre validateurs et joueurs n’est autorisé. 
+
+ 
+
+ 
+
+ 
+
+6.5 Sélection des 5 premiers validateurs 
+
+Les 5 premiers validateurs ayant validé correctement sont retenus. 
+
+Chacun reçoit une rémunération de 25 FCFA. 
+
+Tous les autres validateurs sont ignorés pour ce litige. 
+
+ 
+
+ 
+
+6.6 Suppression automatique du litige 
+
+Dès que les 5 validations sont faites, le litige disparaît instantanément des tableaux de bord. 
+
+Cela empêche les validations multiples et la perte de temps. 
+
+ 
+
+6.7 Résolution du litige 
+
+Dès l’enregistrement des 5 votes : 
+
+≥ 3 votes pour Joueur A : Joueur A est déclaré vainqueur. 
+
+≥ 3 votes pour Joueur B : Joueur B est déclaré vainqueur. 
+
+≥ 3 votes pour match à rejouer : Match annulé et rejoué. 
+
+Le classement et les scores sont mis à jour automatiquement. 
+
+ 
+
+ 
+
+ 
+
+6.8 Sanctions des validateurs 
+
+En cas de validations incorrectes : 
+
+Après 3 erreurs : Avertissement discret. 
+
+Après 6 erreurs : Suspension d’1 mois du rôle de validateur. 
+
+Après 9 erreurs : Bannissement définitif. 
+
+ 
+
+ 
+
+Les validateurs ayant voté différemment de la majorité : 
+
+Ne sont pas rémunérés pour ce litige. 
+
+Perdant des points de réputation. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.9 Gestion des litiges spéciaux 
+
+En cas de match à rejouer : 
+
+Un nouveau code de match est automatiquement généré. 
+
+ 
+
+Les joueurs et validateurs peuvent consulter : 
+
+Leur statistique de litiges (litiges traités, taux de réussite). 
+
+Leur réputation en litige. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.10 Récompense des validateurs 
+
+25 FCFA attribués à chaque validateur parmi les 5 premiers. 
+
+Aucune récompense pour les autres. 
+
+ 
+
+ 
+
+ 
+
+6.11 Lutte contre l’abus de litiges par les joueurs 
+
+ 
+
+Pour éviter les abus : 
+
+ 
+
+2 litiges infondés : Avertissement. 
+
+ 
+
+3 litiges infondés : Suspension de 1 mois de participation. 
+
+04 litiges infondés:  suspension de 3 mois de participation  
+
+05litiges infondés : Bannissement définitif de la plateforme. 
+
+ 
+
+ 
+
+Forme 
+
+7. Récompenses et Prix 
+
+Les prix sont distribués ainsi pour chaque tournoi : 
+
+1er Prix : 200 000 FCFA. 
+
+2ème Prix : 100 000 FCFA. 
+
+3ème Prix : 50 000 FCFA. 
+
+Un Prix Légendaire de 5 millions de FCFA est mis en place comme récompense exceptionnelle, réservée uniquement aux cas d’exploit jugés extraordinaires selon des critères spécifiques annoncés avant le tournoi. 
+
+Forme 
+
+8. Suivi & Statistiques 
+
+Chaque joueur bénéficie d’un suivi détaillé de ses performances : 
+
+Nombre total de matchs joués. 
+
+Nombre de victoires, défaites. 
+
+Taux de victoire global. 
+
+Progression mois par mois. 
+
+Historique complet de ses affrontements, incluant date, tournoi et adversaire. 
