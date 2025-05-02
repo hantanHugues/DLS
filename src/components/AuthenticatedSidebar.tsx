@@ -7,7 +7,7 @@ import { Sidebar } from "./ui/sidebar";
 
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(true);
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
     {

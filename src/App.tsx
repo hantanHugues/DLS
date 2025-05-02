@@ -35,21 +35,13 @@ const queryClient = new QueryClient();
 import { Sidebar, SidebarProvider } from "./components/ui/sidebar";
 
 const AuthenticatedLayout = () => {
-  const { isAuthenticated } = useAuth();
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
-
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen">
-        <AuthenticatedSidebar />
-        <div className="flex-1 p-4">
-          <Outlet />
-        </div>
+    <div className="flex min-h-screen">
+      <AuthenticatedSidebar />
+      <div className="flex-1 p-4">
+        <Outlet />
       </div>
-    </SidebarProvider>
+    </div>
   );
 };
 
