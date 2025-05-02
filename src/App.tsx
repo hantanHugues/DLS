@@ -49,15 +49,24 @@ const AuthProvider = ({ children }) => {
 
 
 const App = () => {
-  const { isAuthenticated } = React.useContext(AuthContext);
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <AuthProvider>
-          <BrowserRouter>
+          <AuthenticatedLayout />
+        </AuthProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
+
+const AuthenticatedLayout = () => {
+  const { user } = useAuth();
+
+  return (
+    <BrowserRouter>
             <div className="flex min-h-screen">
               {isAuthenticated && <AuthenticatedSidebar />}
               <div className="flex-1">
@@ -89,9 +98,6 @@ const App = () => {
               </div>
             </div>
           </BrowserRouter>
-        </AuthProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
   );
 };
 
