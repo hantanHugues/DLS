@@ -10,7 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Edit, Flag, Check, Shield, Award, Trophy, Gamepad, Star, Plus } from "lucide-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
 import { BackButton } from "@/components/BackButton";
 
 const pseudonyms = [
@@ -36,8 +37,9 @@ const languages = [
   { id: "sw", name: "Swahili" }
 ];
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const [activeTab, setActiveTab] = useState("profile");
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [avatar, setAvatar] = useState<File | null>(null);
