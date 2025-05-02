@@ -178,16 +178,36 @@ export default function Statistics() {
                       <div key={index} className="flex flex-col items-center gap-2">
                         <div className="flex flex-col-reverse space-y-reverse space-y-1">
                           <div
-                            style={{ height: `${(data.wins / data.matchs) * 300}px` }}
-                            className="w-16 bg-primary/80 rounded-t-lg"
+                            style={{ height: `${data.wins * 20}px` }}
+                            className="w-16 bg-green-500/80 rounded-t-lg"
+                            title={`${data.wins} victoires`}
+                          />
+                          <div
+                            style={{ height: `${(data.matchs - data.wins) * 20}px` }}
+                            className="w-16 bg-red-500/80 rounded-t-lg"
+                            title={`${data.matchs - data.wins} défaites`}
                           />
                         </div>
                         <div className="text-center">
                           <p className="font-medium">{data.month}</p>
-                          <p className="text-sm text-gray-500">{data.wins}/{data.matchs}</p>
+                          <p className="text-sm text-gray-500">
+                            <span className="text-green-500">{data.wins}</span>
+                            {" / "}
+                            <span className="text-red-500">{data.matchs - data.wins}</span>
+                          </p>
                         </div>
                       </div>
                     ))}
+                    <div className="absolute top-0 right-0 flex gap-2">
+                      <div className="flex items-center gap-1">
+                        <div className="w-3 h-3 bg-green-500/80 rounded"></div>
+                        <span className="text-xs">Victoires</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-3 h-3 bg-red-500/80 rounded"></div>
+                        <span className="text-xs">Défaites</span>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
