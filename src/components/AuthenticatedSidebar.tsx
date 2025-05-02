@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { Sidebar } from "./ui/sidebar";
 
 export function AuthenticatedSidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const menuItems = [
@@ -63,7 +63,8 @@ export function AuthenticatedSidebar() {
         <Menu className="h-6 w-6" />
       </Button>
 
-      <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-200 lg:translate-x-0 w-64 h-screen bg-white dark:bg-gray-800 border-r fixed left-0 top-0`}>
+      <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease 
+      w-64 h-screen bg-white dark:bg-gray-800 border-r fixed left-0 top-0 shadow-lg z-40`}>
         <div className="p-4 border-b">
           <Trophy className="h-8 w-8 text-asc-purple" />
         </div>
