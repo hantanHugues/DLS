@@ -75,8 +75,8 @@ const AppContent = () => {
         <Route element={<AuthenticatedLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/tournaments" element={<TournamentsInfo />} />
-          <Route path="/tournaments-list" element={<Tournaments />} />
+          <Route path="/tournaments-info" element={<TournamentsInfo />} />
+          <Route path="/tournaments" element={<Tournaments />} />
           <Route path="/tournament-payment" element={<TournamentPayment />} />
           <Route path="/tournament-rules" element={<TournamentRules />} />
           <Route path="/match-details/:id" element={<MatchDetails />} />

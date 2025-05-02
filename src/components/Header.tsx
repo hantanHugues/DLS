@@ -20,7 +20,7 @@ const Header = () => {
           <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Accueil
           </Link>
-          <Link to="/tournaments" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
+          <Link to="/tournaments-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Infos Tournois
           </Link>
           <Link to="/tournament-rules" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
