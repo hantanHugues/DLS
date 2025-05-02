@@ -1,36 +1,36 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trophy, TrendingUp, Clock, Users, Award, Gamepad, Target, Medal } from "lucide-react"
+import { Trophy, TrendingUp, Users, Medal, Calendar, Target, Award } from "lucide-react"
 import { motion } from "framer-motion"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 
-// Données mockées pour la démo
 const matchHistory = [
-  { id: 1, opponent: "Player123", result: "Victoire", score: "3-1", date: "2024-01-15" },
-  { id: 2, opponent: "GameMaster", result: "Défaite", score: "1-2", date: "2024-01-14" },
-  { id: 3, opponent: "ProGamer", result: "Victoire", score: "2-0", date: "2024-01-13" },
+  { id: 1, opponent: "Player123", result: "Victoire", score: "3-1", date: "2024-01-15", tournament: "Coupe ASC #12" },
+  { id: 2, opponent: "GameMaster", result: "Défaite", score: "1-2", date: "2024-01-14", tournament: "Ligue Pro" },
+  { id: 3, opponent: "ProGamer", result: "Victoire", score: "2-0", date: "2024-01-13", tournament: "Coupe ASC #11" },
 ];
 
-const performanceData = [
-  { month: "Jan", wins: 15, losses: 5 },
-  { month: "Fév", wins: 12, losses: 8 },
-  { month: "Mar", wins: 18, losses: 3 },
+const monthlyStats = [
+  { month: "Jan", matchs: 20, wins: 15 },
+  { month: "Fév", matchs: 18, wins: 12 },
+  { month: "Mar", matchs: 25, wins: 20 },
 ];
 
 export default function Statistics() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
       <Header />
-      <main className="flex-grow bg-gray-50 dark:bg-gray-900 py-8">
-        <div className="container">
-          <motion.h1 
+      <main className="flex-grow py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold mb-6"
+            className="mb-8"
           >
-            Statistiques de Performance
-          </motion.h1>
+            <h1 className="text-3xl font-bold">Statistiques</h1>
+            <p className="text-gray-500 mt-2">Suivez vos performances et votre progression</p>
+          </motion.div>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
             <motion.div
@@ -38,13 +38,15 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card>
-                <CardContent className="flex items-center gap-4 pt-6">
-                  <Trophy className="h-8 w-8 text-asc-purple" />
-                  <div>
-                    <p className="text-sm text-gray-500">Victoires Totales</p>
-                    <p className="text-2xl font-bold">45</p>
-                    <p className="text-xs text-green-500">+5 ce mois</p>
+              <Card className="bg-gradient-to-br from-purple-500 to-purple-600">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <Trophy className="h-8 w-8 text-white" />
+                    <div className="text-white">
+                      <p className="text-sm opacity-90">Total Victoires</p>
+                      <p className="text-2xl font-bold">47</p>
+                      <p className="text-xs opacity-75">+5 ce mois</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -55,13 +57,15 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Card>
-                <CardContent className="flex items-center gap-4 pt-6">
-                  <Target className="h-8 w-8 text-green-500" />
-                  <div>
-                    <p className="text-sm text-gray-500">Précision de Tir</p>
-                    <p className="text-2xl font-bold">78%</p>
-                    <p className="text-xs text-green-500">+2% ce mois</p>
+              <Card className="bg-gradient-to-br from-blue-500 to-blue-600">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <Medal className="h-8 w-8 text-white" />
+                    <div className="text-white">
+                      <p className="text-sm opacity-90">Classement</p>
+                      <p className="text-2xl font-bold">#42</p>
+                      <p className="text-xs opacity-75">+15 positions</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -72,13 +76,15 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Card>
-                <CardContent className="flex items-center gap-4 pt-6">
-                  <Medal className="h-8 w-8 text-yellow-500" />
-                  <div>
-                    <p className="text-sm text-gray-500">Classement</p>
-                    <p className="text-2xl font-bold">#42</p>
-                    <p className="text-xs text-green-500">+15 positions</p>
+              <Card className="bg-gradient-to-br from-green-500 to-green-600">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <Award className="h-8 w-8 text-white" />
+                    <div className="text-white">
+                      <p className="text-sm opacity-90">Tournois Gagnés</p>
+                      <p className="text-2xl font-bold">3</p>
+                      <p className="text-xs opacity-75">+1 ce mois</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -89,13 +95,15 @@ export default function Statistics() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card>
-                <CardContent className="flex items-center gap-4 pt-6">
-                  <Clock className="h-8 w-8 text-blue-500" />
-                  <div>
-                    <p className="text-sm text-gray-500">Temps de Jeu</p>
-                    <p className="text-2xl font-bold">156h</p>
-                    <p className="text-xs text-blue-500">+12h ce mois</p>
+              <Card className="bg-gradient-to-br from-yellow-500 to-yellow-600">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <Calendar className="h-8 w-8 text-white" />
+                    <div className="text-white">
+                      <p className="text-sm opacity-90">Matchs Joués</p>
+                      <p className="text-2xl font-bold">63</p>
+                      <p className="text-xs opacity-75">+8 ce mois</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -111,8 +119,8 @@ export default function Statistics() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Gamepad className="h-5 w-5" />
-                    Historique des Matchs Récents
+                    <Users className="h-5 w-5" />
+                    Derniers Matchs
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -120,25 +128,23 @@ export default function Statistics() {
                     {matchHistory.map((match) => (
                       <div 
                         key={match.id} 
-                        className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                        className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                            <Users className="h-6 w-6 text-gray-500" />
-                          </div>
+                        <div className="flex items-center justify-between">
                           <div>
                             <p className="font-medium">{match.opponent}</p>
-                            <p className="text-sm text-gray-500">{match.date}</p>
+                            <p className="text-sm text-gray-500">{match.tournament}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className={`font-medium ${
+                              match.result === "Victoire" ? "text-green-500" : "text-red-500"
+                            }`}>
+                              {match.result}
+                            </p>
+                            <p className="text-sm text-gray-500">{match.score}</p>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <p className={`font-medium ${
-                            match.result === "Victoire" ? "text-green-500" : "text-red-500"
-                          }`}>
-                            {match.result}
-                          </p>
-                          <p className="text-sm text-gray-500">{match.score}</p>
-                        </div>
+                        <p className="text-xs text-gray-400 mt-2">{match.date}</p>
                       </div>
                     ))}
                   </div>
@@ -160,32 +166,20 @@ export default function Statistics() {
                 </CardHeader>
                 <CardContent>
                   <div className="h-[300px] flex items-end justify-between">
-                    {performanceData.map((data, index) => (
-                      <div key={index} className="flex flex-col items-center">
+                    {monthlyStats.map((data, index) => (
+                      <div key={index} className="flex flex-col items-center gap-2">
                         <div className="flex flex-col-reverse space-y-reverse space-y-1">
                           <div
-                            style={{ height: `${data.wins * 8}px` }}
-                            className="w-12 bg-gradient-to-t from-asc-purple to-purple-400 rounded-t-sm"
-                          ></div>
-                          <div
-                            style={{ height: `${data.losses * 8}px` }}
-                            className="w-12 bg-gradient-to-t from-red-400 to-red-300 rounded-t-sm opacity-70"
-                          ></div>
+                            style={{ height: `${(data.wins / data.matchs) * 300}px` }}
+                            className="w-16 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-lg"
+                          />
                         </div>
-                        <span className="mt-2 text-sm text-gray-500">{data.month}</span>
-                        <span className="text-xs text-gray-400">{data.wins + data.losses} matchs</span>
+                        <div className="text-center">
+                          <p className="font-medium">{data.month}</p>
+                          <p className="text-sm text-gray-500">{data.wins}/{data.matchs}</p>
+                        </div>
                       </div>
                     ))}
-                  </div>
-                  <div className="flex justify-center mt-4 gap-6">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-asc-purple rounded"></div>
-                      <span className="text-sm">Victoires</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-red-400 rounded"></div>
-                      <span className="text-sm">Défaites</span>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
