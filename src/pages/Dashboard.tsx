@@ -1,10 +1,12 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trophy, Calendar, User, Star, Shield, Users } from "lucide-react";
+import { Trophy, Calendar, User, Star, Shield, Users, TrendingUp, Award, Medal } from "lucide-react";
 import TournamentCard from "@/components/TournamentCard";
+import { motion } from "framer-motion";
 
 // Sample data
 const upcomingTournaments = [
@@ -16,7 +18,8 @@ const upcomingTournaments = [
     players: 24,
     maxPlayers: 32,
     date: "15 Mai 2025",
-    status: "upcoming" as const
+    status: "upcoming" as const,
+    image: "/tournament-1.jpg"
   },
   {
     id: "t5",
@@ -26,7 +29,8 @@ const upcomingTournaments = [
     players: 12,
     maxPlayers: 24,
     date: "20 Mai 2025",
-    status: "open" as const
+    status: "open" as const,
+    image: "/tournament-2.jpg"
   }
 ];
 
@@ -39,7 +43,8 @@ const activeTournaments = [
     players: 16,
     maxPlayers: 16,
     date: "En cours",
-    status: "in-progress" as const
+    status: "in-progress" as const,
+    image: "/tournament-3.jpg"
   }
 ];
 
@@ -52,7 +57,8 @@ const pastTournaments = [
     players: 32,
     maxPlayers: 32,
     date: "15 Avril 2025",
-    status: "complete" as const
+    status: "complete" as const,
+    image: "/tournament-4.jpg"
   },
   {
     id: "t6",
@@ -62,16 +68,24 @@ const pastTournaments = [
     players: 16,
     maxPlayers: 16,
     date: "01 Avril 2025",
-    status: "complete" as const
+    status: "complete" as const,
+    image: "/tournament-5.jpg"
   }
 ];
 
-// Performance stats
 const performanceData = [
-  { month: "Jan", wins: 4, losses: 2 },
-  { month: "Fév", wins: 3, losses: 3 },
-  { month: "Mar", wins: 5, losses: 1 },
-  { month: "Avr", wins: 2, losses: 4 },
+  { month: "Jan", wins: 4, losses: 2, rating: 1250 },
+  { month: "Fév", wins: 3, losses: 3, rating: 1225 },
+  { month: "Mar", wins: 5, losses: 1, rating: 1300 },
+  { month: "Avr", wins: 6, losses: 2, rating: 1350 },
+  { month: "Mai", wins: 4, losses: 1, rating: 1375 },
+  { month: "Juin", wins: 7, losses: 2, rating: 1400 },
+];
+
+const recentMatches = [
+  { opponent: "PlayerX", result: "Victoire", score: "3-1", date: "Il y a 2h" },
+  { opponent: "PlayerY", result: "Défaite", score: "1-2", date: "Il y a 5h" },
+  { opponent: "PlayerZ", result: "Victoire", score: "2-0", date: "Hier" },
 ];
 
 const Dashboard = () => {
@@ -93,304 +107,390 @@ const Dashboard = () => {
   ]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main className="flex-grow bg-gray-50 dark:bg-gray-900 py-8 px-4">
-        <div className="container">
-          <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between mb-8">
+      <main className="flex-grow py-8 px-4">
+        <div className="container max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between mb-8"
+          >
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-asc-purple rounded-full flex items-center justify-center text-white">
-                <User className="h-8 w-8 md:h-10 md:w-10" />
+              <div className="relative">
+                <div className="w-20 h-20 bg-gradient-to-br from-asc-purple to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                  <User className="h-10 w-10" />
+                </div>
+                <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-1.5">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
               </div>
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">Bienvenue, JoueurASC</h1>
-                <p className="text-gray-500 dark:text-gray-400">Paysan ASC • Membre depuis Mai 2025</p>
+                <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-asc-purple to-purple-600">
+                  JoueurASC
+                </h1>
+                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                  <Award className="h-4 w-4" />
+                  <span>Paysan ASC</span>
+                  <span className="text-gray-300 dark:text-gray-600">•</span>
+                  <span>Niveau 15</span>
+                </div>
               </div>
             </div>
-            <div className="flex gap-2 items-center">
-              <div className="bg-white dark:bg-gray-800 p-3 rounded-full">
-                <Star className="h-6 w-6 text-yellow-500" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Points de fidélité</p>
-                <p className="font-bold">250 pts</p>
-              </div>
+            
+            <div className="flex gap-4">
+              <Card className="bg-gradient-to-br from-yellow-400 to-yellow-500">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <Star className="h-6 w-6 text-white" />
+                  <div className="text-white">
+                    <p className="text-sm opacity-90">Points de fidélité</p>
+                    <p className="text-xl font-bold">250</p>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-gradient-to-br from-purple-500 to-purple-600">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <Medal className="h-6 w-6 text-white" />
+                  <div className="text-white">
+                    <p className="text-sm opacity-90">Classement</p>
+                    <p className="text-xl font-bold">#157</p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-          </div>
+          </motion.div>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-            <TabsList className="grid grid-cols-3 md:w-[400px]">
-              <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
-              <TabsTrigger value="tournaments">Mes tournois</TabsTrigger>
-              <TabsTrigger value="stats">Statistiques</TabsTrigger>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+            <TabsList className="inline-flex bg-white dark:bg-gray-800 p-1 rounded-lg shadow-sm">
+              <TabsTrigger value="overview" className="rounded-md px-4 py-2">Vue d'ensemble</TabsTrigger>
+              <TabsTrigger value="tournaments" className="rounded-md px-4 py-2">Mes tournois</TabsTrigger>
+              <TabsTrigger value="stats" className="rounded-md px-4 py-2">Statistiques</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Tournois</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">7</div>
-                    <p className="text-xs text-muted-foreground">4 terminés • 1 en cours • 2 à venir</p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Performance</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">65%</div>
-                    <p className="text-xs text-muted-foreground">14 victoires • 6 défaites</p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Gains</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">75 000 FCFA</div>
-                    <p className="text-xs text-muted-foreground">Gains cumulés</p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div>
-                <h2 className="text-xl font-semibold mb-4">Prochains matchs</h2>
-                <Card>
-                  <CardContent className="p-0">
-                    <div className="divide-y">
-                      <div className="p-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <Calendar className="h-5 w-5 text-asc-purple" />
-                          <div>
-                            <p className="font-medium">ASC Premier League - 1/8 de finale</p>
-                            <p className="text-sm text-gray-500">15 Mai 2025 • 18:00 GMT</p>
-                          </div>
-                        </div>
-                        <div className="text-sm bg-asc-purple/10 text-asc-purple px-2 py-1 rounded-full">
-                          Dans 3 jours
-                        </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
+                <Card className="bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                        <Trophy className="h-6 w-6 text-purple-600 dark:text-purple-300" />
                       </div>
-                      <div className="p-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <Calendar className="h-5 w-5 text-asc-purple" />
-                          <div>
-                            <p className="font-medium">Tournoi Continental - Phase de groupes</p>
-                            <p className="text-sm text-gray-500">20 Mai 2025 • 20:00 GMT</p>
-                          </div>
-                        </div>
-                        <div className="text-sm bg-asc-purple/10 text-asc-purple px-2 py-1 rounded-full">
-                          Dans 8 jours
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div>
-                <h2 className="text-xl font-semibold mb-4">Programme de parrainage</h2>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Paysan ASC</CardTitle>
-                    <CardDescription>Niveau 1 • 3 filleuls actifs requis</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
                       <div>
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm">Progression</span>
-                          <span className="text-sm font-medium">1/3 filleuls actifs</span>
-                        </div>
-                        <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                          <div className="bg-asc-purple h-full rounded-full" style={{width: '33%'}}></div>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2">
-                          <div className="h-2 w-2 rounded-full bg-asc-purple"></div>
-                          <span className="text-sm">1 mois gratuit</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="h-2 w-2 rounded-full bg-asc-purple"></div>
-                          <span className="text-sm">1% des gains des filleuls</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <Users className="h-4 w-4" />
-                        <span>Code de parrainage: JoueurASC2025</span>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Tournois</p>
+                        <p className="text-2xl font-bold">7</p>
+                        <p className="text-xs text-gray-400">4 terminés • 1 en cours • 2 à venir</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
+
+                <Card className="bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
+                        <TrendingUp className="h-6 w-6 text-green-600 dark:text-green-300" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Performance</p>
+                        <p className="text-2xl font-bold">65%</p>
+                        <p className="text-xs text-gray-400">14 victoires • 6 défaites</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                        <Award className="h-6 w-6 text-blue-600 dark:text-blue-300" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Gains</p>
+                        <p className="text-2xl font-bold">75 000 FCFA</p>
+                        <p className="text-xs text-gray-400">+15 000 FCFA ce mois</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg font-semibold flex items-center gap-2">
+                        <Calendar className="h-5 w-5 text-asc-purple" />
+                        Prochains matchs
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {notifications.map(notification => (
+                          <div key={notification.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                            <div className="flex items-center gap-3">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <div>
+                                <p className="font-medium">{notification.title}</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">{notification.time}</p>
+                              </div>
+                            </div>
+                            <button className="text-sm text-asc-purple hover:text-purple-700 dark:hover:text-purple-400">
+                              Voir
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-lg font-semibold flex items-center gap-2">
+                        <Users className="h-5 w-5 text-asc-purple" />
+                        Programme de parrainage
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-sm font-medium">Progression vers Roturier ASC</span>
+                            <span className="text-sm text-gray-500">1/3 filleuls</span>
+                          </div>
+                          <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-asc-purple to-purple-600 w-1/3 rounded-full"></div>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span>1 mois gratuit</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span>1% des gains</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                          <p className="text-sm font-medium">Code de parrainage</p>
+                          <div className="flex items-center justify-between mt-2">
+                            <code className="text-asc-purple">JoueurASC2025</code>
+                            <button className="text-sm text-asc-purple hover:text-purple-700">
+                              Copier
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </div>
             </TabsContent>
 
             <TabsContent value="tournaments" className="space-y-6">
-              <div className="space-y-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Tournois à venir</h2>
-                  {upcomingTournaments.length > 0 ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {upcomingTournaments.map(tournament => (
-                        <TournamentCard key={tournament.id} {...tournament} />
-                      ))}
-                    </div>
-                  ) : (
-                    <Card>
-                      <CardContent className="py-6 text-center text-gray-500">
-                        Aucun tournoi à venir pour le moment.
-                      </CardContent>
-                    </Card>
-                  )}
+                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Calendar className="h-5 w-5 text-asc-purple" />
+                    Tournois à venir
+                  </h2>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {upcomingTournaments.map((tournament, index) => (
+                      <motion.div
+                        key={tournament.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <TournamentCard {...tournament} />
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
 
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Tournois en cours</h2>
-                  {activeTournaments.length > 0 ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {activeTournaments.map(tournament => (
-                        <TournamentCard key={tournament.id} {...tournament} />
-                      ))}
-                    </div>
-                  ) : (
-                    <Card>
-                      <CardContent className="py-6 text-center text-gray-500">
-                        Aucun tournoi en cours pour le moment.
-                      </CardContent>
-                    </Card>
-                  )}
+                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Trophy className="h-5 w-5 text-asc-purple" />
+                    Tournois en cours
+                  </h2>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {activeTournaments.map((tournament, index) => (
+                      <motion.div
+                        key={tournament.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <TournamentCard {...tournament} />
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
 
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Tournois passés</h2>
-                  {pastTournaments.length > 0 ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {pastTournaments.map(tournament => (
-                        <TournamentCard key={tournament.id} {...tournament} />
-                      ))}
-                    </div>
-                  ) : (
-                    <Card>
-                      <CardContent className="py-6 text-center text-gray-500">
-                        Aucun tournoi passé.
-                      </CardContent>
-                    </Card>
-                  )}
+                  <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-asc-purple" />
+                    Tournois passés
+                  </h2>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {pastTournaments.map((tournament, index) => (
+                      <motion.div
+                        key={tournament.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <TournamentCard {...tournament} />
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </TabsContent>
 
             <TabsContent value="stats" className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Taux de victoire</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">65%</div>
-                    <p className="text-xs text-muted-foreground">+5% depuis le mois dernier</p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
+                <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                        <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-300" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Taux de victoire</p>
+                        <p className="text-2xl font-bold">65%</p>
+                        <p className="text-xs text-green-500">+5% ce mois</p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Matchs joués</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">20</div>
-                    <p className="text-xs text-muted-foreground">4 ce mois-ci</p>
+                <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                        <Trophy className="h-6 w-6 text-blue-600 dark:text-blue-300" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Matchs joués</p>
+                        <p className="text-2xl font-bold">20</p>
+                        <p className="text-xs text-blue-500">4 ce mois</p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-sm font-medium">Rang ASC</CardTitle>
+                <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
+                        <Medal className="h-6 w-6 text-green-600 dark:text-green-300" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Classement</p>
+                        <p className="text-2xl font-bold">#157</p>
+                        <p className="text-xs text-green-500">Top 15%</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg font-semibold">Performance mensuelle</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">#157</div>
-                    <p className="text-xs text-muted-foreground">Sur 1240 joueurs</p>
+                    <div className="h-[300px] flex items-end justify-between">
+                      {performanceData.map((data, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                          <div className="flex flex-col-reverse space-y-reverse space-y-1">
+                            <div 
+                              style={{height: `${data.wins * 30}px`}}
+                              className="w-8 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-sm"
+                            ></div>
+                            <div 
+                              style={{height: `${data.losses * 30}px`}}
+                              className="w-8 bg-gradient-to-t from-red-400 to-red-300 rounded-t-sm opacity-70"
+                            ></div>
+                          </div>
+                          <span className="mt-2 text-sm text-gray-500">{data.month}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-center mt-4 gap-6">
+                      <div className="flex items-center gap-2">
+                        <div className="h-3 w-3 bg-purple-500 rounded-full"></div>
+                        <span className="text-sm">Victoires</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="h-3 w-3 bg-red-400 rounded-full"></div>
+                        <span className="text-sm">Défaites</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white dark:bg-gray-800 shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg font-semibold">Derniers matchs</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {recentMatches.map((match, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-2 h-2 rounded-full ${
+                              match.result === "Victoire" ? "bg-green-500" : "bg-red-500"
+                            }`}></div>
+                            <div>
+                              <p className="font-medium">vs {match.opponent}</p>
+                              <p className="text-sm text-gray-500">{match.date}</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className={`font-medium ${
+                              match.result === "Victoire" ? "text-green-500" : "text-red-500"
+                            }`}>{match.result}</p>
+                            <p className="text-sm text-gray-500">{match.score}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               </div>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Performance mensuelle</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-[200px] flex items-end justify-between">
-                    {performanceData.map((data, index) => (
-                      <div key={index} className="flex flex-col items-center w-16">
-                        <div className="w-full flex flex-col-reverse space-y-reverse space-y-1">
-                          <div style={{height: `${data.wins * 20}px`}} className="w-full bg-asc-purple rounded-t-sm"></div>
-                          <div style={{height: `${data.losses * 20}px`}} className="w-full bg-red-400 rounded-t-sm"></div>
-                        </div>
-                        <div className="mt-2 text-xs">{data.month}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center mt-4 gap-6">
-                    <div className="flex items-center gap-2">
-                      <div className="h-3 w-3 bg-asc-purple rounded-full"></div>
-                      <span className="text-sm">Victoires</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="h-3 w-3 bg-red-400 rounded-full"></div>
-                      <span className="text-sm">Défaites</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Résumé des tournois</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">Tournoi Elite</p>
-                        <p className="text-sm text-gray-500">Avril 2025</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Shield className="h-5 w-5 text-asc-purple" />
-                        <span>Quart de finale</span>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">Coupe Régionale</p>
-                        <p className="text-sm text-gray-500">Avril 2025</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Trophy className="h-5 w-5 text-yellow-500" />
-                        <span>Vainqueur</span>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between">
-                      <div>
-                        <p className="font-medium">Championnat Junior</p>
-                        <p className="text-sm text-gray-500">Mars 2025</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Trophy className="h-5 w-5 text-gray-400" />
-                        <span>Deuxième place</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </TabsContent>
           </Tabs>
         </div>
