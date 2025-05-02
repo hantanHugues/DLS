@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Edit, Flag, Check, Shield, Award, Trophy, Gamepad, Star, Plus } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { BackButton } from "@/components/BackButton";
 
 const pseudonyms = [
   { name: "FIFA_Master", platform: "FIFA" },
@@ -96,6 +97,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <Header />
+      <BackButton />
       <main className="flex-grow py-8 px-4">
         <div className="container max-w-6xl mx-auto">
           <motion.div 
