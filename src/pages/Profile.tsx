@@ -38,6 +38,24 @@ const languages = [
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [isEditing, setIsEditing] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [avatar, setAvatar] = useState<File | null>(null);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion:', error);
+    }
+  };
+
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setAvatar(event.target.files[0]);
+    }
+  };
 
   const [userInfo, setUserInfo] = useState({
     username: "JoueurASC",
@@ -115,11 +133,17 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="flex gap-4 mb-8">
-              <Link to="/profile" className="text-asc-purple hover:underline font-medium">Mon Profil</Link>
-              <Link to="/statistics" className="text-gray-600 hover:text-asc-purple">Statistiques</Link>
-              <Link to="/disputes" className="text-gray-600 hover:text-asc-purple">Litiges</Link>
-              <Link to="/two-factor-setup" className="text-gray-600 hover:text-asc-purple">Sécurité 2FA</Link>
+            <div className="flex justify-between items-center mb-8">
+              <div className="flex gap-4">
+                <Link to="/profile" className="text-asc-purple hover:underline font-medium">Mon Profil</Link>
+                <Link to="/statistics" className="text-gray-600 hover:text-asc-purple">Statistiques</Link>
+                <Link to="/disputes" className="text-gray-600 hover:text-asc-purple">Litiges</Link>
+                <Link to="/two-factor-setup" className="text-gray-600 hover:text-asc-purple">Sécurité 2FA</Link>
+              </div>
+              <Button variant="destructive" onClick={handleLogout}>
+                <LogOut className="h-4 w-4 mr-2" />
+                Déconnexion
+              </Button>
             </div>
           </motion.div>
 
@@ -202,6 +226,28 @@ const Profile = () => {
                                 onChange={handleInfoChange}
                               />
                             </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="phone">Téléphone</Label>
+                              <Input 
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                placeholder="+221 XX XXX XX XX"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="space-y-2 mt-4">
+                            <Label htmlFor="avatar">Photo de profil</Label>
+                            <Input 
+                              id="avatar"
+                              type="file"
+                              accept="image/*"
+                              onChange={handleAvatarChange}
+                              className="cursor-pointer"
+                            />
                           </div>
 
                           <div className="space-y-2">
