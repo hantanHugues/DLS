@@ -7,6 +7,17 @@ import { Button } from "./ui/button";
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const location = useLocation();
+  const isMobile = window.innerWidth <= 768;
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const menuItems = [
     { title: "Tableau de bord", icon: <BarChart2 className="h-5 w-5" />, href: "/dashboard" },
@@ -30,7 +41,7 @@ export function AuthenticatedSidebar() {
         <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
       </Button>
 
-      <div className={`${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out 
+      <div className={`${isOpen ? 'translate-x-0' : isMobile ? '-translate-x-full' : 'w-20'} transition-all duration-300 ease-in-out 
       w-64 h-[calc(100vh-4rem)] bg-white dark:bg-gray-800 border-r fixed left-0 top-16 shadow-lg z-40`}>
         <div className="p-4 border-b">
           <Trophy className="h-8 w-8 text-asc-purple" />
