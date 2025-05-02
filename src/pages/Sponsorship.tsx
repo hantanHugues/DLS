@@ -4,10 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Trophy, Gift, Users, Star, ArrowRight, Crown } from "lucide-react"
 import { BackButton } from "@/components/BackButton"
 import { motion } from "framer-motion"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 const Sponsorship = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <Header />
       <BackButton />
       <div className="container mx-auto py-12 px-4">
         {/* Hero Section */}
@@ -181,6 +184,7 @@ const Sponsorship = () => {
           </Button>
         </motion.div>
       </div>
+      <Footer />
     </div>
   )
 }
