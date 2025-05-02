@@ -1,8 +1,9 @@
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield, Menu } from "lucide-react";
 import { Button } from "./ui/button";
+import { SidebarProvider } from "./ui/sidebar";
 
 export function AuthenticatedSidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -68,14 +69,14 @@ export function AuthenticatedSidebar() {
         </div>
         <nav className="space-y-2 p-4">
           {menuItems.map((item) => (
-            <button
+            <Link
               key={item.href}
-              onClick={() => navigate(item.href)}
+              to={item.href}
               className="flex w-full items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               {item.icon}
               <span>{item.title}</span>
-            </button>
+            </Link>
           ))}
         </nav>
       </div>

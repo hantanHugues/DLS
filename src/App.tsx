@@ -33,15 +33,15 @@ import SupportPage from "./pages/Support";
 const queryClient = new QueryClient();
 
 const AuthenticatedLayout = () => {
-  const { isAuthenticated } = useAuth();
-  
   return (
-    <div className="flex min-h-screen">
-      <AuthenticatedSidebar />
-      <div className="flex-1">
-        <Outlet />
+    <SidebarProvider> {/* Assuming SidebarProvider is imported and available */}
+      <div className="flex min-h-screen">
+        <AuthenticatedSidebar />
+        <div className="flex-1">
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 };
 
