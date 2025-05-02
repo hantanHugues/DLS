@@ -3,10 +3,27 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Index from "./pages/Index";
+
+const AuthenticatedLayout = () => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return (
+    <div className="flex min-h-screen">
+      <AuthenticatedSidebar />
+      <div className="flex-1">
+        <Outlet />
+      </div>
+    </div>
+  );
+};
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -60,13 +77,7 @@ const AppContent = () => {
         <Route path="/otp-verification" element={<OTPVerification />} />
         
         {/* Pages authentifiées avec sidebar */}
-        <Route element={
-          <div className="flex min-h-screen">
-            <AuthenticatedSidebar />
-            <div className="flex-1">
-              <Outlet />
-            </div>
-          </div>
+        <Route element={<AuthenticatedLayout />}>
         }>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
