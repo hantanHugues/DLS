@@ -12,6 +12,8 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Tournaments from "./pages/Tournaments";
+import TournamentsInfo from "./pages/TournamentsInfo";
+import SponsorshipInfo from "./pages/SponsorshipInfo";
 import NotFound from "./pages/NotFound";
 import OTPVerification from "./pages/OTPVerification";
 import ResetPassword from "./pages/ResetPassword";
