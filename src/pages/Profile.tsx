@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,8 +9,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Edit, Flag, Check, Shield, Award, Trophy } from "lucide-react";
-import { Link } from 'react-router-dom'; // Added import for Link component
+import { User, Edit, Flag, Check, Shield, Award, Trophy, GameController, Star, Plus } from "lucide-react";
+import { Link } from 'react-router-dom';
+
+const pseudonyms = [
+  { name: "FIFA_Master", platform: "FIFA" },
+  { name: "DLS_King", platform: "Dream League Soccer" }
+];
 
 const countries = [
   "Sénégal", "Côte d'Ivoire", "Mali", "Cameroun", "Ghana", "Nigeria", 
@@ -32,6 +38,7 @@ const languages = [
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [isEditing, setIsEditing] = useState(false);
+
   const [userInfo, setUserInfo] = useState({
     username: "JoueurASC",
     email: "joueur@example.com",
@@ -42,13 +49,15 @@ const Profile = () => {
       { id: "fr", level: "Native" },
       { id: "en", level: "Intermediaire" }
     ],
-    avatar: ""
+    avatar: "",
+    secondaryUsernames: pseudonyms
   });
 
   const badges = [
-    { name: "Fondateur", icon: <Shield className="h-4 w-4" />, color: "bg-purple-100 text-purple-800" },
-    { name: "Tournoi Elite 2025", icon: <Trophy className="h-4 w-4" />, color: "bg-blue-100 text-blue-800" },
-    { name: "5 Victoires", icon: <Award className="h-4 w-4" />, color: "bg-green-100 text-green-800" }
+    { name: "Champion DLS 2024", icon: <Trophy className="h-4 w-4" />, color: "bg-yellow-100 text-yellow-800" },
+    { name: "Expert Validateur", icon: <Shield className="h-4 w-4" />, color: "bg-purple-100 text-purple-800" },
+    { name: "50 Victoires", icon: <Star className="h-4 w-4" />, color: "bg-green-100 text-green-800" },
+    { name: "Paysan ASC", icon: <Award className="h-4 w-4" />, color: "bg-blue-100 text-blue-800" }
   ];
 
   const handleInfoChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,25 +76,58 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main className="flex-grow bg-gray-50 dark:bg-gray-900 py-8 px-4">
-        <div className="container">
-          <div className="mb-6">
-            <div className="flex gap-6 mb-8">
-              <Link href="/profile" className="text-asc-purple hover:underline">Mon Profil</Link>
-              <Link href="/statistics" className="text-gray-600 hover:text-asc-purple">Statistiques</Link>
-              <Link href="/disputes" className="text-gray-600 hover:text-asc-purple">Litiges</Link>
-              <Link href="/two-factor-setup" className="text-gray-600 hover:text-asc-purple">Sécurité 2FA</Link>
+      <main className="flex-grow py-8 px-4">
+        <div className="container max-w-6xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-6 mb-6">
+              <div className="relative">
+                <div className="w-24 h-24 bg-gradient-to-br from-asc-purple to-purple-600 rounded-xl flex items-center justify-center text-white">
+                  {userInfo.avatar ? (
+                    <img src={userInfo.avatar} alt="Profile" className="w-full h-full object-cover rounded-xl" />
+                  ) : (
+                    <User className="h-12 w-12" />
+                  )}
+                </div>
+                <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-2">
+                  <GameController className="h-4 w-4 text-white" />
+                </div>
+              </div>
+
+              <div>
+                <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-asc-purple to-purple-600">
+                  {userInfo.username}
+                </h1>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {badges.map((badge, idx) => (
+                    <span key={idx} className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}>
+                      {badge.icon}
+                      {badge.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <h1 className="text-3xl font-bold mb-2">Mon profil</h1>
-            <p className="text-gray-500 dark:text-gray-400">Gérez vos informations personnelles et préférences</p>
-          </div>
+
+            <div className="flex gap-4 mb-8">
+              <Link to="/profile" className="text-asc-purple hover:underline font-medium">Mon Profil</Link>
+              <Link to="/statistics" className="text-gray-600 hover:text-asc-purple">Statistiques</Link>
+              <Link to="/disputes" className="text-gray-600 hover:text-asc-purple">Litiges</Link>
+              <Link to="/two-factor-setup" className="text-gray-600 hover:text-asc-purple">Sécurité 2FA</Link>
+            </div>
+          </motion.div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid grid-cols-2 md:w-[400px]">
+            <TabsList className="inline-flex bg-white dark:bg-gray-800 p-1 rounded-lg shadow-sm">
               <TabsTrigger value="profile">Profil</TabsTrigger>
               <TabsTrigger value="security">Sécurité</TabsTrigger>
+              <TabsTrigger value="pseudonyms">Pseudonymes</TabsTrigger>
             </TabsList>
 
             <TabsContent value="profile" className="space-y-6">
@@ -336,6 +378,32 @@ const Profile = () => {
                       <p className="text-sm text-gray-500 dark:text-gray-400">Utilisez une application comme Google Authenticator</p>
                     </div>
                     <Button variant="outline">Configurer</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="pseudonyms" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Pseudonymes communautaires</CardTitle>
+                  <CardDescription>Gérez vos noms d'utilisateur sur différentes plateformes</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {userInfo.secondaryUsernames.map((pseudo, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div>
+                          <p className="font-medium">{pseudo.name}</p>
+                          <p className="text-sm text-gray-500">{pseudo.platform}</p>
+                        </div>
+                        <Button variant="outline" size="sm">Modifier</Button>
+                      </div>
+                    ))}
+                    <Button className="w-full mt-4">
+                      <Plus className="h-4 w-4 mr-2" />
+                      Ajouter un pseudonyme
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
