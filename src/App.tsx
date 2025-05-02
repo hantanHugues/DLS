@@ -1,10 +1,11 @@
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { useAuth } from "@/contexts/AuthContext";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
+import { AuthContext, AuthProvider } from "./contexts/AuthContext";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -28,26 +29,8 @@ import TermsPage from "./pages/Terms";
 import PrivacyPage from "./pages/Privacy";
 import CookiesPage from "./pages/Cookies";
 import SupportPage from "./pages/Support";
-import { createContext, useState } from 'react';
-
 
 const queryClient = new QueryClient();
-
-const AuthContext = createContext(null);
-
-const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
-
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
-
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
 
 const App = () => {
   return (
@@ -56,22 +39,22 @@ const App = () => {
         <Toaster />
         <Sonner />
         <AuthProvider>
-          <AuthenticatedLayout />
+          <AppContent />
         </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
 };
 
-const AuthenticatedLayout = () => {
-  const { user } = useAuth();
+const AppContent = () => {
+  const { isAuthenticated } = React.useContext(AuthContext);
 
   return (
     <BrowserRouter>
-            <div className="flex min-h-screen">
-              {user && <AuthenticatedSidebar />}
-              <div className="flex-1">
-                <Routes>
+      <div className="flex min-h-screen">
+        {isAuthenticated && <AuthenticatedSidebar />}
+        <div className="flex-1">
+          <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -96,9 +79,9 @@ const AuthenticatedLayout = () => {
             <Route path="/support" element={<SupportPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-              </div>
-            </div>
-          </BrowserRouter>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 };
 
