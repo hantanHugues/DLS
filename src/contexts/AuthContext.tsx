@@ -1,36 +1,29 @@
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { User } from '@/integrations/supabase/types';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AuthContextType {
-  user: User | null;
-  isLoading: boolean;
+  isAuthenticated: boolean;
+  setIsAuthenticated: (value: boolean) => void;
 }
 
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  isLoading: true
+export const AuthContext = createContext<AuthContextType>({
+  isAuthenticated: false,
+  setIsAuthenticated: () => {},
 });
 
+export const useAuth = () => useContext(AuthContext);
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
-      setIsLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    const user = localStorage.getItem('user');
+    setIsAuthenticated(!!user);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);

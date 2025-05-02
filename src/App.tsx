@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
-import { AuthContext, AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -47,7 +47,7 @@ const App = () => {
 };
 
 const AppContent = () => {
-  const { isAuthenticated } = React.useContext(AuthContext);
+  const { isAuthenticated } = useAuth();
 
   return (
     <BrowserRouter>
