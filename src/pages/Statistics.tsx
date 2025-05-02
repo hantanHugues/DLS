@@ -173,17 +173,17 @@ export default function Statistics() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-[200px] relative flex items-end justify-between px-4">
+                  <div className="h-[180px] relative flex items-end justify-between px-4">
                     {monthlyStats.map((data, index) => (
                       <div key={index} className="flex flex-col items-center gap-2">
                         <div className="flex flex-col-reverse space-y-reverse space-y-1">
                           <div
-                            style={{ height: `${data.wins * 20}px` }}
+                            style={{ height: `${data.wins * 15}px` }}
                             className="w-12 bg-green-500/80 rounded-t-lg"
                             title={`${data.wins} victoires`}
                           />
                           <div
-                            style={{ height: `${(data.matchs - data.wins) * 20}px` }}
+                            style={{ height: `${(data.matchs - data.wins) * 15}px` }}
                             className="w-12 bg-red-500/80 rounded-t-lg"
                             title={`${data.matchs - data.wins} défaites`}
                           />
