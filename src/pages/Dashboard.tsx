@@ -1,14 +1,14 @@
-
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Calendar, User, Star, Shield, Users, TrendingUp, Award, Medal } from "lucide-react";
 import TournamentCard from "@/components/TournamentCard";
 import { motion } from "framer-motion";
 
-// Sample data
+// Sample data (from original code)
 const upcomingTournaments = [
   {
     id: "t1",
@@ -73,6 +73,7 @@ const pastTournaments = [
   }
 ];
 
+
 const performanceData = [
   { month: "Jan", wins: 4, losses: 2, rating: 1250 },
   { month: "Fév", wins: 3, losses: 3, rating: 1225 },
@@ -88,10 +89,7 @@ const recentMatches = [
   { opponent: "PlayerZ", result: "Victoire", score: "2-0", date: "Hier" },
 ];
 
-const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("overview");
-  const [favoriteTournaments, setFavoriteTournaments] = useState(upcomingTournaments.slice(0, 2));
-  const [notifications, setNotifications] = useState([
+const notifications = [
     {
       id: 1,
       title: "Match ASC Premier League",
@@ -104,14 +102,15 @@ const Dashboard = () => {
       time: "Il y a 1h",
       type: "tournament"
     }
-  ]);
+  ];
 
+const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <Header />
       <main className="flex-grow py-8 px-4">
         <div className="container max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -140,7 +139,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-4">
               <Card className="bg-gradient-to-br from-yellow-400 to-yellow-500">
                 <CardContent className="p-4 flex items-center gap-3">
@@ -151,7 +150,7 @@ const Dashboard = () => {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card className="bg-gradient-to-br from-purple-500 to-purple-600">
                 <CardContent className="p-4 flex items-center gap-3">
                   <Medal className="h-6 w-6 text-white" />
@@ -164,7 +163,7 @@ const Dashboard = () => {
             </div>
           </motion.div>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+          <Tabs value={"overview"} className="space-y-6">
             <TabsList className="inline-flex bg-white dark:bg-gray-800 p-1 rounded-lg shadow-sm">
               <TabsTrigger value="overview" className="rounded-md px-4 py-2">Vue d'ensemble</TabsTrigger>
               <TabsTrigger value="tournaments" className="rounded-md px-4 py-2">Mes tournois</TabsTrigger>
@@ -172,7 +171,7 @@ const Dashboard = () => {
             </TabsList>
 
             <TabsContent value="overview" className="space-y-6">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -192,7 +191,6 @@ const Dashboard = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card className="bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
@@ -207,7 +205,6 @@ const Dashboard = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card className="bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
@@ -257,7 +254,6 @@ const Dashboard = () => {
                     </CardContent>
                   </Card>
                 </motion.div>
-
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -281,7 +277,7 @@ const Dashboard = () => {
                             <div className="h-full bg-gradient-to-r from-asc-purple to-purple-600 w-1/3 rounded-full"></div>
                           </div>
                         </div>
-                        
+
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -310,7 +306,7 @@ const Dashboard = () => {
             </TabsContent>
 
             <TabsContent value="tournaments" className="space-y-6">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -376,7 +372,7 @@ const Dashboard = () => {
             </TabsContent>
 
             <TabsContent value="stats" className="space-y-6">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -396,7 +392,6 @@ const Dashboard = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card className="bg-white dark:bg-gray-800 shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
@@ -411,7 +406,6 @@ const Dashboard = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card className="bg-white dark:bg-gray-800 shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
@@ -438,12 +432,12 @@ const Dashboard = () => {
                       {performanceData.map((data, index) => (
                         <div key={index} className="flex flex-col items-center">
                           <div className="flex flex-col-reverse space-y-reverse space-y-1">
-                            <div 
-                              style={{height: `${data.wins * 30}px`}}
+                            <div
+                              style={{ height: `${data.wins * 30}px` }}
                               className="w-8 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-sm"
                             ></div>
-                            <div 
-                              style={{height: `${data.losses * 30}px`}}
+                            <div
+                              style={{ height: `${data.losses * 30}px` }}
                               className="w-8 bg-gradient-to-t from-red-400 to-red-300 rounded-t-sm opacity-70"
                             ></div>
                           </div>
@@ -473,18 +467,24 @@ const Dashboard = () => {
                       {recentMatches.map((match, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                           <div className="flex items-center gap-3">
-                            <div className={`w-2 h-2 rounded-full ${
-                              match.result === "Victoire" ? "bg-green-500" : "bg-red-500"
-                            }`}></div>
+                            <div
+                              className={`w-2 h-2 rounded-full ${
+                                match.result === "Victoire" ? "bg-green-500" : "bg-red-500"
+                              }`}
+                            ></div>
                             <div>
                               <p className="font-medium">vs {match.opponent}</p>
                               <p className="text-sm text-gray-500">{match.date}</p>
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className={`font-medium ${
-                              match.result === "Victoire" ? "text-green-500" : "text-red-500"
-                            }`}>{match.result}</p>
+                            <p
+                              className={`font-medium ${
+                                match.result === "Victoire" ? "text-green-500" : "text-red-500"
+                              }`}
+                            >
+                              {match.result}
+                            </p>
                             <p className="text-sm text-gray-500">{match.score}</p>
                           </div>
                         </div>
