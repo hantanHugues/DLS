@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TournamentCard from "@/components/TournamentCard";
 import { Trophy, Users, Calendar, Award, Shield, AlertTriangle, Clock, BadgeDollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
