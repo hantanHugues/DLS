@@ -74,6 +74,7 @@ const AppContent = () => {
         {/* Pages publiques sans sidebar */}
         <Route path="/tournaments-info" element={<TournamentsInfo />} />
         <Route path="/sponsorship-info" element={<SponsorshipInfo />} />
+        <Route path="/about" element={<About />} />
 
         {/* Pages authentifiées avec sidebar */}
         <Route element={<AuthenticatedLayout />}>
@@ -89,7 +90,6 @@ const AppContent = () => {
           <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
           <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
-          <Route path="/about" element={<About />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiesPage />} />
