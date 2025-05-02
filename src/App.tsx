@@ -35,17 +35,15 @@ const queryClient = new QueryClient();
 const AuthenticatedLayout = () => {
   const { isAuthenticated } = useAuth();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
-
-  return (
+  return isAuthenticated ? (
     <div className="flex min-h-screen">
       <AuthenticatedSidebar />
       <div className="flex-1">
         <Outlet />
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" replace />
   );
 };
 
