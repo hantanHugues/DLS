@@ -1,12 +1,12 @@
+
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function AuthenticatedSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const menuItems = [
     { title: "Tableau de bord", icon: <BarChart2 className="h-5 w-5" />, href: "/dashboard" },
@@ -24,7 +24,7 @@ export function AuthenticatedSidebar() {
       <Button 
         variant="ghost" 
         size="icon" 
-        className="fixed top-20 left-4 z-50 lg:hidden hover:bg-gray-100 dark:hover:bg-gray-700"
+        className="fixed top-20 left-4 z-50 hover:bg-gray-100 dark:hover:bg-gray-700"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
