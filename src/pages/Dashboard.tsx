@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -77,6 +76,21 @@ const performanceData = [
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  const [favoriteTournaments, setFavoriteTournaments] = useState(upcomingTournaments.slice(0, 2));
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      title: "Match ASC Premier League",
+      time: "Dans 24h",
+      type: "reminder"
+    },
+    {
+      id: 2,
+      title: "Nouveau tournoi disponible",
+      time: "Il y a 1h",
+      type: "tournament"
+    }
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -122,7 +136,7 @@ const Dashboard = () => {
                     <p className="text-xs text-muted-foreground">4 terminés • 1 en cours • 2 à venir</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium">Performance</CardTitle>
@@ -132,7 +146,7 @@ const Dashboard = () => {
                     <p className="text-xs text-muted-foreground">14 victoires • 6 défaites</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium">Gains</CardTitle>
@@ -284,7 +298,7 @@ const Dashboard = () => {
                     <p className="text-xs text-muted-foreground">+5% depuis le mois dernier</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium">Matchs joués</CardTitle>
@@ -294,7 +308,7 @@ const Dashboard = () => {
                     <p className="text-xs text-muted-foreground">4 ce mois-ci</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium">Rang ASC</CardTitle>
@@ -322,7 +336,7 @@ const Dashboard = () => {
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="flex justify-center mt-4 gap-6">
                     <div className="flex items-center gap-2">
                       <div className="h-3 w-3 bg-asc-purple rounded-full"></div>
@@ -335,7 +349,7 @@ const Dashboard = () => {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>Résumé des tournois</CardTitle>
@@ -352,7 +366,7 @@ const Dashboard = () => {
                         <span>Quart de finale</span>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-between">
                       <div>
                         <p className="font-medium">Coupe Régionale</p>
@@ -363,7 +377,7 @@ const Dashboard = () => {
                         <span>Vainqueur</span>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-between">
                       <div>
                         <p className="font-medium">Championnat Junior</p>
