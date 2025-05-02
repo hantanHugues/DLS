@@ -67,9 +67,9 @@ const Index = () => {
                 <h2 className="text-3xl font-bold mb-2">Tournois à la une</h2>
                 <p className="text-gray-500 dark:text-gray-400">Découvrez les tournois populaires sur ASC</p>
               </div>
-              <Link to="/tournaments" className="mt-4 md:mt-0">
+              <Link to="/tournaments-info" className="mt-4 md:mt-0">
                 <Button variant="outline" className="border-asc-purple text-asc-purple hover:bg-asc-purple/10">
-                  Voir tous les tournois
+                  Explorer les tournois
                 </Button>
               </Link>
             </div>
