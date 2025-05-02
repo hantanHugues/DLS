@@ -23,38 +23,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    
-    try {
-      if (!validateEmail(email)) {
-        toast({
-          title: "Format d'email invalide",
-          description: "Veuillez entrer une adresse email valide",
-          variant: "destructive"
-        });
-        return;
-      }
-      
-      if (email && password) {
-        // Simulation de connexion réussie
-        navigate('/dashboard');
-        return;
-      }
-      
-      toast({
-        title: "Erreur",
-        description: "Veuillez remplir tous les champs",
-        variant: "destructive"
-      });
-    } catch (error: any) {
-      toast({
-        title: "Erreur de connexion",
-        description: error.message,
-        variant: "destructive"
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    navigate('/dashboard');
   };
 
   return (
