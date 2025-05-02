@@ -21,7 +21,7 @@ const Header = () => {
             Accueil
           </Link>
           <Link to="/tournaments" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
-            Tournois
+            Infos Tournois
           </Link>
           <Link to="/tournament-rules" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Règlement
