@@ -79,6 +79,13 @@ const Index = () => {
                 <TournamentCard key={tournament.id} {...tournament} />
               ))}
             </div>
+            <div className="mt-8 text-center">
+              <Link to="/tournaments-info">
+                <Button variant="outline" className="border-asc-purple text-asc-purple hover:bg-asc-purple/10">
+                  Voir tous les tournois
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
         
