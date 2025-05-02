@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -109,13 +108,16 @@ const Tournaments = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("date");
+  const [prizeFilter, setPrizeFilter] = useState(""); // Added state for prize filter
 
   const filterTournaments = (status: TournamentStatus | "all") => {
     return allTournaments.filter(tournament => {
       const matchesStatus = status === "all" || tournament.status === status;
-      const matchesSearch = tournament.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      const matchesSearch = tournament.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             tournament.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesStatus && matchesSearch;
+      const matchesPrize = !prizeFilter ||
+      parseInt(tournament.prize.replace(/\D/g, "")) >= parseInt(prizeFilter);
+      return matchesStatus && matchesSearch && matchesPrize;
     });
   };
 
@@ -128,7 +130,6 @@ const Tournaments = () => {
       } else if (sortBy === "players") {
         return b.players - a.players;
       } else if (sortBy === "date") {
-        // Simple sort by status priority
         const statusPriority: Record<TournamentStatus, number> = {
           "in-progress": 0,
           "open": 1,
@@ -159,7 +160,7 @@ const Tournaments = () => {
                 Découvrez et participez aux tournois Dream League Soccer
               </p>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <div className="relative w-full md:w-auto">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
@@ -191,6 +192,7 @@ const Tournaments = () => {
                   </SelectContent>
                 </Select>
               </div>
+              <Input type="number" placeholder="Prix minimum" value={prizeFilter} onChange={(e) => setPrizeFilter(e.target.value)} className="w-24"/> {/* Added prize filter input */}
             </div>
           </div>
 
@@ -225,7 +227,7 @@ const Tournaments = () => {
                   <p className="text-gray-500 dark:text-gray-400 mb-4">
                     Aucun tournoi trouvé avec ces critères.
                   </p>
-                  <Button onClick={() => setSearchQuery("")}>Réinitialiser la recherche</Button>
+                  <Button onClick={() => {setSearchQuery(""); setPrizeFilter("")}}>Réinitialiser la recherche</Button>
                 </div>
               )}
             </TabsContent>
@@ -299,7 +301,7 @@ const Tournaments = () => {
                   <p className="text-gray-500 dark:text-gray-400 mb-4">
                     Aucun tournoi terminé trouvé.
                   </p>
-                  <Button variant="outline" onClick={() => setActiveTab("all")}>
+                  <Button variant="outline" onClick={() => {setActiveTab("all"); setPrizeFilter("")}}>
                     Voir tous les tournois
                   </Button>
                 </div>
