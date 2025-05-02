@@ -23,7 +23,7 @@ const Hero = () => {
               <Link to="/register">
                 <Button className="bg-asc-purple hover:bg-asc-dark-purple text-white">Je m'inscris</Button>
               </Link>
-              <Link to="/tournaments">
+              <Link to="/tournaments-info">
                 <Button variant="outline" className="border-asc-purple text-asc-purple hover:bg-asc-purple/10">
                   Explorer les tournois
                 </Button>
