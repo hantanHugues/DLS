@@ -1,73 +1,95 @@
-# Welcome to your Lovable project
 
-## Project info
+# Plateforme de Tournois Gaming
 
-**URL**: https://lovable.dev/projects/164cfbc8-6712-4a70-a8e9-da13ce6bdd85
+## À propos du projet
 
-## How can I edit this code?
+Une plateforme moderne de tournois gaming développée avec React, TypeScript et shadcn/ui. Cette application permet aux joueurs de participer à des tournois, gérer leurs profils, et interagir avec d'autres participants.
 
-There are several ways of editing your application.
+## Technologies utilisées
 
-**Use Lovable**
+- **Frontend**
+  - React 18
+  - TypeScript
+  - Vite (Build tool)
+  - shadcn/ui (Composants UI)
+  - Tailwind CSS (Styling)
+  - React Router (Navigation)
+  - Tanstack Query (Gestion des données)
+  - Framer Motion (Animations)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/164cfbc8-6712-4a70-a8e9-da13ce6bdd85) and start prompting.
+- **Backend & Services**
+  - Supabase (Base de données & Authentication)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Fonctionnalités principales
 
-**Use your preferred IDE**
+- 🔐 Authentification complète (Email/Password, 2FA)
+- 🎮 Gestion des tournois
+- 📊 Statistiques des joueurs
+- 💰 Système de récompenses
+- 🤝 Programme de parrainage
+- 🎫 Gestion des tickets & litiges
+- 📱 Interface responsive
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Structure du projet
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```
+src/
+├── components/     # Composants réutilisables
+├── contexts/      # Contextes React (Auth, etc.)
+├── hooks/         # Hooks personnalisés
+├── integrations/  # Intégrations externes (Supabase)
+├── lib/           # Utilitaires et helpers
+├── pages/         # Pages de l'application
+└── services/      # Services (Auth, API, etc.)
+```
 
-Follow these steps:
+## Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Cloner le projet
+2. Installer les dépendances :
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Lancer le serveur de développement :
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Routes principales
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `/` - Page d'accueil
+- `/login` - Connexion
+- `/register` - Inscription
+- `/dashboard` - Tableau de bord
+- `/tournaments` - Liste des tournois
+- `/profile` - Profil utilisateur
+- `/rewards` - Système de récompenses
+- `/disputes` - Gestion des litiges
 
-**Use GitHub Codespaces**
+## Configuration du développement
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Le projet utilise :
+- ESLint pour le linting
+- TypeScript pour le typage statique
+- Tailwind CSS pour le styling
+- Vite pour le build et le développement
 
-## What technologies are used for this project?
+## Déploiement
 
-This project is built with:
+Le projet est configuré pour être déployé sur Replit. Pour déployer :
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Assurez-vous que tous vos changements sont commités
+2. Utilisez l'outil de déploiement intégré de Replit
+3. Le projet sera automatiquement build et déployé
 
-## How can I deploy this project?
+## Sécurité
 
-Simply open [Lovable](https://lovable.dev/projects/164cfbc8-6712-4a70-a8e9-da13ce6bdd85) and click on Share -> Publish.
+- Authentification sécurisée via Supabase
+- Support 2FA
+- Validation des données côté client et serveur
+- Gestion sécurisée des sessions
 
-## Can I connect a custom domain to my Lovable project?
+## Contributeurs
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Ce projet est maintenu par l'équipe de développement. Pour contribuer, merci de suivre les standards de code et le processus de revue.
