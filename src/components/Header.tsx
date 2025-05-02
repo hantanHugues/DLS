@@ -62,10 +62,10 @@ const Header = () => {
             <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
               Accueil
             </Link>
-            <Link to="/tournaments" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/tournaments-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
               Tournois
             </Link>
-            <Link to="/sponsorship" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/sponsorship-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
               Parrainage
             </Link>
             <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium py-2" onClick={() => setIsMenuOpen(false)}>
