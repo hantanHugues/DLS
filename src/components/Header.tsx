@@ -21,13 +21,13 @@ const Header = () => {
             Accueil
           </Link>
           <Link to="/tournaments-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
-            Infos Tournois
-          </Link>
-          <Link to="/tournament-rules" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
-            Règlement
+            Tournois
           </Link>
           <Link to="/sponsorship-info" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Parrainage
+          </Link>
+          <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
+            À propos
           </Link>
           <Link to="/rewards" className="text-gray-700 dark:text-gray-300 hover:text-asc-purple dark:hover:text-asc-purple font-medium">
             Récompenses
