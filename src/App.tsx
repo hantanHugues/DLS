@@ -71,11 +71,14 @@ const AppContent = () => {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/otp-verification" element={<OTPVerification />} />
 
+        {/* Pages publiques sans sidebar */}
+        <Route path="/tournaments-info" element={<TournamentsInfo />} />
+        <Route path="/sponsorship-info" element={<SponsorshipInfo />} />
+
         {/* Pages authentifiées avec sidebar */}
         <Route element={<AuthenticatedLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/tournaments-info" element={<TournamentsInfo />} />
           <Route path="/tournaments" element={<Tournaments />} />
           <Route path="/tournament-payment" element={<TournamentPayment />} />
           <Route path="/tournament-rules" element={<TournamentRules />} />
@@ -85,7 +88,6 @@ const AppContent = () => {
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
           <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
-          <Route path="/sponsorship-info" element={<SponsorshipInfo />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/about" element={<About />} />
           <Route path="/terms" element={<TermsPage />} />
