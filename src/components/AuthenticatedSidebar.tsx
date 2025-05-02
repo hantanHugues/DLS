@@ -1,7 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Trophy, User, BarChart2, AlertTriangle, Gift, Users } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Trophy, User, BarChart2, AlertTriangle, Gift, Users, LineChart, Shield } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -29,6 +28,11 @@ export function AuthenticatedSidebar() {
       href: "/tournaments"
     },
     {
+      title: "Statistiques",
+      icon: <LineChart className="h-4 w-4" />,
+      href: "/statistics"
+    },
+    {
       title: "Récompenses",
       icon: <Gift className="h-4 w-4" />,
       href: "/rewards"
@@ -42,6 +46,11 @@ export function AuthenticatedSidebar() {
       title: "Parrainage",
       icon: <Users className="h-4 w-4" />,
       href: "/sponsorship"
+    },
+    {
+      title: "Espace Validateur",
+      icon: <Shield className="h-4 w-4" />,
+      href: "/validator-dashboard"
     }
   ];
 
