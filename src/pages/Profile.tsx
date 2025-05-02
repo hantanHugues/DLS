@@ -43,7 +43,6 @@ const Profile: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [avatar, setAvatar] = useState<File | null>(null);
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
