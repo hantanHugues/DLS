@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Index from "./pages/Index";
@@ -51,13 +51,35 @@ const AppContent = () => {
 
   return (
     <BrowserRouter>
-      <div className="flex min-h-screen">
-        {isAuthenticated && <AuthenticatedSidebar />}
-        <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+      <Routes>
+        {/* Pages publiques */}
+        <Route path="/" element={<Index />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/otp-verification" element={<OTPVerification />} />
+        
+        {/* Pages authentifiées avec sidebar */}
+        <Route element={
+          <div className="flex min-h-screen">
+            <AuthenticatedSidebar />
+            <div className="flex-1">
+              <Outlet />
+            </div>
+          </div>
+        }>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/tournaments" element={<Tournaments />} />
+          <Route path="/tournament-payment" element={<TournamentPayment />} />
+          <Route path="/tournament-rules" element={<TournamentRules />} />
+          <Route path="/match-details/:id" element={<MatchDetails />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/disputes" element={<Disputes />} />
+          <Route path="/rewards" element={<Rewards />} />
+          <Route path="/validator-dashboard" element={<ValidatorDashboard />} />
+          <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
+          <Route path="/sponsorship" element={<Sponsorship />} />
             <Route path="/otp-verification" element={<OTPVerification />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/dashboard" element={<Dashboard />} />
