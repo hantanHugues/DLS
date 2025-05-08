@@ -15,6 +15,13 @@ export interface TournamentCardProps {
   date: string;
   status: TournamentStatus;
   image?: string;
+  isRegistered?: boolean;
+  showDetails?: boolean;
+  nextMatch?: {
+    date: string;
+    opponent: string;
+    code: string;
+  };
 }
 
 const statusLabels: Record<TournamentStatus, string> = {
@@ -40,7 +47,10 @@ const TournamentCard = ({
   maxPlayers,
   date,
   status,
-  image
+  image,
+  isRegistered,
+  showDetails,
+  nextMatch
 }: TournamentCardProps) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg border overflow-hidden shadow-sm hover:shadow-md transition-all">
@@ -80,29 +90,28 @@ const TournamentCard = ({
         </div>
 
         <div className="mt-auto">
-          {showDetails && tournament.isRegistered ? (
+          {showDetails && isRegistered && nextMatch ? (
             <div className="space-y-4 mt-4 border-t pt-4">
               <div className="flex justify-between items-center">
                 <h4 className="font-semibold">Prochain match</h4>
-                <span className="text-sm">{tournament.nextMatch?.date}</span>
+                <span className="text-sm">{nextMatch.date}</span>
               </div>
-              {tournament.nextMatch && (
-                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                  <div className="flex justify-between items-center">
-                    <span>vs {tournament.nextMatch.opponent}</span>
-                    <span className="text-sm font-mono">Code: {tournament.nextMatch.code}</span>
-                  </div>
+              <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                <div className="flex justify-between items-center">
+                  <span>vs {nextMatch.opponent}</span>
+                  <span className="text-sm font-mono">Code: {nextMatch.code}</span>
                 </div>
-              )}
+              </div>
             </div>
           ) : (
             <Link to={`/tournament/details/${id}`}>
               <Button className="w-full bg-asc-purple hover:bg-asc-dark-purple">
                 {status === "open" ? "S'inscrire" : 
                  status === "in-progress" ? "Voir le match" :
-               status === "upcoming" ? "Rappel" : "Détails"}
-            </Button>
-          </Link>
+                 status === "upcoming" ? "Rappel" : "Détails"}
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
