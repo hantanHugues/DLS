@@ -112,5 +112,9 @@ const AppContent = () => {
 
 import TournamentDetails from "./pages/TournamentDetails";
 import TournamentRegistration from "./pages/TournamentRegistration";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminTournaments from "./pages/admin/AdminTournaments";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminDisputes from "./pages/admin/AdminDisputes";
 
 export default App;
