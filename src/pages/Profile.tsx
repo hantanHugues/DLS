@@ -70,15 +70,14 @@ const Profile: React.FC = () => {
       { id: "en", level: "Intermediaire" }
     ],
     avatar: "",
-    secondaryUsernames: pseudonyms
+    secondaryUsernames: pseudonyms,
+    badges: [
+      { name: "Champion DLS 2024", icon: <Trophy className="h-4 w-4" />, level: 'Or', description: "Récompense pour avoir remporté le tournoi DLS 2024." },
+      { name: "Expert Validateur", icon: <Shield className="h-4 w-4" />, level: 'Argent', description: "Badge décerné pour la validation d'un grand nombre de contenu." },
+      { name: "50 Victoires", icon: <Star className="h-4 w-4" />, level: 'Bronze', description: "Atteint 50 victoires en mode compétition." },
+      { name: "Paysan ASC", icon: <Award className="h-4 w-4" />, level: 'Bronze', description: "Badge pour les membres actifs de la communauté ASC." }
+    ]
   });
-
-  const badges = [
-    { name: "Champion DLS 2024", icon: <Trophy className="h-4 w-4" />, color: "bg-yellow-100 text-yellow-800" },
-    { name: "Expert Validateur", icon: <Shield className="h-4 w-4" />, color: "bg-purple-100 text-purple-800" },
-    { name: "50 Victoires", icon: <Star className="h-4 w-4" />, color: "bg-green-100 text-green-800" },
-    { name: "Paysan ASC", icon: <Award className="h-4 w-4" />, color: "bg-blue-100 text-blue-800" }
-  ];
 
   const handleInfoChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -126,8 +125,12 @@ const Profile: React.FC = () => {
                   {userInfo.username}
                 </h1>
                 <div className="flex flex-wrap gap-3 mt-2">
-                  {badges.map((badge, idx) => (
-                    <span key={idx} className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}>
+                  {userInfo.badges.map((badge, idx) => (
+                    <span key={idx} className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium 
+                      ${badge.level === 'Or' ? 'bg-yellow-100 text-yellow-800' : 
+                        badge.level === 'Argent' ? 'bg-gray-100 text-gray-800' : 
+                        'bg-orange-100 text-orange-800'}`}
+                    >
                       {badge.icon}
                       {badge.name}
                     </span>
@@ -193,13 +196,22 @@ const Profile: React.FC = () => {
                       )}
 
                       <div className="flex flex-wrap gap-2 justify-center mt-4">
-                        {badges.map((badge, idx) => (
+                        {userInfo.badges.map((badge, idx) => (
                           <div 
                             key={idx} 
-                            className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${badge.color}`}
+                            className="group relative"
                           >
-                            {badge.icon}
-                            {badge.name}
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium 
+                              ${badge.level === 'Or' ? 'bg-yellow-100 text-yellow-800' : 
+                                badge.level === 'Argent' ? 'bg-gray-100 text-gray-800' : 
+                                'bg-orange-100 text-orange-800'}`}
+                            >
+                              {badge.icon}
+                              {badge.name}
+                            </div>
+                            <div className="absolute hidden group-hover:block z-10 p-2 bg-white dark:bg-gray-800 rounded shadow-lg -bottom-12 left-0 w-48">
+                              <p className="text-xs">{badge.description}</p>
+                            </div>
                           </div>
                         ))}
                       </div>
