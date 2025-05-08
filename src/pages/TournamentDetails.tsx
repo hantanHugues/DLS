@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trophy, Users, Calendar, Shield, Clock, AlertCircle } from "lucide-react";
+import { Trophy, Users, Calendar, Shield, Clock, AlertCircle, CreditCard } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export default function TournamentDetails() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export default function TournamentDetails() {
 
   // Simulation d'un tournoi
   const tournament = {
-    id: "t1",
+    id: id,
     title: "ASC Premier League",
     description: "Le tournoi phare de l'ASC avec les meilleurs joueurs africains de DLS.",
     prize: "350 000 FCFA",
@@ -27,6 +28,7 @@ export default function TournamentDetails() {
     maxPlayers: 32,
     date: "15 Mai 2025",
     status: "open",
+    rules: "Règles standard DLS 2024...",
     matches: [
       {
         id: "m1",
@@ -49,7 +51,9 @@ export default function TournamentDetails() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-2xl mb-2">{tournament.title}</CardTitle>
-                  <Badge>{tournament.status}</Badge>
+                  <Badge variant={tournament.status === "open" ? "default" : "secondary"}>
+                    {tournament.status === "open" ? "Inscriptions Ouvertes" : "En cours"}
+                  </Badge>
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-asc-purple mb-1">
@@ -64,59 +68,84 @@ export default function TournamentDetails() {
             <CardContent>
               <div className="grid gap-8">
                 <div className="space-y-4">
-                  <p>{tournament.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{tournament.description}</p>
                   <div className="flex gap-4">
                     <div className="flex items-center gap-2">
-                      <Users className="h-5 w-5" />
+                      <Users className="h-5 w-5 text-asc-blue" />
                       <span>{tournament.players}/{tournament.maxPlayers} joueurs</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-5 w-5" />
+                      <Calendar className="h-5 w-5 text-asc-purple" />
                       <span>{tournament.date}</span>
                     </div>
                   </div>
                 </div>
 
+                <Separator />
+
                 {!isRegistered ? (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button size="lg" className="w-full">S'inscrire au tournoi</Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Inscription au tournoi</DialogTitle>
-                      </DialogHeader>
-                      <div className="grid gap-4 py-4">
-                        <div className="space-y-2">
-                          <h3 className="font-semibold">Méthode de Paiement</h3>
-                          <div className="grid grid-cols-3 gap-4">
-                            <Button 
-                              variant={paymentMethod === 'momo' ? 'default' : 'outline'}
-                              onClick={() => setPaymentMethod('momo')}
-                            >
-                              MTN MoMo
-                            </Button>
-                            <Button 
-                              variant={paymentMethod === 'flutterwave' ? 'default' : 'outline'}
-                              onClick={() => setPaymentMethod('flutterwave')}
-                            >
-                              Flutterwave
-                            </Button>
-                            <Button 
-                              variant={paymentMethod === 'paydunya' ? 'default' : 'outline'}
-                              onClick={() => setPaymentMethod('paydunya')}
-                            >
-                              PayDunya
+                  <div className="space-y-6">
+                    <div className="grid gap-6">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4">Règles du tournoi</h3>
+                        <p className="text-gray-600 dark:text-gray-300">{tournament.rules}</p>
+                      </div>
+                      
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button size="lg" className="w-full">S'inscrire au tournoi</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>Inscription au tournoi</DialogTitle>
+                          </DialogHeader>
+                          <div className="grid gap-4 py-4">
+                            <div>
+                              <label className="text-sm font-medium mb-2 block">
+                                Pseudo en jeu
+                              </label>
+                              <Input placeholder="Votre pseudo DLS" />
+                            </div>
+                            
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium block">
+                                Méthode de Paiement ({tournament.registrationFee})
+                              </label>
+                              <div className="grid grid-cols-3 gap-4">
+                                <Button 
+                                  variant={paymentMethod === 'momo' ? 'default' : 'outline'}
+                                  onClick={() => setPaymentMethod('momo')}
+                                >
+                                  MTN MoMo
+                                </Button>
+                                <Button 
+                                  variant={paymentMethod === 'flutterwave' ? 'default' : 'outline'}
+                                  onClick={() => setPaymentMethod('flutterwave')}
+                                >
+                                  Flutterwave
+                                </Button>
+                                <Button 
+                                  variant={paymentMethod === 'paydunya' ? 'default' : 'outline'}
+                                  onClick={() => setPaymentMethod('paydunya')}
+                                >
+                                  PayDunya
+                                </Button>
+                              </div>
+                            </div>
+
+                            {paymentMethod === 'momo' && (
+                              <Input placeholder="Numéro de téléphone" />
+                            )}
+
+                            <Button onClick={() => setIsRegistered(true)} className="w-full">
+                              <CreditCard className="mr-2 h-4 w-4" />
+                              Confirmer le paiement
                             </Button>
                           </div>
-                        </div>
-                        <Input placeholder="Numéro de téléphone" />
-                        <Button onClick={() => setIsRegistered(true)}>
-                          Confirmer le paiement
-                        </Button>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  </div>
                 ) : (
                   <div className="space-y-6">
                     <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
@@ -151,7 +180,7 @@ export default function TournamentDetails() {
 
                     <div>
                       <Button variant="outline" className="w-full">
-                        Voir les règles du tournoi
+                        Voir les règles détaillées
                       </Button>
                     </div>
                   </div>
