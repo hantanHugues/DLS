@@ -93,49 +93,79 @@ export default function AdminDashboard() {
 
         {/* Dashboard Content */}
         {activeTab === "dashboard" && (
-          <div className="space-y-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card>
+          <div className="space-y-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-sm font-medium">Utilisateurs Totaux</CardTitle>
-                  <Users className="h-4 w-4 text-muted-foreground"/>
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <Users className="h-5 w-5 text-primary"/>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">1,234</div>
-                  <p className="text-xs text-muted-foreground">+12% ce mois</p>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">1,234</div>
+                  <div className="flex items-center gap-1 mt-2">
+                    <div className="flex items-center text-emerald-500">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                      <span className="text-sm font-medium">+12%</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">ce mois</span>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-sm font-medium">Utilisateurs Actifs</CardTitle>
-                  <Activity className="h-4 w-4 text-muted-foreground"/>
+                  <div className="p-2 bg-blue-500/10 rounded-full">
+                    <Activity className="h-5 w-5 text-blue-500"/>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">856</div>
-                  <p className="text-xs text-muted-foreground">Dernières 24h</p>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">856</div>
+                  <div className="flex items-center gap-1 mt-2">
+                    <span className="text-sm font-medium text-blue-500">●</span>
+                    <span className="text-sm text-muted-foreground">Dernières 24h</span>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-sm font-medium">Revenus</CardTitle>
-                  <DollarSign className="h-4 w-4 text-muted-foreground"/>
+                  <div className="p-2 bg-emerald-500/10 rounded-full">
+                    <DollarSign className="h-5 w-5 text-emerald-500"/>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">4,550 FCFA</div>
-                  <p className="text-xs text-muted-foreground">+8% vs mois dernier</p>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">4,550 FCFA</div>
+                  <div className="flex items-center gap-1 mt-2">
+                    <div className="flex items-center text-emerald-500">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                      <span className="text-sm font-medium">+8%</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">vs mois dernier</span>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-sm font-medium">Litiges en Cours</CardTitle>
-                  <AlertTriangle className="h-4 w-4 text-muted-foreground"/>
+                  <div className="p-2 bg-yellow-500/10 rounded-full">
+                    <AlertTriangle className="h-5 w-5 text-yellow-500"/>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">12</div>
-                  <p className="text-xs text-muted-foreground">5 nouveaux aujourd'hui</p>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">12</div>
+                  <div className="flex items-center gap-1 mt-2">
+                    <span className="text-sm font-medium text-yellow-500">⚠</span>
+                    <span className="text-sm text-muted-foreground">5 nouveaux aujourd'hui</span>
+                  </div>
                 </CardContent>
               </Card>
             </div>
