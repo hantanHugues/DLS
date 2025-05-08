@@ -9,17 +9,7 @@ import {
   LineChart, RefreshCw, Megaphone, Scale, 
   ChevronRight, MessageSquare
 } from "lucide-react";
-import {
-  LineChart as RechartsLineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  BarChart,
-  Bar
-} from 'recharts';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const dailyData = [
   { name: 'Lun', users: 4, revenue: 400 },
@@ -183,7 +173,7 @@ export default function AdminDashboard() {
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Line type="monotone" dataKey="users" stroke="#8884d8" strokeWidth={2} />
+                  <Line type="monotone" dataKey="users" stroke="#8884d8" name="Utilisateurs" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
