@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -48,9 +49,9 @@ export default function AdminDashboard() {
       {/* Vertical Tabs */}
       <div className="w-64 bg-gray-100 dark:bg-gray-800 p-4 space-y-2">
         {tabs.map((tab) => (
-          <button
+          <Link
             key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
+            to={`/admin/${tab.id}`}
             className={`w-full flex items-center space-x-2 px-4 py-2 rounded-lg text-left ${
               activeTab === tab.id 
                 ? "bg-primary text-primary-foreground" 
@@ -59,7 +60,7 @@ export default function AdminDashboard() {
           >
             {tab.icon}
             <span>{tab.label}</span>
-          </button>
+          </Link>
         ))}
       </div>
 
