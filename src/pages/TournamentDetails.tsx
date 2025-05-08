@@ -4,19 +4,18 @@ import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Users, Calendar, Shield, Clock, AlertCircle, CreditCard } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export default function TournamentDetails() {
   const { id } = useParams();
   const [isRegistered, setIsRegistered] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<'momo' | 'flutterwave' | 'paydunya'>('momo');
 
-  // Simulation d'un tournoi
+  // Simulation des données du tournoi
   const tournament = {
     id: id,
     title: "ASC Premier League",
@@ -27,7 +26,7 @@ export default function TournamentDetails() {
     maxPlayers: 32,
     date: "15 Mai 2025",
     status: "open",
-    rules: "Règles standard DLS 2024...",
+    rules: "1. Chaque match doit être joué dans le délai imparti\n2. Les matchs sont en format Best-of-3\n3. Les joueurs doivent être ponctuels\n4. Le fair-play est obligatoire",
     matches: [
       {
         id: "m1",
@@ -89,19 +88,21 @@ export default function TournamentDetails() {
                   </div>
                 </div>
 
-                <Separator />
-
-                {!isRegistered ? (
-                  <div className="space-y-6">
-                    <div className="grid gap-6">
+                <div className="border-t pt-6">
+                  {!isRegistered ? (
+                    <div className="space-y-6">
                       <div>
                         <h3 className="text-lg font-semibold mb-4">Règles du tournoi</h3>
-                        <p className="text-gray-600 dark:text-gray-300">{tournament.rules}</p>
+                        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                          <pre className="whitespace-pre-wrap text-sm">{tournament.rules}</pre>
+                        </div>
                       </div>
                       
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button size="lg" className="w-full">S'inscrire au tournoi</Button>
+                          <Button size="lg" className="w-full bg-asc-purple hover:bg-asc-dark-purple">
+                            S'inscrire au tournoi
+                          </Button>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[425px]">
                           <DialogHeader>
@@ -153,53 +154,53 @@ export default function TournamentDetails() {
                         </DialogContent>
                       </Dialog>
                     </div>
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                      <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
-                        <Shield className="h-5 w-5" />
-                        <span className="font-medium">Vous êtes inscrit à ce tournoi</span>
+                  ) : (
+                    <div className="space-y-6">
+                      <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                          <Shield className="h-5 w-5" />
+                          <span className="font-medium">Vous êtes inscrit à ce tournoi</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-semibold">Vos matches</h3>
+                        {tournament.matches.map(match => (
+                          <Card key={match.id}>
+                            <CardContent className="p-4">
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <div className="font-medium mb-1">vs {match.opponent}</div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                                      Code: {match.code}
+                                    </div>
+                                    {match.score && (
+                                      <div className="text-sm font-bold">{match.score}</div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className="text-right">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <Clock className="h-4 w-4" />
+                                    <span>{match.time}</span>
+                                  </div>
+                                  <div className="text-sm text-gray-500">{match.date}</div>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+
+                      <div>
+                        <Button variant="outline" className="w-full">
+                          Voir les règles détaillées
+                        </Button>
                       </div>
                     </div>
-
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold">Vos matches</h3>
-                      {tournament.matches.map(match => (
-                        <Card key={match.id}>
-                          <CardContent className="p-4">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <div className="font-medium mb-1">vs {match.opponent}</div>
-                                <div className="flex items-center gap-2">
-                                  <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                                    Code: {match.code}
-                                  </div>
-                                  {match.score && (
-                                    <div className="text-sm font-bold">{match.score}</div>
-                                  )}
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <div className="flex items-center gap-2 mb-1">
-                                  <Clock className="h-4 w-4" />
-                                  <span>{match.time}</span>
-                                </div>
-                                <div className="text-sm text-gray-500">{match.date}</div>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-
-                    <div>
-                      <Button variant="outline" className="w-full">
-                        Voir les règles détaillées
-                      </Button>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>
