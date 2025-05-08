@@ -2,13 +2,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
 
 export default function TournamentPayment() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-grow">
         <div className="container mx-auto p-6">
           <h1 className="text-3xl font-bold mb-6">Inscription au Tournoi</h1>
@@ -40,7 +37,6 @@ export default function TournamentPayment() {
           </Card>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

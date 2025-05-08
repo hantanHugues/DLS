@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Calendar, User, Star, Shield, Users, TrendingUp, Award, Medal } from "lucide-react";
@@ -107,7 +105,6 @@ const notifications = [
 const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <Header />
       <main className="flex-grow py-8 px-4">
         <div className="container max-w-7xl mx-auto">
           <motion.div
@@ -497,7 +494,6 @@ const Dashboard = () => {
           </Tabs>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

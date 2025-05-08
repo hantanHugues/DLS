@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -6,13 +5,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Clock, Trophy, Ban, Info } from "lucide-react"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
 
 export default function ValidatorDashboard() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <div className="container mx-auto p-6 flex-grow">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Tableau de bord Validateur</h1>
@@ -148,7 +144,6 @@ export default function ValidatorDashboard() {
           </TabsContent>
         </Tabs>
       </div>
-      <Footer />
     </div>
   )
 }
