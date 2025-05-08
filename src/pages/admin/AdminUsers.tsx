@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { User, UserX, Shield, Key } from "lucide-react";
+import { User, UserX, Shield, Key, UserPlus, Search } from "lucide-react";
 
 export default function AdminUsers() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,10 +42,13 @@ export default function AdminUsers() {
   ];
 
   const filteredUsers = users.filter(user => {
-    const matchesSearch = user.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.id.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = 
+      user.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.id.toLowerCase().includes(searchTerm.toLowerCase());
+
     const matchesStatus = selectedStatus === "all" || user.status === selectedStatus;
+
     return matchesSearch && matchesStatus;
   });
 
@@ -54,94 +56,69 @@ export default function AdminUsers() {
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Gestion des Utilisateurs</h1>
-      </div>
-
-      <div className="flex gap-4 items-center">
-        <div className="flex-1">
-          <Input
-            placeholder="Rechercher par pseudo, email ou ID..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-md"
-          />
-        </div>
-        <select
-          className="border rounded-md p-2"
-          value={selectedStatus}
-          onChange={(e) => setSelectedStatus(e.target.value)}
-        >
-          <option value="all">Tous les statuts</option>
-          <option value="active">Actifs</option>
-          <option value="suspended">Suspendus</option>
-          <option value="banned">Bannis</option>
-        </select>
+        <Button>
+          <UserPlus className="h-4 w-4 mr-2" />
+          Nouvel Utilisateur
+        </Button>
       </div>
 
       <Card>
-        <CardContent className="p-0">
+        <CardHeader>
+          <CardTitle>Liste des Utilisateurs</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex gap-4 items-center">
+              <Input
+                placeholder="Rechercher un utilisateur..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="max-w-md"
+              />
+            </div>
+            <select
+              value={selectedStatus}
+              onChange={(e) => setSelectedStatus(e.target.value)}
+              className="border rounded-md p-2"
+            >
+              <option value="all">Tous les statuts</option>
+              <option value="active">Actif</option>
+              <option value="suspended">Suspendu</option>
+            </select>
+          </div>
+
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
                 <TableHead>Pseudo</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Téléphone</TableHead>
                 <TableHead>Statut</TableHead>
-                <TableHead>Inscription</TableHead>
+                <TableHead>Date d'inscription</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filteredUsers.map(user => (
                 <TableRow key={user.id}>
-                  <TableCell className="font-mono">{user.id}</TableCell>
+                  <TableCell>{user.id}</TableCell>
                   <TableCell>{user.pseudo}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.phone}</TableCell>
                   <TableCell>
                     <Badge variant={user.status === 'active' ? 'success' : 'destructive'}>
-                      {user.status}
+                      {user.status === 'active' ? 'Actif' : 'Suspendu'}
                     </Badge>
                   </TableCell>
                   <TableCell>{user.registrationDate}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            <User className="h-4 w-4" />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>Détails de l'utilisateur</DialogTitle>
-                          </DialogHeader>
-                          <div className="grid gap-4 py-4">
-                            <div className="grid grid-cols-2 gap-4">
-                              <div>
-                                <h3 className="font-semibold">Informations</h3>
-                                <p>ID: {user.id}</p>
-                                <p>Pseudo: {user.pseudo}</p>
-                                <p>Email: {user.email}</p>
-                                <p>Téléphone: {user.phone}</p>
-                              </div>
-                              <div>
-                                <h3 className="font-semibold">Activité</h3>
-                                <p>Inscription: {user.registrationDate}</p>
-                                <p>Dernière connexion: {user.lastLogin}</p>
-                                <p>Statut: {user.status}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
+                      <Button variant="outline" size="sm">
+                        <User className="h-4 w-4" />
+                      </Button>
                       <Button variant="outline" size="sm">
                         <Key className="h-4 w-4" />
                       </Button>
-                      <Button variant="outline" size="sm" className="text-yellow-500">
-                        <Shield className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="text-red-500">
+                      <Button variant="destructive" size="sm">
                         <UserX className="h-4 w-4" />
                       </Button>
                     </div>
