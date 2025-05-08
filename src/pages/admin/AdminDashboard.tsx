@@ -1,14 +1,16 @@
 
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
   Users, Trophy, AlertTriangle, DollarSign, Activity, 
   UserCheck, Ban, Clock, Mail, Settings, FileText,
   UserPlus, RefreshCw, ShieldAlert, Award, Wallet,
-  UserCog, Goal, HandCoins, Gift, History, MessageSquare
+  UserCog, Goal, HandCoins, Gift, History, MessageSquare,
+  LayoutDashboard, GitBranch, ClipboardList, Scale,
+  Bell, Megaphone, Cog
 } from "lucide-react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, 
@@ -26,184 +28,191 @@ const dailyData = [
 ];
 
 export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = React.useState("dashboard");
+  
+  const tabs = [
+    { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard className="w-5 h-5" /> },
+    { id: "users", label: "Utilisateurs", icon: <Users className="w-5 h-5" /> },
+    { id: "tournaments", label: "Tournois", icon: <Trophy className="w-5 h-5" /> },
+    { id: "payments", label: "Paiements", icon: <Wallet className="w-5 h-5" /> },
+    { id: "validators", label: "Validateurs", icon: <UserCheck className="w-5 h-5" /> },
+    { id: "disputes", label: "Litiges", icon: <Scale className="w-5 h-5" /> },
+    { id: "sponsorship", label: "Parrainage", icon: <GitBranch className="w-5 h-5" /> },
+    { id: "communications", label: "Communications", icon: <Megaphone className="w-5 h-5" /> },
+    { id: "settings", label: "Réglages", icon: <Cog className="w-5 h-5" /> },
+    { id: "logs", label: "Historique", icon: <History className="w-5 h-5" /> },
+  ];
+
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Dashboard Administrateur</h1>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Actualiser
-          </Button>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">
-                <Settings className="h-4 w-4 mr-2" />
-                Paramètres
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl">
-              <DialogHeader>
-                <DialogTitle>Réglages Généraux</DialogTitle>
-                <DialogDescription>
-                  Gérez les paramètres financiers, de jeu et autres configurations.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4">
-                {/* Settings content */}
-              </div>
-            </DialogContent>
-          </Dialog>
-        </div>
+    <div className="flex h-screen">
+      {/* Vertical Tabs */}
+      <div className="w-64 bg-gray-100 dark:bg-gray-800 p-4 space-y-2">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`w-full flex items-center space-x-2 px-4 py-2 rounded-lg text-left ${
+              activeTab === tab.id 
+                ? "bg-primary text-primary-foreground" 
+                : "hover:bg-gray-200 dark:hover:bg-gray-700"
+            }`}
+          >
+            {tab.icon}
+            <span>{tab.label}</span>
+          </button>
+        ))}
       </div>
 
-      <Tabs defaultValue="dashboard" className="space-y-4">
-        <TabsList className="w-full justify-start">
-          <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-          <TabsTrigger value="users">Utilisateurs</TabsTrigger>
-          <TabsTrigger value="tournaments">Tournois</TabsTrigger>
-          <TabsTrigger value="payments">Paiements</TabsTrigger>
-          <TabsTrigger value="validators">Validateurs</TabsTrigger>
-          <TabsTrigger value="disputes">Litiges</TabsTrigger>
-          <TabsTrigger value="referrals">Parrainage</TabsTrigger>
-          <TabsTrigger value="communications">Communications</TabsTrigger>
-          <TabsTrigger value="logs">Historique</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="dashboard" className="space-y-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Utilisateurs Totaux</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground"/>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">1,234</div>
-                <p className="text-xs text-muted-foreground">+12% ce mois</p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Utilisateurs Actifs</CardTitle>
-                <UserCheck className="h-4 w-4 text-muted-foreground"/>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">856</div>
-                <p className="text-xs text-muted-foreground">Dernières 24h</p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Revenus du Mois</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground"/>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">4,550 FCFA</div>
-                <p className="text-xs text-muted-foreground">+8% vs mois dernier</p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Litiges en Cours</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-muted-foreground"/>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">12</div>
-                <p className="text-xs text-muted-foreground">5 nouveaux aujourd'hui</p>
-              </CardContent>
-            </Card>
+      {/* Content Area */}
+      <div className="flex-1 p-6 overflow-auto">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">Dashboard Administrateur</h1>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm">
+              <RefreshCw className="h-4 w-4 mr-2" />
+              Actualiser
+            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Paramètres
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>Réglages Généraux</DialogTitle>
+                  <DialogDescription>
+                    Gérez les paramètres financiers, de jeu et autres configurations.
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Inscriptions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={dailyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="users" stroke="#8884d8" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+        {/* Dashboard Content */}
+        {activeTab === "dashboard" && (
+          <div className="space-y-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-sm font-medium">Utilisateurs Totaux</CardTitle>
+                  <Users className="h-4 w-4 text-muted-foreground"/>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">1,234</div>
+                  <p className="text-xs text-muted-foreground">+12% ce mois</p>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Revenus</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={dailyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="revenue" fill="#82ca9d" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </div>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-sm font-medium">Utilisateurs Actifs</CardTitle>
+                  <Activity className="h-4 w-4 text-muted-foreground"/>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">856</div>
+                  <p className="text-xs text-muted-foreground">Dernières 24h</p>
+                </CardContent>
+              </Card>
 
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Alertes & Notifications</h2>
-            <div className="space-y-2">
-              <Alert className="hover:bg-muted/50 cursor-pointer">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>3 nouveaux litiges à traiter</AlertDescription>
-              </Alert>
-              <Alert className="hover:bg-muted/50 cursor-pointer">
-                <Wallet className="h-4 w-4" />
-                <AlertDescription>5 demandes de retrait en attente</AlertDescription>
-              </Alert>
-              <Alert className="hover:bg-muted/50 cursor-pointer">
-                <UserCheck className="h-4 w-4" />
-                <AlertDescription>2 nouveaux validateurs candidats</AlertDescription>
-              </Alert>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-sm font-medium">Revenus</CardTitle>
+                  <DollarSign className="h-4 w-4 text-muted-foreground"/>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">4,550 FCFA</div>
+                  <p className="text-xs text-muted-foreground">+8% vs mois dernier</p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-sm font-medium">Litiges en Cours</CardTitle>
+                  <AlertTriangle className="h-4 w-4 text-muted-foreground"/>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">12</div>
+                  <p className="text-xs text-muted-foreground">5 nouveaux aujourd'hui</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Inscriptions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={dailyData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line type="monotone" dataKey="users" stroke="#8884d8" />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Revenus</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={dailyData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="revenue" fill="#82ca9d" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">Alertes & Notifications</h2>
+              <div className="space-y-2">
+                <Alert className="hover:bg-muted/50 cursor-pointer">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertDescription>3 nouveaux litiges à traiter</AlertDescription>
+                </Alert>
+                <Alert className="hover:bg-muted/50 cursor-pointer">
+                  <Wallet className="h-4 w-4" />
+                  <AlertDescription>5 demandes de retrait en attente</AlertDescription>
+                </Alert>
+                <Alert className="hover:bg-muted/50 cursor-pointer">
+                  <UserCheck className="h-4 w-4" />
+                  <AlertDescription>2 nouveaux validateurs candidats</AlertDescription>
+                </Alert>
+              </div>
             </div>
           </div>
-        </TabsContent>
+        )}
 
-        <TabsContent value="users" className="space-y-4">
-          {/* User management content */}
-        </TabsContent>
+        {/* Placeholder content for other tabs */}
+        {activeTab === "users" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Gestion des Utilisateurs</h2>
+            {/* Add user management content */}
+          </div>
+        )}
 
-        <TabsContent value="tournaments" className="space-y-4">
-          {/* Tournament management content */}
-        </TabsContent>
+        {activeTab === "tournaments" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">Gestion des Tournois</h2>
+            {/* Add tournament management content */}
+          </div>
+        )}
 
-        <TabsContent value="payments" className="space-y-4">
-          {/* Payment management content */}
-        </TabsContent>
-
-        <TabsContent value="validators" className="space-y-4">
-          {/* Validator management content */}
-        </TabsContent>
-
-        <TabsContent value="disputes" className="space-y-4">
-          {/* Dispute management content */}
-        </TabsContent>
-
-        <TabsContent value="referrals" className="space-y-4">
-          {/* Referral system management content */}
-        </TabsContent>
-
-        <TabsContent value="communications" className="space-y-4">
-          {/* Communication management content */}
-        </TabsContent>
-
-        <TabsContent value="logs" className="space-y-4">
-          {/* Logs and history content */}
-        </TabsContent>
-      </Tabs>
+        {/* Add more tab content sections */}
+      </div>
     </div>
   );
 }
