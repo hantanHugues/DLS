@@ -97,6 +97,13 @@ const AppContent = () => {
           <Route path="/tournament/details/:id" element={<TournamentDetails />} />
           <Route path="/tournament/registration/:id" element={<TournamentRegistration />} />
         </Route>
+        
+        {/* Routes Admin */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/tournaments" element={<AdminTournaments />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/disputes" element={<AdminDisputes />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

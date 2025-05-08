@@ -23,7 +23,15 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+    
+    // Simple check for demo purposes
+    if (password === 'admin') {
+      navigate('/admin/dashboard');
+    } else if (password === 'user') {
+      navigate('/dashboard');
+    } else {
+      toast.error('Mot de passe incorrect');
+    }
   };
 
   return (
