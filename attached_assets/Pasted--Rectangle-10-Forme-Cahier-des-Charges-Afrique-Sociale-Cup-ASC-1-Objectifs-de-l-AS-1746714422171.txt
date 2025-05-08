@@ -1,0 +1,1944 @@
+ 
+
+Rectangle 10, Forme 
+
+Cahier des Charges – Afrique Sociale Cup (ASC) 
+
+1. Objectifs de l'ASC 
+
+L’Afrique Sociale Cup vise à créer une plateforme panafricaine de tournois Dream League Soccer (DLS) favorisant l’équité, l'engagement communautaire, et la fidélisation sur le long terme. 
+Les principes de base sont : 
+
+Accessibilité maximale pour tous les joueurs. 
+
+Systèmes de récompenses motivants basés sur l’activité réelle. 
+
+Sécurité irréprochable pour tous les paiements et données. 
+
+Simplicité d’usage et performance technique. 
+
+Rectangle 9, Forme 
+
+2. Fonctionnalités Clés 
+
+2.1. Vérification de Compte 
+
+Inscription via email et mot de passe fort ou via OAuth (Google, Facebook). 
+
+Vérification obligatoire de l’adresse email via OTP. 
+
+Réinitialisation du mot de passe disponible. 
+
+Option 2FA (authentification à deux facteurs) par SMS ou application d’authentification pour plus de sécurité. 
+
+2.2. Profil Joueur 
+
+Création d’un pseudo global obligatoire, avec possibilité d’ajouter des pseudonymes communautaires secondaires. 
+
+Avatar personnalisé et badges spéciaux en fonction des niveaux, exploits et tournois remportés. 
+
+Informations complémentaires : biographie courte, pays, fuseau horaire, et niveau linguistique. 
+
+2.3. Tableau de Bord Personnel 
+
+Vue d’ensemble des communautés et tournois disponibles. 
+
+Accès rapide aux tournois passés, en cours et futurs. 
+
+Statistiques sous forme graphique : taux de victoire, matchs joués, progression mensuelle. 
+
+Historique complet des tournois et des résultats de matchs. 
+
+Rectangle 8, Forme 
+
+3. Participation aux Tournois 
+
+3.1. Découverte 
+
+Recherche des tournois par communauté et par filtre de jeu. 
+
+Étiquettes visuelles distinctes : Ouvert, En cours, Complet, À venir. 
+
+3.2. Inscription et Paiement 
+
+Sélection du tournoi avec frais d’inscription affichés clairement. 
+
+Paiement via intégration sécurisée Flutterwave, PayDunya ou MTN MoMo. 
+
+Confirmation des inscriptions avec trois statuts : En attente, Confirmé, Annulé. 
+
+Rectangle 7, Forme 
+
+4. Gestion des Matchs 
+
+Tous les matchs se jouent à l'heure précisée par l'organisation. 
+
+Un code de match unique de 10 lettres est généré automatiquement pour chaque confrontation. 
+
+En cas de match nul, une relance immédiate avec le même code est obligatoire. 
+
+Le programme des matchs est visible par tour et date. 
+
+Rappels automatiques envoyés par email et Telegram : 24h, 1h et 5 minutes avant le début du match. 
+
+Accès libre aux règles spécifiques de chaque tournoi directement depuis son espace joueur. 
+
+Rectangle 6, Forme 
+
+5. Système de Parrainage 
+
+Le système de parrainage de l'Afrique Sociale Cup est conçu pour stimuler la croissance communautaire tout en récompensant équitablement les parrains engagés. 
+
+5.1. Définition d'un Filleul Actif 
+
+Un filleul est considéré comme actif lorsqu’il a participé à au moins deux tournois successifs, sans interruption de plus d’un mois entre deux participations. 
+
+5.2. Récompenses par Paliers 
+
+À partir de trois filleuls actifs, le joueur débloque le premier palier de récompenses et progresse ensuite au fil de son réseau : 
+
+Avec 3 filleuls actifs, le parrain atteint le statut Paysan ASC. Il bénéficie d'un mois d'accès gratuit aux tournois premium ainsi que d’une commission de 1% sur tous les gains de ses filleuls à vie, calculée et déduite des recettes d’ASC. À cela s’ajoute 1% de toutes les recharges effectuées par ses filleuls, également prélevé du côté d’ASC. 
+
+Avec 10 filleuls actifs, il devient Roturier ASC et obtient trois mois d'accès gratuits aux tournois premium, avec 2% des gains et 2% des recharges de ses filleuls à vie, toujours déduits des revenus de l'ASC. 
+
+Avec 50 filleuls actifs, il accède au rang de Noble ASC et bénéficie de trois mois gratuits supplémentaires, ainsi que d'une commission de 5% sur les gains et 5% sur les recharges de ses filleuls. 
+
+À 100 filleuls actifs, il devient Chef de Caste, débloquant six mois gratuits et recevant 10% sur les gains et 5% sur les recharges de ses filleuls, toujours à vie. 
+
+À 500 filleuls actifs, le joueur obtient le titre prestigieux de Gouverneur ASC, avec douze mois gratuits, et touche 15% sur les gains ainsi que 10% sur les recharges de ses filleuls, de manière permanente. 
+
+À 1000 filleuls actifs, il est élevé au rang de Roi ASC, bénéficiant de dix-huit mois gratuits, avec 20% de commissions sur les gains et 15% sur les recharges. 
+
+Lorsqu’il atteint 5000 filleuls actifs, le parrain devient Empereur ASC. Ce rang historique lui garantit 0,5% des parts de l’ASC en tant qu’actionnaire symbolique, ainsi que 25% des gains générés par ses filleuls à vie. 
+
+Enfin, avec 10000 filleuls actifs, il obtient le titre suprême de Légende ASC, avec 1% des parts de l’ASC, cumulant également 25% des gains de ses filleuls sans aucune limitation de durée. 
+
+Important : toutes les commissions et parts sont calculées uniquement sur le chiffre généré par les filleuls actifs, et sont toujours déduites sur les marges de l'ASC, sans impact négatif sur les gains des joueurs ordinaires. 
+
+Rectangle 5, Forme 
+
+6. Système de Validation des Litiges 
+
+6.1 Objectif 
+
+ 
+
+Le système de litiges vise à garantir une résolution rapide, équitable et transparente des différends pouvant survenir après les matchs. Le processus doit assurer une expérience fluide tant pour les joueurs que pour les validateurs. 
+
+ 
+
+ 
+
+ 
+
+6.2 Dépôt d’un litige 
+
+ 
+
+Les joueurs disposent d’un délai maximum de 10 minutes après la fin de leur match pour ouvrir un litige. 
+
+ 
+
+Le formulaire de dépôt doit comporter : 
+
+ 
+
+Motif du litige (déconnexion, triche, contestation de score, etc.) 
+
+ 
+
+Brève explication limitée à 500 caractères. 
+
+ 
+
+ 
+
+La preuve est obligatoire : capture(s) d’écran, vidéo du match ou tout autre élément pertinent. 
+
+Absence de preuve = rejet automatique du litige. 
+
+ 
+
+Une fois accepté, le litige est envoyé dans le tableau de bord des validateurs. 
+
+ 
+
+ 
+
+ 
+
+6.3 Transmission aux validateurs 
+
+ 
+
+Le litige est diffusé à plus de 1000 validateurs disponibles. 
+
+ 
+
+Temps de réponse maximum pour les validateurs : 10 minutes. 
+
+ 
+
+Passé ce délai, le validateur est automatiquement exclu du traitement. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.4 Options de validation 
+
+ 
+
+Chaque validateur doit choisir UNE des trois options : 
+
+ 
+
+Attribuer la victoire au Joueur A. 
+
+ 
+
+ 
+
+Attribuer la victoire au Joueur B. 
+
+ 
+
+ 
+
+Demander un match à rejouer. 
+
+ 
+
+ 
+
+ 
+
+Une fois validé, le choix est irrévocable. 
+
+Aucun contact entre validateurs et joueurs n’est autorisé. 
+
+ 
+
+ 
+
+ 
+
+6.5 Sélection des 5 premiers validateurs 
+
+Les 5 premiers validateurs ayant validé correctement sont retenus. 
+
+Chacun reçoit une rémunération de 25 FCFA. 
+
+Tous les autres validateurs sont ignorés pour ce litige. 
+
+ 
+
+ 
+
+6.6 Suppression automatique du litige 
+
+Dès que les 5 validations sont faites, le litige disparaît instantanément des tableaux de bord. 
+
+Cela empêche les validations multiples et la perte de temps. 
+
+ 
+
+6.7 Résolution du litige 
+
+Dès l’enregistrement des 5 votes : 
+
+≥ 3 votes pour Joueur A : Joueur A est déclaré vainqueur. 
+
+≥ 3 votes pour Joueur B : Joueur B est déclaré vainqueur. 
+
+≥ 3 votes pour match à rejouer : Match annulé et rejoué. 
+
+Le classement et les scores sont mis à jour automatiquement. 
+
+ 
+
+ 
+
+ 
+
+6.8 Sanctions des validateurs 
+
+En cas de validations incorrectes : 
+
+Après 3 erreurs : Avertissement discret. 
+
+Après 6 erreurs : Suspension d’1 mois du rôle de validateur. 
+
+Après 9 erreurs : Bannissement définitif. 
+
+ 
+
+ 
+
+Les validateurs ayant voté différemment de la majorité : 
+
+Ne sont pas rémunérés pour ce litige. 
+
+Perdant des points de réputation. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.9 Gestion des litiges spéciaux 
+
+En cas de match à rejouer : 
+
+Un nouveau code de match est automatiquement généré. 
+
+ 
+
+Les joueurs et validateurs peuvent consulter : 
+
+Leur statistique de litiges (litiges traités, taux de réussite). 
+
+Leur réputation en litige. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+6.10 Récompense des validateurs 
+
+25 FCFA attribués à chaque validateur parmi les 5 premiers. 
+
+Aucune récompense pour les autres. 
+
+ 
+
+ 
+
+ 
+
+6.11 Lutte contre l’abus de litiges par les joueurs 
+
+ 
+
+Pour éviter les abus : 
+
+ 
+
+2 litiges infondés : Avertissement. 
+
+ 
+
+3 litiges infondés : Suspension de 1 mois de participation. 
+
+04 litiges infondés:  suspension de 3 mois de participation  
+
+05litiges infondés : Bannissement définitif de la plateforme. 
+
+ 
+
+ 
+
+Rectangle 4, Forme 
+
+7. Récompenses et Prix 
+
+Les prix sont distribués ainsi pour chaque tournoi : 
+
+1er Prix : 200 000 FCFA. 
+
+2ème Prix : 100 000 FCFA. 
+
+3ème Prix : 50 000 FCFA. 
+
+Un Prix Légendaire de 5 millions de FCFA est mis en place comme récompense exceptionnelle, réservée uniquement aux cas d’exploit jugés extraordinaires selon des critères spécifiques annoncés avant le tournoi. 
+
+Rectangle 3, Forme 
+
+8. Suivi & Statistiques 
+
+Chaque joueur bénéficie d’un suivi détaillé de ses performances : 
+
+Nombre total de matchs joués. 
+
+Nombre de victoires, défaites. 
+
+Taux de victoire global. 
+
+Progression mois par mois. 
+
+Historique complet de ses affrontements, incluant date, tournoi et adversaire. 
+
+Rectangle 2, Forme 
+
+Document : Cahier des fonctionnalités – Espace Administrateur 
+
+ 
+
+Connexion Sécurisée 
+
+ 
+
+Interface de connexion séparée pour les administrateurs. 
+
+ 
+
+Authentification par email et mot de passe + 2FA (authentification à deux facteurs) (option recommandée). 
+
+ 
+
+Gestion des accès (permissions selon rôle : Super Admin, Admin classique, Modérateur). 
+
+ 
+
+ 
+
+Dashboard Principal 
+
+ 
+
+Résumé statistique : 
+
+ 
+
+Nombre total d’inscrits 
+
+ 
+
+Nombre d’utilisateurs actifs 
+
+ 
+
+Nombre d’inscriptions sur la période 
+
+ 
+
+Revenus générés 
+
+ 
+
+Retraits en attente 
+
+ 
+
+Litiges ouverts / clôturés 
+
+ 
+
+ 
+
+Graphiques de suivi : 
+
+ 
+
+Inscriptions par jour/semaine/mois 
+
+ 
+
+Revenus par jour/semaine/mois 
+
+ 
+
+ 
+
+Alertes et notifications : 
+
+ 
+
+Nouveaux litiges à traiter 
+
+ 
+
+Nouveaux retraits demandés 
+
+ 
+
+Nouveaux validateurs candidats à examiner 
+
+ 
+
+Activités suspectes 
+
+ 
+
+ 
+
+ 
+
+Gestion des Utilisateurs 
+
+ 
+
+Liste des utilisateurs avec : 
+
+ 
+
+ID 
+
+ 
+
+Pseudo 
+
+ 
+
+Email 
+
+ 
+
+Téléphone 
+
+ 
+
+Statut du compte (actif, suspendu, banni) 
+
+ 
+
+Date d’inscription 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Rechercher un utilisateur (pseudo, email, ID) 
+
+ 
+
+Filtrer par statut (actif / inactif / suspendu / VIP / validateurs) 
+
+ 
+
+Voir fiche détaillée d’un utilisateur 
+
+ 
+
+Modifier les informations si besoin (email, téléphone, statut) 
+
+ 
+
+Forcer une déconnexion 
+
+ 
+
+Suspendre / bannir un utilisateur 
+
+ 
+
+Réinitialiser un mot de passe manuellement 
+
+ 
+
+Ajouter une note interne (visible seulement par l’équipe admin) 
+
+ 
+
+ 
+
+ 
+
+Gestion des Tournois 
+
+ 
+
+Liste des tournois : 
+
+ 
+
+Nom 
+
+ 
+
+Date 
+
+ 
+
+Statut (ouvert / en cours / clôturé / annulé) 
+
+ 
+
+Nombre de participants 
+
+ 
+
+Montant du prix 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Créer un nouveau tournoi (formulaire complet) 
+
+ 
+
+Modifier un tournoi existant 
+
+ 
+
+Annuler un tournoi avec raison 
+
+ 
+
+Clôturer un tournoi manuellement 
+
+ 
+
+Tirer au sort des matchs si nécessaire 
+
+ 
+
+Forcer l’attribution manuelle d’un gagnant si litige final 
+
+ 
+
+ 
+
+ 
+
+Gestion des Inscriptions aux Tournois 
+
+ 
+
+Visualiser la liste des inscrits par tournoi. 
+
+ 
+
+Vérifier le paiement associé à chaque inscription. 
+
+ 
+
+Valider / invalider une inscription. 
+
+ 
+
+Forcer une inscription gratuite si nécessaire (ex : invitation spéciale). 
+
+ 
+
+ 
+
+Gestion des Paiements 
+
+ 
+
+Liste des paiements entrants : 
+
+ 
+
+Nom 
+
+ 
+
+Email 
+
+ 
+
+Montant 
+
+ 
+
+Mode de paiement 
+
+ 
+
+Date 
+
+ 
+
+Statut (validé / en attente / échoué) 
+
+ 
+
+ 
+
+Liste des paiements sortants (retraits) : 
+
+ 
+
+Utilisateur 
+
+ 
+
+Montant demandé 
+
+ 
+
+Mode de retrait 
+
+ 
+
+Date de demande 
+
+ 
+
+Statut (en attente / traité / rejeté) 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Confirmer manuellement un paiement entrant ou sortant si bug. 
+
+ 
+
+Annuler un paiement en attente (avec raison). 
+
+ 
+
+Voir historique complet des transactions d’un utilisateur. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Validateurs 
+
+ 
+
+Voir la liste des validateurs enregistrés : 
+
+ 
+
+Nom 
+
+ 
+
+Email 
+
+ 
+
+Statut (actif / suspendu) 
+
+ 
+
+Nombre de litiges tranchés 
+
+ 
+
+Taux d’erreur 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Ajouter un validateur manuellement. 
+
+ 
+
+Suspendre un validateur. 
+
+ 
+
+Bannir un validateur après trop d’erreurs. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Litiges 
+
+ 
+
+Liste des litiges : 
+
+ 
+
+Numéro du litige 
+
+ 
+
+Participants concernés 
+
+ 
+
+Date d’ouverture 
+
+ 
+
+Statut (en attente / en cours de traitement / résolu) 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Consulter les preuves fournies 
+
+ 
+
+Attribuer un validateur au litige 
+
+ 
+
+Décider manuellement en tant qu’admin 
+
+ 
+
+Ajouter un commentaire privé au dossier 
+
+ 
+
+Notifier les parties de la décision par email + notification interne 
+
+ 
+
+ 
+
+ 
+
+Gestion du Système de Parrainage 
+
+ 
+
+Liste des parrains : 
+
+ 
+
+Utilisateur 
+
+ 
+
+Nombre de filleuls 
+
+ 
+
+Rang actuel (paysan / roturier / noble…) 
+
+ 
+
+Pourcentage de bonus appliqué 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Modifier manuellement un rang si nécessaire. 
+
+ 
+
+Gérer les litiges liés au parrainage (ex : demande de réattribution de filleul). 
+
+ 
+
+Voir l’historique de parrainage d’un utilisateur. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Communications 
+
+ 
+
+Notifications internes : 
+
+ 
+
+Rédiger et envoyer une notification à tous les utilisateurs / à certains groupes (ex : VIP, validateurs…). 
+
+ 
+
+ 
+
+Emails : 
+
+ 
+
+Envoyer un email de masse (info importante, maintenance…). 
+
+ 
+
+Voir les emails automatiques envoyés (confirmation d’inscription, litige résolu, retrait validé). 
+
+ 
+
+ 
+
+ 
+
+Gestion des Réglages Généraux 
+
+ 
+
+Paramètres financiers : 
+
+ 
+
+Taux de commission sur les gains 
+
+ 
+
+Seuil minimal pour retrait 
+
+ 
+
+Frais d’inscription au tournoi 
+
+ 
+
+ 
+
+Paramètres de jeu : 
+
+ 
+
+Durée maximale d’un tournoi 
+
+ 
+
+Délais pour contester un résultat 
+
+ 
+
+ 
+
+Paramètres divers : 
+
+ 
+
+Modifier les CGU et Politique de confidentialité. 
+
+ 
+
+Activer / désactiver certaines fonctionnalités (ex : parrainage temporairement). 
+
+ 
+
+ 
+
+ 
+
+Gestion des Logs et Historique 
+
+ 
+
+Historique des actions admin : 
+
+ 
+
+Connexions 
+
+ 
+
+Modifications effectuées 
+
+ 
+
+Suppressions 
+
+ 
+
+ 
+
+Historique utilisateur : 
+
+ 
+
+Connexions 
+
+ 
+
+Paiements 
+
+ 
+
+Litiges 
+
+ 
+
+Tournois joués 
+
+ 
+
+ 
+
+ 
+
+Système de Sécurité 
+
+ 
+
+Journalisation des tentatives de connexion échouées. 
+
+ 
+
+Détection d’activités suspectes (multiples IP, comportements anormaux). 
+
+ 
+
+Blocage temporaire en cas de suspicion. 
+
+ 
+
+Forcer la déconnexion de toutes les sessions utilisateur. 
+
+ 
+
+Possibilité de “geler” temporairement un compte en cas d’enquête. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Notes Professionnelles Importantes 
+
+ 
+
+Toutes les suppressions d’éléments critiques doivent être soumises à confirmation. 
+
+ 
+
+Chaque décision lourde (bannissement, paiement rejeté) doit être tracée avec date, auteur, motif. 
+
+ 
+
+Interface claire et ergonomique, même pour traiter beaucoup d’informations rapidement. 
+
+ 
+
+Priorité sur la rapidité d’exécution et la robustesse du back-office. 
+
+ 
+
+ 
+
+ 
+
+Check-list Développeur – Afrique Sociale Cup (ASC) 
+
+ 
+
+ 
+
+ 
+
+Authentification et Sécurité 
+
+ 
+
+[ ] Implémenter l’inscription par email + mot de passe fort. 
+
+ 
+
+[ ] Ajouter l’inscription via Oauth (Google, Facebook). 
+
+ 
+
+[ ] Vérification obligatoire par email via OTP à 6 chiffres. 
+
+ 
+
+[ ] Développer la fonction de réinitialisation du mot de passe. 
+
+ 
+
+[ ] Intégrer l’option 2FA (authentification à deux facteurs) par SMS ou app tierce. 
+
+ 
+
+[ ] Sécuriser toutes les requêtes API avec SSL/TLS. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion du Profil Joueur 
+
+ 
+
+[ ] Mise en place du pseudo unique obligatoire à l’inscription. 
+
+ 
+
+[ ] Permettre l’ajout de pseudonymes communautaires secondaires. 
+
+ 
+
+[ ] Téléversement d’avatar personnalisé (avec compression automatique). 
+
+ 
+
+[ ] Gestion de badges automatiques (liés aux niveaux, exploits et victoires). 
+
+ 
+
+[ ] Stockage d’informations secondaires : biographie, pays, fuseau horaire, niveau linguistique. 
+
+ 
+
+[ ] Protection des données personnelles conformément au RGPD. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Tableau de Bord Joueur 
+
+ 
+
+[ ] Vue d’ensemble des tournois (passés, en cours, futurs). 
+
+ 
+
+[ ] Widgets graphiques pour : 
+
+ 
+
+Taux de victoire 
+
+ 
+
+Matchs joués 
+
+ 
+
+Progression mensuelle 
+
+ 
+
+ 
+
+[ ] Historique détaillé des matchs et résultats accessibles. 
+
+ 
+
+[ ] Accès rapide aux tournois favoris. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Participation aux Tournois 
+
+ 
+
+[ ] Système de recherche de tournois par communauté et par filtre (date, popularité, etc.). 
+
+ 
+
+[ ] Indicateurs d’état des tournois : Ouvert, En cours, Complet, À venir. 
+
+ 
+
+[ ] Affichage clair des frais d’inscription par tournoi. 
+
+ 
+
+[ ] Intégration de paiement sécurisée (Flutterwave, PayDunya, MTN MoMo). 
+
+ 
+
+[ ] Gestion des statuts d’inscription : En attente, Confirmé, Annulé. 
+
+ 
+
+[ ] Notifications automatiques par email et Telegram à chaque étape. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion des Matchs 
+
+ 
+
+[ ] Génération automatique d’un code de match unique de 10 lettres pour chaque confrontation. 
+
+ 
+
+[ ] Programmation stricte des horaires de matchs. 
+
+ 
+
+[ ] Relance obligatoire avec le même code en cas de match nul. 
+
+ 
+
+[ ] Affichage du programme des matchs par tour et par date. 
+
+ 
+
+[ ] Envoi automatique de rappels avant match : 
+
+ 
+
+24h avant 
+
+ 
+
+1h avant 
+
+ 
+
+5 minutes avant 
+
+ 
+
+ 
+
+[ ] Accès rapide aux règles de tournoi depuis le tableau de bord. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Système de Parrainage 
+
+ 
+
+[ ] Mise en place de l’invitation personnalisée via lien unique. 
+
+ 
+
+[ ] Détection automatique de l’activité des filleuls (2 tournois successifs, 1 mois max d’écart). 
+
+ 
+
+[ ] Calcul et attribution automatiques des statuts : 
+
+ 
+
+Paysan ASC 
+
+ 
+
+Roturier ASC 
+
+ 
+
+Noble ASC 
+
+ 
+
+Chef de Caste 
+
+ 
+
+Gouverneur ASC 
+
+ 
+
+Roi ASC 
+
+ 
+
+Empereur ASC 
+
+ 
+
+Emblème ASC 
+
+ 
+
+ 
+
+[ ] Gestion des commissions sur gains et recharges en backend (calcul automatique). 
+
+ 
+
+[ ] Sécurisation du tracking des filleuls sur la durée. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Système de Litiges 
+
+ 
+
+7.1 Dépôt de litige 
+
+ 
+
+[ ] Formulaire de litige disponible 10 minutes après match uniquement. 
+
+ 
+
+[ ] Champs obligatoires : Motif + Explication max 500 caractères. 
+
+ 
+
+[ ] Obligation de preuve (image, vidéo, document). 
+
+ 
+
+[ ] Rejet automatique en l’absence de preuve. 
+
+ 
+
+ 
+
+7.2 Transmission aux validateurs 
+
+ 
+
+[ ] Diffusion immédiate aux validateurs disponibles. 
+
+ 
+
+[ ] Délai maximum de réponse pour les validateurs : 10 minutes. 
+
+ 
+
+ 
+
+7.3 Validation 
+
+ 
+
+[ ] 3 options fixes disponibles : 
+
+ 
+
+Attribuer la victoire au Joueur A 
+
+ 
+
+Attribuer la victoire au Joueur B 
+
+ 
+
+Demander un match à rejouer 
+
+ 
+
+ 
+
+[ ] Blocage de toute autre interaction entre validateurs et joueurs. 
+
+ 
+
+ 
+
+7.4 Sélection et Rémunération 
+
+ 
+
+[ ] Sélection automatique des 5 premiers validateurs valides. 
+
+ 
+
+[ ] Versement de 25 FCFA par validation correcte. 
+
+ 
+
+ 
+
+7.5 Résolution automatique 
+
+ 
+
+[ ] Application automatique du résultat selon majorité des votes. 
+
+ 
+
+[ ] Mise à jour immédiate des classements. 
+
+ 
+
+ 
+
+7.6 Sanctions contre validateurs 
+
+ 
+
+[ ] Suivi des erreurs de validation. 
+
+ 
+
+[ ] Suspension/bannissement progressif en fonction du nombre d’erreurs. 
+
+ 
+
+ 
+
+7.7 Lutte contre les abus de litige 
+
+ 
+
+[ ] Compteur de litiges infondés pour chaque joueur. 
+
+ 
+
+[ ] Sanctions automatiques après : 
+
+ 
+
+2 abus : Avertissement 
+
+ 
+
+3 abus : Suspension 1 mois 
+
+ 
+
+5 abus : Suspension 3 mois 
+
+ 
+
+6 abus : Bannissement définitif 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion des Récompenses 
+
+ 
+
+[ ] Attribution automatique des prix : 
+
+ 
+
+1er : 200 000 FCFA 
+
+ 
+
+2ème : 100 000 FCFA 
+
+ 
+
+3ème : 50 000 FCFA 
+
+ 
+
+ 
+
+[ ] Gestion spéciale pour le Prix Légendaire de 5 millions FCFA (manuel selon critères spécifiques). 
+
+ 
+
+[ ] Historique des paiements et justificatifs accessibles aux joueurs. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Statistiques Globales 
+
+ 
+
+[ ] Statistiques détaillées par joueur : 
+
+ 
+
+Matchs joués 
+
+ 
+
+Victoires 
+
+ 
+
+Défaites 
+
+ 
+
+Taux de victoire 
+
+ 
+
+Progression par mois 
+
+ 
+
+Historique complet des affrontements 
+
+ 
+
+ 
+
+[ ] Graphiques dynamiques et téléchargeables. 
+
+ 
+
+ 
+
+Checklist Développeur – Espace Administrateur 
+
+ 
+
+Connexion Sécurisée 
+
+ 
+
+Implémenter une interface de connexion réservée aux administrateurs. 
+
+ 
+
+Mettre en place l’authentification par email + mot de passe. 
+
+ 
+
+Ajouter un système d’authentification à deux facteurs (2FA) avec code temporaire. 
+
+ 
+
+Gérer les rôles : Super Admin, Admin, Modérateur avec permissions spécifiques. 
+
+ 
+
+Créer un système de gestion de session sécurisé (auto-déconnexion après inactivité). 
+
+ 
+
+ 
+
+Dashboard Principal 
+
+ 
+
+Afficher des statistiques principales (inscrits, actifs, revenus, retraits en attente, litiges). 
+
+ 
+
+Intégrer des graphiques dynamiques (inscriptions par jour/mois, revenus par période). 
+
+ 
+
+Ajouter un système d’alertes pour les événements importants (retraits, litiges, nouveaux validateurs). 
+
+ 
+
+Optimiser pour que les données se chargent rapidement (pagination ou lazy loading si nécessaire). 
+
+ 
+
+ 
+
+Gestion des Utilisateurs 
+
+ 
+
+Développer une liste complète avec recherche rapide (par pseudo, email, ID). 
+
+ 
+
+Ajouter des filtres par statut (actif, suspendu, VIP, validateur). 
+
+ 
+
+Créer une fiche détaillée utilisateur avec toutes les infos importantes. 
+
+ 
+
+Permettre la modification manuelle des données utilisateur par un admin. 
+
+ 
+
+Intégrer la fonction de suspension/bannissement d’utilisateur. 
+
+ 
+
+Ajouter un bouton pour forcer la réinitialisation du mot de passe. 
+
+ 
+
+Permettre l’ajout de notes internes visibles uniquement par l’équipe admin. 
+
+ 
+
+ 
+
+Gestion des Tournois 
+
+ 
+
+Créer un module pour afficher tous les tournois avec statut et participants. 
+
+ 
+
+Permettre la création d’un tournoi via un formulaire complet (nom, date, frais, récompense…). 
+
+ 
+
+Autoriser la modification des détails d’un tournoi existant. 
+
+ 
+
+Ajouter la possibilité d’annuler un tournoi avec une obligation de saisir une raison. 
+
+ 
+
+Intégrer la fonction de clôture manuelle d’un tournoi. 
+
+ 
+
+Prévoir un mode de tirage au sort des matchs si nécessaire. 
+
+ 
+
+Prévoir l’attribution manuelle du gagnant en cas de problème. 
+
+ 
+
+ 
+
+Gestion des Inscriptions aux Tournois 
+
+ 
+
+Créer un affichage clair de la liste des participants pour chaque tournoi. 
+
+ 
+
+Lier chaque inscription à la preuve de paiement correspondante. 
+
+ 
+
+Permettre la validation/invalidation manuelle d’une inscription. 
+
+ 
+
+Ajouter la possibilité d’inscrire un utilisateur gratuitement (invitation spéciale). 
+
+ 
+
+ 
+
+Gestion des Paiements 
+
+ 
+
+Développer un module listant les paiements entrants (inscriptions). 
+
+ 
+
+Développer un module listant les paiements sortants (retraits). 
+
+ 
+
+Ajouter la possibilité de confirmer manuellement un paiement entrant/sortant. 
+
+ 
+
+Intégrer l’option d’annulation manuelle d’un paiement en attente avec saisie obligatoire d’une raison. 
+
+ 
+
+Lier l’historique des paiements à chaque fiche utilisateur. 
+
+ 
+
+ 
+
+Gestion des Validateurs 
+
+ 
+
+Créer un affichage des validateurs enregistrés avec leurs stats (litiges traités, taux d’erreur). 
+
+ 
+
+Ajouter la possibilité de suspendre ou bannir un validateur. 
+
+ 
+
+Intégrer un système d’évaluation basé sur la précision des décisions de litiges. 
+
+ 
+
+ 
+
+Gestion des Litiges 
+
+ 
+
+Développer une liste des litiges avec statut clair (en attente, en traitement, résolu). 
+
+ 
+
+Permettre de consulter les preuves déposées par les participants. 
+
+ 
+
+Ajouter une fonction d’attribution d’un validateur pour trancher un litige. 
+
+ 
+
+Permettre une décision manuelle par un admin. 
+
+ 
+
+Ajouter un espace pour ajouter un commentaire interne à un litige. 
+
+ 
+
+Intégrer la notification automatique des utilisateurs à chaque changement de statut. 
+
+ 
+
+ 
+
+Gestion du Système de Parrainage 
+
+ 
+
+Créer une vue listant tous les parrains, nombre de filleuls, et leur rang. 
+
+ 
+
+Calculer automatiquement les bonus (pourcentages de gains, recharges). 
+
+ 
+
+Ajouter une fonction pour modifier manuellement un rang si nécessaire. 
+
+ 
+
+Lier l’historique de parrainage à la fiche utilisateur. 
+
+ 
+
+Permettre la résolution manuelle de litiges de parrainage. 
+
+ 
+
+ 
+
+Gestion des Communications 
+
+ 
+
+Intégrer un système d’envoi de notifications internes ciblées (tous / VIP / validateurs / groupe spécifique). 
+
+ 
+
+Développer un module pour envoyer des emails de masse. 
+
+ 
+
+Créer un historique des emails envoyés automatiquement (exemple : inscription, litige réglé, retrait validé). 
+
+ 
+
+ 
+
+Gestion des Réglages Généraux 
+
+ 
+
+Créer une page pour modifier les paramètres financiers : 
+
+ 
+
+Taux de commission. 
+
+ 
+
+Seuil minimal de retrait. 
+
+ 
+
+Prix d’inscription aux tournois. 
+
+ 
+
+ 
+
+Créer une page pour modifier les paramètres de jeu : 
+
+ 
+
+Durée des tournois. 
+
+ 
+
+Délai pour contester un résultat. 
+
+ 
+
+ 
+
+Créer une page pour modifier les textes juridiques (CGU, politique de confidentialité). 
+
+ 
+
+Ajouter des boutons pour activer/désactiver certaines fonctionnalités (ex: parrainage, tournoi spécifique). 
+
+ 
+
+ 
+
+Gestion des Logs et Historique 
+
+ 
+
+Mettre en place un suivi des actions administratives : 
+
+ 
+
+Connexions admin 
+
+ 
+
+Modifications de données 
+
+ 
+
+Actions critiques (bannissement, validation de paiements) 
+
+ 
+
+ 
+
+Enregistrer l’historique d’activité de chaque utilisateur : 
+
+ 
+
+Connexions 
+
+ 
+
+Paiements 
+
+ 
+
+Tournois joués 
+
+ 
+
+Litiges impliqués 
+
+ 
+
+ 
+
+ 
+
+Système de Sécurité 
+
+ 
+
+Journaliser toutes les tentatives de connexion échouées. 
+
+ 
+
+Détecter et remonter les activités suspectes (changement IP, connexions simultanées anormales). 
+
+ 
+
+Mettre en place un blocage temporaire automatique après plusieurs tentatives de connexion échouées. 
+
+ 
+
+Ajouter une fonction pour forcer la déconnexion de toutes les sessions d’un utilisateur donné. 
+
+ 
+
+Implémenter un système de gel temporaire d’un compte en cas d’enquête. 
+
+ 
+
+Forcer la saisie de motif pour chaque bannissement ou suspension manuelle. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Spécifications Générales pour Tout le Projet 
+
+ 
+
+Chaque action sensible (suppression, bannissement, paiement) doit nécessiter une confirmation explicite par l’admin. 
+
+ 
+
+Aucune suppression définitive sans passer par un système de “corbeille” ou de soft delete. 
+
+ 
+
+Interface claire et réactive (optimisée pour grands volumes de données). 
+
+ 
+
+Sécurité renforcée sur toutes les opérations critiques. 
+
+ 
+
+Optimiser les performances de chargement des listes (pagination, recherche rapide). 
+
+ 
+
+ 
+
+ 
