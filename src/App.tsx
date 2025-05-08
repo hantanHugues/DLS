@@ -94,8 +94,8 @@ const AppContent = () => {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiesPage />} />
           <Route path="/support" element={<SupportPage />} />
-          <Route path="/tournaments/:id" element={<TournamentDetails />} />
-          <Route path="/tournaments/:id/register" element={<TournamentRegistration />} />
+          <Route path="/tournament/details/:id" element={<TournamentDetails />} />
+          <Route path="/tournament/registration/:id" element={<TournamentRegistration />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
