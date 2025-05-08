@@ -8,7 +8,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Users, Calendar, Shield, Clock, AlertCircle, CreditCard } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -37,6 +36,15 @@ export default function TournamentDetails() {
         time: "15:00",
         opponent: "Team Alpha",
         status: "upcoming"
+      },
+      {
+        id: "m2",
+        code: "GHIJKL5678",
+        date: "17 Mai 2025",
+        time: "16:00",
+        opponent: "Team Beta",
+        status: "completed",
+        score: "2-1"
       }
     ]
   };
@@ -163,7 +171,14 @@ export default function TournamentDetails() {
                             <div className="flex items-center justify-between">
                               <div>
                                 <div className="font-medium mb-1">vs {match.opponent}</div>
-                                <div className="text-sm text-gray-500">Code: {match.code}</div>
+                                <div className="flex items-center gap-2">
+                                  <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                                    Code: {match.code}
+                                  </div>
+                                  {match.score && (
+                                    <div className="text-sm font-bold">{match.score}</div>
+                                  )}
+                                </div>
                               </div>
                               <div className="text-right">
                                 <div className="flex items-center gap-2 mb-1">
