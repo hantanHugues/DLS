@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Calendar, Users, DollarSign } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function AdminTournaments() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
 
   const tournaments = [
     {
@@ -50,60 +52,101 @@ export default function AdminTournaments() {
         />
       </div>
 
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Nom</TableHead>
-                <TableHead>Dates</TableHead>
-                <TableHead>Statut</TableHead>
-                <TableHead>Participants</TableHead>
-                <TableHead>Prix</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {tournaments.map(tournament => (
-                <TableRow key={tournament.id}>
-                  <TableCell className="font-mono">{tournament.id}</TableCell>
-                  <TableCell>{tournament.name}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      {tournament.startDate} - {tournament.endDate}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={tournament.status === 'upcoming' ? 'default' : 'secondary'}>
-                      {tournament.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-2" />
-                      {tournament.participants}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <DollarSign className="h-4 w-4 mr-2" />
-                      {tournament.prize}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm">Éditer</Button>
-                      <Button variant="outline" size="sm">Détails</Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <Tabs defaultValue="all" className="w-full">
+        <TabsList>
+          <TabsTrigger value="all">Tous les tournois</TabsTrigger>
+          <TabsTrigger value="upcoming">À venir</TabsTrigger>
+          <TabsTrigger value="active">En cours</TabsTrigger>
+          <TabsTrigger value="completed">Terminés</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="all">
+          <Card>
+            <CardContent className="p-0">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>ID</TableHead>
+                    <TableHead>Nom</TableHead>
+                    <TableHead>Dates</TableHead>
+                    <TableHead>Statut</TableHead>
+                    <TableHead>Participants</TableHead>
+                    <TableHead>Prix</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {tournaments.map(tournament => (
+                    <TableRow key={tournament.id}>
+                      <TableCell className="font-mono">{tournament.id}</TableCell>
+                      <TableCell>{tournament.name}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center">
+                          <Calendar className="h-4 w-4 mr-2" />
+                          {tournament.startDate} - {tournament.endDate}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={tournament.status === 'upcoming' ? 'default' : 'secondary'}>
+                          {tournament.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center">
+                          <Users className="h-4 w-4 mr-2" />
+                          {tournament.participants}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center">
+                          <DollarSign className="h-4 w-4 mr-2" />
+                          {tournament.prize}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-2">
+                          <Button variant="outline" size="sm">Éditer</Button>
+                          <Button variant="outline" size="sm">Détails</Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="upcoming">
+          <Card>
+            <CardContent className="p-0">
+              <Table>
+                {/* Même structure que l'onglet "all" mais avec les tournois filtrés */}
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="active">
+          <Card>
+            <CardContent className="p-0">
+              <Table>
+                {/* Même structure que l'onglet "all" mais avec les tournois filtrés */}
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="completed">
+          <Card>
+            <CardContent className="p-0">
+              <Table>
+                {/* Même structure que l'onglet "all" mais avec les tournois filtrés */}
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
