@@ -99,10 +99,18 @@ const AppContent = () => {
         </Route>
         
         {/* Routes Admin */}
-        <Route path="/admin/*" element={<AdminDashboard />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
-        <Route path="/admin/tournaments" element={<AdminTournaments />} />
-        <Route path="/admin/disputes" element={<AdminDisputes />} />>
+        <Route path="/admin/*" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="tournaments" element={<AdminTournaments />} />
+          <Route path="disputes" element={<AdminDisputes />} />
+          <Route path="payments" element={<AdminDashboard />} />
+          <Route path="validators" element={<AdminDashboard />} />
+          <Route path="sponsorship" element={<AdminDashboard />} />
+          <Route path="communications" element={<AdminDashboard />} />
+          <Route path="settings" element={<AdminDashboard />} />
+          <Route path="logs" element={<AdminDashboard />} />
+        </Route>>
         <Route path="/admin/tournaments" element={<AdminTournaments />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/disputes" element={<AdminDisputes />} />
