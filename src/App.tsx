@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { AuthenticatedSidebar } from "./components/AuthenticatedSidebar";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import AdminLayout from "./components/admin/AdminLayout";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
