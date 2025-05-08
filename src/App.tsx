@@ -103,7 +103,7 @@ const AppContent = () => {
   );
 };
 
-const TournamentDetails = () => <div>Tournament Details Placeholder</div>;
-const TournamentRegistration = () => <div>Tournament Registration Placeholder</div>;
+import TournamentDetails from "./pages/TournamentDetails";
+import TournamentRegistration from "./pages/TournamentRegistration";
 
 export default App;

@@ -80,7 +80,7 @@ const TournamentCard = ({
         </div>
 
         <div className="mt-auto">
-          <Link to={status === "open" ? `/tournament/registration/${id}` : `/tournament/details/${id}`}>
+          <Link to={`/tournament/details/${id}`}>
             <Button className="w-full bg-asc-purple hover:bg-asc-dark-purple">
               {status === "open" ? "S'inscrire" : 
                status === "in-progress" ? "Voir le match" :
