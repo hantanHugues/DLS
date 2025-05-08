@@ -1,0 +1,28 @@
+The above error occurred in the <AppContent> component:
+
+    at AppContent (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/App.tsx:944:52)
+    at AuthProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/contexts/AuthContext.tsx:25:32)
+    at Provider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/chunk-CHNJOBOC.js?v=29d9d83e:38:15)
+    at TooltipProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=29d9d83e:61:5)
+    at QueryClientProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=29d9d83e:2875:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+AdminLayout is not defined
+[vite] hot updated: /src/App.tsx
+[vite] hot updated: /src/index.css
+AdminLayout is not defined
+AdminLayout is not defined
+The above error occurred in the <AppContent> component:
+
+    at AppContent (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/App.tsx?t=1746717001137:944:52)
+    at AuthProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/contexts/AuthContext.tsx:25:32)
+    at Provider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/chunk-CHNJOBOC.js?v=29d9d83e:38:15)
+    at TooltipProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=29d9d83e:61:5)
+    at QueryClientProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=29d9d83e:2875:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+AdminLayout is not defined
