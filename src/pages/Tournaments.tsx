@@ -201,6 +201,9 @@ const Tournaments = () => {
               <TabsTrigger value="all" className="rounded-md text-sm h-7 px-3">
                 Tous ({allFiltered.length})
               </TabsTrigger>
+              <TabsTrigger value="my-tournaments" className="rounded-md text-sm h-7 px-3">
+                Mes tournois
+              </TabsTrigger>
               <TabsTrigger value="open" className="rounded-md text-sm h-7 px-3">
                 Ouverts ({openFiltered.length})
               </TabsTrigger>
@@ -285,6 +288,22 @@ const Tournaments = () => {
                   <Link to="/open">
                     <Button variant="outline">Voir les tournois ouverts</Button>
                   </Link>
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="my-tournaments" className="mt-6">
+              {allFiltered.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {allFiltered.filter(tournament => tournament.status === "in-progress").map(tournament => (
+                    <TournamentCard key={tournament.id} {...tournament} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 dark:text-gray-400 mb-4">
+                    Vous n'êtes inscrit à aucun tournoi pour le moment.
+                  </p>
                 </div>
               )}
             </TabsContent>
