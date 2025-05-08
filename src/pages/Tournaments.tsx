@@ -293,10 +293,10 @@ const Tournaments = () => {
             </TabsContent>
 
             <TabsContent value="my-tournaments" className="mt-6">
-              {allFiltered.length > 0 ? (
+              {allFiltered.filter(tournament => tournament.isRegistered).length > 0 ? (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {allFiltered.filter(tournament => tournament.status === "in-progress").map(tournament => (
-                    <TournamentCard key={tournament.id} {...tournament} />
+                  {allFiltered.filter(tournament => tournament.isRegistered).map(tournament => (
+                    <TournamentCard key={tournament.id} {...tournament} showDetails={true} />
                   ))}
                 </div>
               ) : (

@@ -80,10 +80,26 @@ const TournamentCard = ({
         </div>
 
         <div className="mt-auto">
-          <Link to={`/tournament/details/${id}`}>
-            <Button className="w-full bg-asc-purple hover:bg-asc-dark-purple">
-              {status === "open" ? "S'inscrire" : 
-               status === "in-progress" ? "Voir le match" :
+          {showDetails && tournament.isRegistered ? (
+            <div className="space-y-4 mt-4 border-t pt-4">
+              <div className="flex justify-between items-center">
+                <h4 className="font-semibold">Prochain match</h4>
+                <span className="text-sm">{tournament.nextMatch?.date}</span>
+              </div>
+              {tournament.nextMatch && (
+                <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span>vs {tournament.nextMatch.opponent}</span>
+                    <span className="text-sm font-mono">Code: {tournament.nextMatch.code}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to={`/tournament/details/${id}`}>
+              <Button className="w-full bg-asc-purple hover:bg-asc-dark-purple">
+                {status === "open" ? "S'inscrire" : 
+                 status === "in-progress" ? "Voir le match" :
                status === "upcoming" ? "Rappel" : "Détails"}
             </Button>
           </Link>
