@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -5,13 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Search, Filter, User, UserX, Shield, RefreshCw, Key, FileText } from "lucide-react";
+import { User, UserX, Shield, Key } from "lucide-react";
 
 export default function AdminUsers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all");
 
-  // Données mockées pour l'exemple
   const users = [
     { 
       id: "USR001", 
@@ -22,7 +22,6 @@ export default function AdminUsers() {
       registrationDate: "2024-01-15",
       lastLogin: "2024-01-20"
     },
-    // Ajoutez d'autres utilisateurs ici
     {
       id: "USR002",
       pseudo: "JaneDoe",
@@ -43,20 +42,18 @@ export default function AdminUsers() {
     }
   ];
 
+  const filteredUsers = users.filter(user => {
+    const matchesSearch = user.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         user.id.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus = selectedStatus === "all" || user.status === selectedStatus;
+    return matchesSearch && matchesStatus;
+  });
+
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Gestion des Utilisateurs</h1>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Actualiser
-          </Button>
-          <Button variant="outline" size="sm">
-            <FileText className="h-4 w-4 mr-2" />
-            Exporter
-          </Button>
-        </div>
       </div>
 
       <div className="flex gap-4 items-center">
@@ -77,8 +74,6 @@ export default function AdminUsers() {
           <option value="active">Actifs</option>
           <option value="suspended">Suspendus</option>
           <option value="banned">Bannis</option>
-          <option value="vip">VIP</option>
-          <option value="validator">Validateurs</option>
         </select>
       </div>
 
@@ -97,7 +92,7 @@ export default function AdminUsers() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {users.map(user => (
+              {filteredUsers.map(user => (
                 <TableRow key={user.id}>
                   <TableCell className="font-mono">{user.id}</TableCell>
                   <TableCell>{user.pseudo}</TableCell>
@@ -111,9 +106,35 @@ export default function AdminUsers() {
                   <TableCell>{user.registrationDate}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
-                        <User className="h-4 w-4" />
-                      </Button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="sm">
+                            <User className="h-4 w-4" />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Détails de l'utilisateur</DialogTitle>
+                          </DialogHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                <h3 className="font-semibold">Informations</h3>
+                                <p>ID: {user.id}</p>
+                                <p>Pseudo: {user.pseudo}</p>
+                                <p>Email: {user.email}</p>
+                                <p>Téléphone: {user.phone}</p>
+                              </div>
+                              <div>
+                                <h3 className="font-semibold">Activité</h3>
+                                <p>Inscription: {user.registrationDate}</p>
+                                <p>Dernière connexion: {user.lastLogin}</p>
+                                <p>Statut: {user.status}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                       <Button variant="outline" size="sm">
                         <Key className="h-4 w-4" />
                       </Button>
