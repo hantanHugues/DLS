@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
@@ -9,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Users, Calendar, Shield, Clock, AlertCircle, CreditCard } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function TournamentDetails() {
   const { id } = useParams();
@@ -97,7 +97,7 @@ export default function TournamentDetails() {
                           <pre className="whitespace-pre-wrap text-sm">{tournament.rules}</pre>
                         </div>
                       </div>
-                      
+
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button size="lg" className="w-full bg-asc-purple hover:bg-asc-dark-purple">
@@ -115,7 +115,7 @@ export default function TournamentDetails() {
                               </label>
                               <Input placeholder="Votre pseudo DLS" />
                             </div>
-                            
+
                             <div className="space-y-2">
                               <label className="text-sm font-medium block">
                                 Méthode de Paiement ({tournament.registrationFee})
@@ -164,33 +164,80 @@ export default function TournamentDetails() {
                       </div>
 
                       <div className="space-y-4">
-                        <h3 className="text-xl font-semibold">Vos matches</h3>
-                        {tournament.matches.map(match => (
-                          <Card key={match.id}>
-                            <CardContent className="p-4">
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <div className="font-medium mb-1">vs {match.opponent}</div>
-                                  <div className="flex items-center gap-2">
-                                    <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                                      Code: {match.code}
+                        <Tabs defaultValue="next" className="w-full">
+                          <TabsList className="grid w-full grid-cols-2">
+                            <TabsTrigger value="next">Prochain Match</TabsTrigger>
+                            <TabsTrigger value="history">Historique</TabsTrigger>
+                          </TabsList>
+                          <TabsContent value="next">
+                            {tournament.matches.find(m => m.status === "upcoming") ? (
+                              <Card>
+                                <CardContent className="pt-6">
+                                  <div className="flex items-center justify-between">
+                                    <div>
+                                      <div className="font-medium mb-1">
+                                        vs {tournament.matches.find(m => m.status === "upcoming")?.opponent}
+                                      </div>
+                                      <div className="flex items-center gap-2">
+                                        <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                                          Code: {tournament.matches.find(m => m.status === "upcoming")?.code}
+                                        </div>
+                                      </div>
                                     </div>
-                                    {match.score && (
-                                      <div className="text-sm font-bold">{match.score}</div>
-                                    )}
+                                    <div className="text-right">
+                                      <div className="flex items-center gap-2 mb-1">
+                                        <Clock className="h-4 w-4" />
+                                        <span>{tournament.matches.find(m => m.status === "upcoming")?.time}</span>
+                                      </div>
+                                      <div className="text-sm text-gray-500">
+                                        {tournament.matches.find(m => m.status === "upcoming")?.date}
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="text-right">
-                                  <div className="flex items-center gap-2 mb-1">
-                                    <Clock className="h-4 w-4" />
-                                    <span>{match.time}</span>
-                                  </div>
-                                  <div className="text-sm text-gray-500">{match.date}</div>
-                                </div>
+                                </CardContent>
+                              </Card>
+                            ) : (
+                              <div className="text-center py-6 text-gray-500">
+                                Aucun match à venir
                               </div>
-                            </CardContent>
-                          </Card>
-                        ))}
+                            )}
+                          </TabsContent>
+                          <TabsContent value="history">
+                            <div className="space-y-4">
+                              {tournament.matches.filter(m => m.status === "completed").map(match => (
+                                <Card key={match.id}>
+                                  <CardContent className="p-4">
+                                    <div className="flex items-center justify-between">
+                                      <div>
+                                        <div className="font-medium mb-1">vs {match.opponent}</div>
+                                        <div className="flex items-center gap-2">
+                                          <div className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                                            Code: {match.code}
+                                          </div>
+                                          {match.score && (
+                                            <div className="text-sm font-bold">{match.score}</div>
+                                          )}
+                                        </div>
+                                      </div>
+                                      <div className="text-right">
+                                        <div className="flex items-center gap-2 mb-1">
+                                          <Clock className="h-4 w-4" />
+                                          <span>{match.time}</span>
+                                        </div>
+                                        <div className="text-sm text-gray-500">{match.date}</div>
+                                      </div>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              ))}
+                              {tournament.matches.filter(m => m.status === "completed").length === 0 && (
+                                <div className="text-center py-6 text-gray-500">
+                                  Aucun match terminé
+                                </div>
+                              )}
+                            </div>
+                          </TabsContent>
+                        </Tabs>
                       </div>
 
                       <div>
