@@ -100,23 +100,19 @@ const AppContent = () => {
         </Route>
         
         {/* Routes Admin */}
-        <Route path="/admin/*" element={
-          <Routes>
-            <Route element={<AdminLayout />}>
-              <Route index element={<Navigate to="/admin/dashboard" replace />} />
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="users" element={<AdminUsers />} />
-              <Route path="tournaments" element={<AdminTournaments />} />
-              <Route path="disputes" element={<AdminDisputes />} />
-              <Route path="payments" element={<AdminDashboard />} />
-              <Route path="validators" element={<AdminDashboard />} />
-              <Route path="sponsorship" element={<AdminDashboard />} />
-              <Route path="communications" element={<AdminDashboard />} />
-              <Route path="settings" element={<AdminDashboard />} />
-              <Route path="logs" element={<AdminDashboard />} />
-            </Route>
-          </Routes>
-        } />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="tournaments" element={<AdminTournaments />} />
+          <Route path="disputes" element={<AdminDisputes />} />
+          <Route path="payments" element={<AdminDashboard />} />
+          <Route path="validators" element={<AdminDashboard />} />
+          <Route path="sponsorship" element={<AdminDashboard />} />
+          <Route path="communications" element={<AdminDashboard />} />
+          <Route path="settings" element={<AdminDashboard />} />
+          <Route path="logs" element={<AdminDashboard />} />
+        </Route>
         
         <Route path="*" element={<NotFound />} />
       </Routes>
