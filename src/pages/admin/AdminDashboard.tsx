@@ -1,15 +1,23 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
-  Users, Trophy, AlertTriangle, DollarSign, Activity,
-  UserCheck, Settings, Wallet, RefreshCw
+  Users, Trophy, AlertTriangle, Activity,
+  LineChart, RefreshCw, Megaphone, Scale
 } from "lucide-react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid,
-  Tooltip, ResponsiveContainer, BarChart, Bar
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar
 } from 'recharts';
 
 const dailyData = [
@@ -24,93 +32,121 @@ const dailyData = [
 
 export default function AdminDashboard() {
   return (
-    <div className="space-y-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Dashboard Administrateur</h1>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Actualiser
-          </Button>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">
-                <Settings className="h-4 w-4 mr-2" />
-                Paramètres
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl">
-              <DialogHeader>
-                <DialogTitle>Réglages Généraux</DialogTitle>
-                <DialogDescription>
-                  Gérez les paramètres financiers, de jeu et autres configurations.
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
-        </div>
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold">Dashboard Administrateur</h1>
+        <Button variant="outline" size="sm">
+          <RefreshCw className="h-4 w-4 mr-2" />
+          Actualiser
+        </Button>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Utilisateurs Totaux</CardTitle>
-            <div className="p-2 bg-primary/10 rounded-full">
-              <Users className="h-5 w-5 text-primary"/>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">1,234</div>
-            <div className="flex items-center gap-1 mt-2">
-              <div className="flex items-center text-emerald-500">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-                <span className="text-sm font-medium">+12%</span>
-              </div>
-              <span className="text-sm text-muted-foreground">ce mois</span>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Link to="/admin/users">
+          <Card className="hover:bg-slate-50 transition-colors cursor-pointer">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Utilisateurs</CardTitle>
+              <Users className="h-5 w-5 text-blue-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">1,234</div>
+              <p className="text-xs text-muted-foreground">+12% ce mois</p>
+            </CardContent>
+          </Card>
+        </Link>
 
-        {/* Autres cartes statistiques... */}
+        <Link to="/admin/tournaments">
+          <Card className="hover:bg-slate-50 transition-colors cursor-pointer">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Tournois</CardTitle>
+              <Trophy className="h-5 w-5 text-yellow-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">56</div>
+              <p className="text-xs text-muted-foreground">8 en cours</p>
+            </CardContent>
+          </Card>
+        </Link>
+
+        <Link to="/admin/disputes">
+          <Card className="hover:bg-slate-50 transition-colors cursor-pointer">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Litiges</CardTitle>
+              <Scale className="h-5 w-5 text-red-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">23</div>
+              <p className="text-xs text-muted-foreground">5 en attente</p>
+            </CardContent>
+          </Card>
+        </Link>
+
+        <Link to="/admin/communications">
+          <Card className="hover:bg-slate-50 transition-colors cursor-pointer">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Communications</CardTitle>
+              <Megaphone className="h-5 w-5 text-purple-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">89</div>
+              <p className="text-xs text-muted-foreground">12 non lues</p>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Inscriptions</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Activity className="h-5 w-5" />
+              Activité Utilisateurs
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={dailyData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Line type="monotone" dataKey="users" stroke="#8884d8" />
-              </LineChart>
-            </ResponsiveContainer>
+            <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <RechartsLineChart data={dailyData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="users" stroke="#8884d8" strokeWidth={2} />
+                </RechartsLineChart>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Revenus</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <LineChart className="h-5 w-5" />
+              Revenus Journaliers
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={dailyData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="revenue" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={dailyData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="revenue" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
       </div>
+
+      <Alert className="bg-yellow-50 border-yellow-200">
+        <AlertTriangle className="h-4 w-4 text-yellow-600" />
+        <AlertDescription className="text-yellow-600">
+          5 litiges nécessitent votre attention. <Link to="/admin/disputes" className="font-medium underline">Voir les litiges</Link>
+        </AlertDescription>
+      </Alert>
     </div>
   );
 }
