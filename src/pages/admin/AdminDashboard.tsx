@@ -1,12 +1,11 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AdminLayout from '../../components/admin/AdminLayout';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
-  Users, Trophy, AlertTriangle, DollarSign, Activity, 
+  Users, Trophy, AlertTriangle, DollarSign, Activity,
   UserCheck, Ban, Clock, Mail, Settings, FileText,
   UserPlus, RefreshCw, ShieldAlert, Award, Wallet,
   UserCog, Goal, HandCoins, Gift, History, MessageSquare,
@@ -14,7 +13,7 @@ import {
   Bell, Megaphone, Cog
 } from "lucide-react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, 
+  LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, BarChart, Bar
 } from 'recharts';
 
@@ -30,7 +29,7 @@ const dailyData = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = React.useState("dashboard");
-  
+
   const tabs = [
     { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: "users", label: "Utilisateurs", icon: <Users className="w-5 h-5" /> },
@@ -45,27 +44,8 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="flex h-screen">
-      {/* Vertical Tabs */}
-      <div className="w-64 bg-gray-100 dark:bg-gray-800 p-4 space-y-2">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.id}
-            to={`/admin/${tab.id}`}
-            className={`w-full flex items-center space-x-2 px-4 py-2 rounded-lg text-left ${
-              activeTab === tab.id 
-                ? "bg-primary text-primary-foreground" 
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-          >
-            {tab.icon}
-            <span>{tab.label}</span>
-          </Link>
-        ))}
-      </div>
-
-      {/* Content Area */}
-      <div className="flex-1 p-6 overflow-auto">
+    <AdminLayout>
+      <div className="space-y-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Dashboard Administrateur</h1>
           <div className="flex gap-2">
@@ -244,6 +224,6 @@ export default function AdminDashboard() {
 
         {/* Add more tab content sections */}
       </div>
-    </div>
+    </AdminLayout>
   );
 }
