@@ -1,0 +1,22 @@
+DialogDescription is not defined
+The above error occurred in the <AdminDashboard> component:
+
+    at AdminDashboard (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/pages/admin/AdminDashboard.tsx:58:45)
+    at div
+    at div
+    at AdminLayout (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/components/admin/AdminLayout.tsx:14:39)
+    at RenderedRoute (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4069:5)
+    at RenderedRoute (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4069:5)
+    at Routes (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4508:5)
+    at Router (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4451:15)
+    at BrowserRouter (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:5196:5)
+    at AppContent
+    at AuthProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/src/contexts/AuthContext.tsx:25:32)
+    at Provider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/chunk-SDAYBGFR.js?v=a68a1e3b:48:15)
+    at TooltipProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=a68a1e3b:61:5)
+    at QueryClientProvider (https://c409bc0e-571c-4847-86cb-86656acf5817-00-2gxrcgr7lz7qs.spock.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=a68a1e3b:2875:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+DialogDescription is not defined
