@@ -1,0 +1,23 @@
+[vite] connecting...
+[vite] connected.
+Outlet is not defined
+Outlet is not defined
+The above error occurred in the <AdminLayout> component:
+
+    at AdminLayout (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/src/components/admin/AdminLayout.tsx:14:39)
+    at RenderedRoute (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4069:5)
+    at Routes (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4508:5)
+    at RenderedRoute (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4069:5)
+    at Routes (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4508:5)
+    at Router (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:4451:15)
+    at BrowserRouter (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=a68a1e3b:5196:5)
+    at AppContent
+    at AuthProvider (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/src/contexts/AuthContext.tsx:25:32)
+    at Provider (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/chunk-CHNJOBOC.js?v=a68a1e3b:38:15)
+    at TooltipProvider (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=a68a1e3b:61:5)
+    at QueryClientProvider (https://5c3bfbc7-f3c2-44ee-a09f-6b8e655e5344-00-29w9koryh4oc5.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=a68a1e3b:2875:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Outlet is not defined
