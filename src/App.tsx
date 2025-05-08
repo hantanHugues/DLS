@@ -110,10 +110,7 @@ const AppContent = () => {
           <Route path="communications" element={<AdminDashboard />} />
           <Route path="settings" element={<AdminDashboard />} />
           <Route path="logs" element={<AdminDashboard />} />
-        </Route>>
-        <Route path="/admin/tournaments" element={<AdminTournaments />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
-        <Route path="/admin/disputes" element={<AdminDisputes />} />
+        </Route>
         
         <Route path="*" element={<NotFound />} />
       </Routes>
