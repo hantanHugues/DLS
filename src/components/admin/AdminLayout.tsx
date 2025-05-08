@@ -38,7 +38,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         ))}
       </div>
       <main className="flex-1 ml-64 p-6 overflow-auto">
-        {children}
+        <Outlet />
       </main>
     </div>
   );
