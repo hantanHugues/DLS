@@ -10,13 +10,8 @@ const AdminLayout = () => {
     { title: "Dashboard", icon: <LayoutDashboard className="h-5 w-5" />, href: "/admin/dashboard" },
     { title: "Utilisateurs", icon: <Users className="h-5 w-5" />, href: "/admin/users" },
     { title: "Tournois", icon: <Trophy className="h-5 w-5" />, href: "/admin/tournaments" },
-    { title: "Paiements", icon: <Wallet className="h-5 w-5" />, href: "/admin/payments" },
-    { title: "Validateurs", icon: <UserCheck className="h-5 w-5" />, href: "/admin/validators" },
     { title: "Litiges", icon: <Scale className="h-5 w-5" />, href: "/admin/disputes" },
-    { title: "Parrainage", icon: <GitBranch className="h-5 w-5" />, href: "/admin/sponsorship" },
-    { title: "Communications", icon: <Megaphone className="h-5 w-5" />, href: "/admin/communications" },
-    { title: "Réglages", icon: <Cog className="h-5 w-5" />, href: "/admin/settings" },
-    { title: "Historique", icon: <History className="h-5 w-5" />, href: "/admin/logs" }
+    { title: "Communications", icon: <Megaphone className="h-5 w-5" />, href: "/admin/communications" }
   ];
 
   return (
