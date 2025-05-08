@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
   Users, Trophy, AlertTriangle, Activity,
-  LineChart, RefreshCw, Megaphone, Scale
+  LineChart, RefreshCw, Megaphone, Scale, 
+  ChevronRight, MessageSquare
 } from "lucide-react";
 import {
   LineChart as RechartsLineChart,
@@ -29,6 +30,31 @@ const dailyData = [
   { name: 'Sam', users: 12, revenue: 1200 },
   { name: 'Dim', users: 10, revenue: 1000 },
 ];
+
+// Données de simulation pour l'arbre du tournoi
+const tournamentTree = {
+  name: "Finale",
+  date: "15/03",
+  player1: "À déterminer",
+  player2: "À déterminer",
+  children: [
+    {
+      name: "Demi-finale 1",
+      date: "10/03",
+      player1: "John Doe",
+      player2: "Jane Smith",
+      winner: "John Doe",
+      status: "completed"
+    },
+    {
+      name: "Demi-finale 2",
+      date: "10/03",
+      player1: "Alice Brown",
+      player2: "Bob Wilson",
+      status: "upcoming"
+    }
+  ]
+};
 
 export default function AdminDashboard() {
   return (
@@ -95,25 +121,49 @@ export default function AdminDashboard() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5" />
-              Activité Utilisateurs
-            </CardTitle>
+            <CardTitle>Tournoi en cours - ASC Premier League</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <RechartsLineChart data={dailyData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="users" stroke="#8884d8" strokeWidth={2} />
-                </RechartsLineChart>
-              </ResponsiveContainer>
+            <div className="tournament-tree p-4">
+              {/* Arbre du tournoi avec lignes de progression */}
+              <div className="flex flex-col items-center space-y-8">
+                <div className="final-match w-64 p-4 border rounded-lg bg-white shadow">
+                  <div className="text-sm font-semibold mb-2">Finale - {tournamentTree.date}</div>
+                  <div className="space-y-2">
+                    <div className="p-2 bg-gray-50 rounded">{tournamentTree.player1}</div>
+                    <div className="p-2 bg-gray-50 rounded">{tournamentTree.player2}</div>
+                  </div>
+                </div>
+                
+                <div className="semifinals flex justify-between w-full">
+                  {tournamentTree.children.map((match, index) => (
+                    <div key={index} className={`match w-64 p-4 border rounded-lg ${match.status === 'completed' ? 'bg-green-50' : 'bg-white'} shadow`}>
+                      <div className="text-sm font-semibold mb-2">{match.name} - {match.date}</div>
+                      <div className="space-y-2">
+                        <div className={`p-2 rounded ${match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-50'}`}>
+                          {match.player1}
+                        </div>
+                        <div className={`p-2 rounded ${match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-50'}`}>
+                          {match.player2}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-4 flex justify-end space-x-2">
+              <Button size="sm" variant="outline">
+                Programmer les matches
+              </Button>
+              <Button size="sm">
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Faire une annonce
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -121,20 +171,20 @@ export default function AdminDashboard() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <LineChart className="h-5 w-5" />
-              Revenus Journaliers
+              <Activity className="h-5 w-5" />
+              Statistiques des inscriptions
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={dailyData}>
+                <LineChart data={dailyData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="revenue" fill="#82ca9d" />
-                </BarChart>
+                  <Line type="monotone" dataKey="users" stroke="#8884d8" strokeWidth={2} />
+                </LineChart>
               </ResponsiveContainer>
             </div>
           </CardContent>
