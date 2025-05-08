@@ -1,0 +1,603 @@
+Document : Cahier des fonctionnalités – Espace Administrateur 
+
+ 
+
+Connexion Sécurisée 
+
+ 
+
+Interface de connexion séparée pour les administrateurs. 
+
+ 
+
+Authentification par email et mot de passe + 2FA (authentification à deux facteurs) (option recommandée). 
+
+ 
+
+Gestion des accès (permissions selon rôle : Super Admin, Admin classique, Modérateur). 
+
+ 
+
+ 
+
+Dashboard Principal 
+
+ 
+
+Résumé statistique : 
+
+ 
+
+Nombre total d’inscrits 
+
+ 
+
+Nombre d’utilisateurs actifs 
+
+ 
+
+Nombre d’inscriptions sur la période 
+
+ 
+
+Revenus générés 
+
+ 
+
+Retraits en attente 
+
+ 
+
+Litiges ouverts / clôturés 
+
+ 
+
+ 
+
+Graphiques de suivi : 
+
+ 
+
+Inscriptions par jour/semaine/mois 
+
+ 
+
+Revenus par jour/semaine/mois 
+
+ 
+
+ 
+
+Alertes et notifications : 
+
+ 
+
+Nouveaux litiges à traiter 
+
+ 
+
+Nouveaux retraits demandés 
+
+ 
+
+Nouveaux validateurs candidats à examiner 
+
+ 
+
+Activités suspectes 
+
+ 
+
+ 
+
+ 
+
+Gestion des Utilisateurs 
+
+ 
+
+Liste des utilisateurs avec : 
+
+ 
+
+ID 
+
+ 
+
+Pseudo 
+
+ 
+
+Email 
+
+ 
+
+Téléphone 
+
+ 
+
+Statut du compte (actif, suspendu, banni) 
+
+ 
+
+Date d’inscription 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Rechercher un utilisateur (pseudo, email, ID) 
+
+ 
+
+Filtrer par statut (actif / inactif / suspendu / VIP / validateurs) 
+
+ 
+
+Voir fiche détaillée d’un utilisateur 
+
+ 
+
+Modifier les informations si besoin (email, téléphone, statut) 
+
+ 
+
+Forcer une déconnexion 
+
+ 
+
+Suspendre / bannir un utilisateur 
+
+ 
+
+Réinitialiser un mot de passe manuellement 
+
+ 
+
+Ajouter une note interne (visible seulement par l’équipe admin) 
+
+ 
+
+ 
+
+ 
+
+Gestion des Tournois 
+
+ 
+
+Liste des tournois : 
+
+ 
+
+Nom 
+
+ 
+
+Date 
+
+ 
+
+Statut (ouvert / en cours / clôturé / annulé) 
+
+ 
+
+Nombre de participants 
+
+ 
+
+Montant du prix 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Créer un nouveau tournoi (formulaire complet) 
+
+ 
+
+Modifier un tournoi existant 
+
+ 
+
+Annuler un tournoi avec raison 
+
+ 
+
+Clôturer un tournoi manuellement 
+
+ 
+
+Tirer au sort des matchs si nécessaire 
+
+ 
+
+Forcer l’attribution manuelle d’un gagnant si litige final 
+
+ 
+
+ 
+
+ 
+
+Gestion des Inscriptions aux Tournois 
+
+ 
+
+Visualiser la liste des inscrits par tournoi. 
+
+ 
+
+Vérifier le paiement associé à chaque inscription. 
+
+ 
+
+Valider / invalider une inscription. 
+
+ 
+
+Forcer une inscription gratuite si nécessaire (ex : invitation spéciale). 
+
+ 
+
+ 
+
+Gestion des Paiements 
+
+ 
+
+Liste des paiements entrants : 
+
+ 
+
+Nom 
+
+ 
+
+Email 
+
+ 
+
+Montant 
+
+ 
+
+Mode de paiement 
+
+ 
+
+Date 
+
+ 
+
+Statut (validé / en attente / échoué) 
+
+ 
+
+ 
+
+Liste des paiements sortants (retraits) : 
+
+ 
+
+Utilisateur 
+
+ 
+
+Montant demandé 
+
+ 
+
+Mode de retrait 
+
+ 
+
+Date de demande 
+
+ 
+
+Statut (en attente / traité / rejeté) 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Confirmer manuellement un paiement entrant ou sortant si bug. 
+
+ 
+
+Annuler un paiement en attente (avec raison). 
+
+ 
+
+Voir historique complet des transactions d’un utilisateur. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Validateurs 
+
+ 
+
+Voir la liste des validateurs enregistrés : 
+
+ 
+
+Nom 
+
+ 
+
+Email 
+
+ 
+
+Statut (actif / suspendu) 
+
+ 
+
+Nombre de litiges tranchés 
+
+ 
+
+Taux d’erreur 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Ajouter un validateur manuellement. 
+
+ 
+
+Suspendre un validateur. 
+
+ 
+
+Bannir un validateur après trop d’erreurs. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Litiges 
+
+ 
+
+Liste des litiges : 
+
+ 
+
+Numéro du litige 
+
+ 
+
+Participants concernés 
+
+ 
+
+Date d’ouverture 
+
+ 
+
+Statut (en attente / en cours de traitement / résolu) 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Consulter les preuves fournies 
+
+ 
+
+Attribuer un validateur au litige 
+
+ 
+
+Décider manuellement en tant qu’admin 
+
+ 
+
+Ajouter un commentaire privé au dossier 
+
+ 
+
+Notifier les parties de la décision par email + notification interne 
+
+ 
+
+ 
+
+ 
+
+Gestion du Système de Parrainage 
+
+ 
+
+Liste des parrains : 
+
+ 
+
+Utilisateur 
+
+ 
+
+Nombre de filleuls 
+
+ 
+
+Rang actuel (paysan / roturier / noble…) 
+
+ 
+
+Pourcentage de bonus appliqué 
+
+ 
+
+ 
+
+Fonctionnalités : 
+
+ 
+
+Modifier manuellement un rang si nécessaire. 
+
+ 
+
+Gérer les litiges liés au parrainage (ex : demande de réattribution de filleul). 
+
+ 
+
+Voir l’historique de parrainage d’un utilisateur. 
+
+ 
+
+ 
+
+ 
+
+Gestion des Communications 
+
+ 
+
+Notifications internes : 
+
+ 
+
+Rédiger et envoyer une notification à tous les utilisateurs / à certains groupes (ex : VIP, validateurs…). 
+
+ 
+
+ 
+
+Emails : 
+
+ 
+
+Envoyer un email de masse (info importante, maintenance…). 
+
+ 
+
+Voir les emails automatiques envoyés (confirmation d’inscription, litige résolu, retrait validé). 
+
+ 
+
+ 
+
+ 
+
+Gestion des Réglages Généraux 
+
+ 
+
+Paramètres financiers : 
+
+ 
+
+Taux de commission sur les gains 
+
+ 
+
+Seuil minimal pour retrait 
+
+ 
+
+Frais d’inscription au tournoi 
+
+ 
+
+ 
+
+Paramètres de jeu : 
+
+ 
+
+Durée maximale d’un tournoi 
+
+ 
+
+Délais pour contester un résultat 
+
+ 
+
+ 
+
+Paramètres divers : 
+
+ 
+
+Modifier les CGU et Politique de confidentialité. 
+
+ 
+
+Activer / désactiver certaines fonctionnalités (ex : parrainage temporairement). 
+
+ 
+
+ 
+
+ 
+
+Gestion des Logs et Historique 
+
+ 
+
+Historique des actions admin : 
+
+ 
+
+Connexions 
+
+ 
+
+Modifications effectuées 
+
+ 
+
+Suppressions 
+
+ 
+
+ 
+
+Historique utilisateur : 
+
+ 
+
+Connexions 
+
+ 
+
+Paiements 
+
+ 
+
+Litiges 
+
+ 
+
+Tournois joués 
