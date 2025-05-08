@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,7 +22,25 @@ export default function AdminUsers() {
       registrationDate: "2024-01-15",
       lastLogin: "2024-01-20"
     },
-    // ... autres utilisateurs
+    // Ajoutez d'autres utilisateurs ici
+    {
+      id: "USR002",
+      pseudo: "JaneDoe",
+      email: "jane@example.com",
+      phone: "+221 77 987 6543",
+      status: "suspended",
+      registrationDate: "2024-02-20",
+      lastLogin: "2024-02-25"
+    },
+    {
+      id: "USR003",
+      pseudo: "PeterPan",
+      email: "peter@example.com",
+      phone: "+221 76 543 2109",
+      status: "active",
+      registrationDate: "2024-03-10",
+      lastLogin: "2024-03-15"
+    }
   ];
 
   return (
@@ -49,7 +66,6 @@ export default function AdminUsers() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="max-w-md"
-            icon={<Search className="h-4 w-4" />}
           />
         </div>
         <select
@@ -95,35 +111,9 @@ export default function AdminUsers() {
                   <TableCell>{user.registrationDate}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            <User className="h-4 w-4" />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-2xl">
-                          <DialogHeader>
-                            <DialogTitle>Détails Utilisateur</DialogTitle>
-                          </DialogHeader>
-                          <div className="grid gap-4 py-4">
-                            <div className="grid grid-cols-2 gap-4">
-                              <div>
-                                <h3 className="font-semibold">Informations Personnelles</h3>
-                                <p>ID: {user.id}</p>
-                                <p>Pseudo: {user.pseudo}</p>
-                                <p>Email: {user.email}</p>
-                                <p>Téléphone: {user.phone}</p>
-                              </div>
-                              <div>
-                                <h3 className="font-semibold">Statistiques</h3>
-                                <p>Inscription: {user.registrationDate}</p>
-                                <p>Dernière connexion: {user.lastLogin}</p>
-                                <p>Statut: {user.status}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
+                      <Button variant="outline" size="sm">
+                        <User className="h-4 w-4" />
+                      </Button>
                       <Button variant="outline" size="sm">
                         <Key className="h-4 w-4" />
                       </Button>
