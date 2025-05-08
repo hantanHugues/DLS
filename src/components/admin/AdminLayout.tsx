@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, Outlet } from 'react-router-dom';
 import { LayoutDashboard, Users, Trophy, Wallet, UserCheck, Scale, GitBranch, Megaphone, Cog, History } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
