@@ -20,7 +20,7 @@ const AdminLayout = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-1">
-        <div className="fixed flex h-[calc(100vh-4rem)] w-64 bg-slate-50">
+        <div className="fixed flex h-[calc(100vh-8rem)] w-64 bg-slate-50">
           <div className="flex w-full flex-col overflow-y-auto">
             <div className="flex h-14 items-center border-b px-4">
               <h2 className="text-lg font-semibold">Admin Panel</h2>
@@ -43,11 +43,11 @@ const AdminLayout = () => {
             </nav>
           </div>
         </div>
-        <div className="ml-64 flex-1 p-8">
+        <div className="ml-64 flex-1 p-8 mb-16">
           <Outlet />
         </div>
       </div>
-      <Footer />
+      <Footer className="relative z-10" />
     </div>
   );
 };
