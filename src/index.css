@@ -135,30 +135,55 @@
 .tournament-bracket {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
   padding: 2rem;
-  min-width: min-content;
-  overflow-x: auto;
+  min-width: 2000px;
+  height: 1200px;
+  overflow: auto;
 }
 
 .round {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   justify-content: space-around;
-  min-width: 280px;
+  min-width: 300px;
+  padding: 0 1.5rem;
 }
 
 .match-box {
-  transition: all 0.3s ease;
-  min-width: 260px;
+  position: relative;
   background: white;
   border: 1px solid #e5e7eb;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  min-height: 80px;
 }
 
-.match-box:hover {
-  transform: translateX(2px);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+.match-box::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  width: 1.5rem;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+.match-box::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  width: 1.5rem;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+.round:first-child .match-box::before {
+  display: none;
+}
+
+.round:last-child .match-box::after {
+  display: none;
 }
 
 @media (max-width: 768px) {

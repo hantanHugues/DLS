@@ -167,7 +167,7 @@ export default function AdminTournamentDetails() {
             </div>
           </CardHeader>
           <CardContent>
-            <ScrollArea className="h-[600px] w-full rounded-md border">
+            <div className="w-full h-[800px] overflow-auto border rounded-md">
               <div className="tournament-bracket" style={{ transform: `scale(${zoom})`, transformOrigin: 'top left' }}>
                 {Array.from({ length: 10 }, (_, round) => (
                   <div key={10 - round} className={`round round-${10 - round}`}>
