@@ -22,14 +22,13 @@ export default function AdminTournamentDetails() {
   const { id } = useParams();
   const [zoom, setZoom] = useState(1);
   const [matches, setMatches] = useState<Match[]>([
-    // Génération de 10 étages de matches
     ...Array.from({ length: 1024 }, (_, i) => ({
       id: `${i + 1}`,
       round: Math.floor(Math.log2(1024 / (i + 1))) + 1,
       position: i + 1,
       player1: `Équipe ${i * 2 + 1}`,
       player2: `Équipe ${i * 2 + 2}`,
-      status: i < 10 ? "completed" : i < 20 ? "scheduled" : "pending" as "completed" | "scheduled" | "pending",
+      status: i < 10 ? "completed" : i < 20 ? "scheduled" : "pending",
       winner: i < 10 ? `Équipe ${i * 2 + 1}` : undefined,
       date: i < 20 ? `2024-${Math.floor(i/4) + 3}-${(i % 4) + 1}` : undefined
     })).slice(0, 1023)
@@ -57,9 +56,7 @@ export default function AdminTournamentDetails() {
         <div className="flex gap-2">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" className="whitespace-nowrap">
-                Programmer les matches
-              </Button>
+              <Button variant="outline">Programmer les matches</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -84,9 +81,7 @@ export default function AdminTournamentDetails() {
               </div>
             </DialogContent>
           </Dialog>
-          <Button variant="default">
-            Faire une annonce
-          </Button>
+          <Button variant="default">Faire une annonce</Button>
         </div>
       </div>
 
@@ -143,7 +138,7 @@ export default function AdminTournamentDetails() {
           </CardContent>
         </Card>
 
-        <Card className="relative">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Trophy className="h-5 w-5" />
@@ -167,7 +162,7 @@ export default function AdminTournamentDetails() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="w-full h-[800px] overflow-auto border rounded-md">
+            <div className="tournament-bracket-container">
               <div className="tournament-bracket" style={{ transform: `scale(${zoom})`, transformOrigin: 'top left' }}>
                 {Array.from({ length: 10 }, (_, round) => (
                   <div key={10 - round} className={`round round-${10 - round}`}>
@@ -176,7 +171,7 @@ export default function AdminTournamentDetails() {
                       .map(match => (
                         <div 
                           key={match.id} 
-                          className={`match-box p-3 border rounded-lg w-48 shrink-0
+                          className={`match-box p-3 border rounded-lg
                             ${match.status === 'completed' ? 'bg-green-50 border-green-200' : 
                               match.status === 'scheduled' ? 'bg-blue-50 border-blue-200' : 
                               'bg-gray-50'}`}
@@ -198,7 +193,7 @@ export default function AdminTournamentDetails() {
                   </div>
                 ))}
               </div>
-            </ScrollArea>
+            </div>
           </CardContent>
         </Card>
       </div>
