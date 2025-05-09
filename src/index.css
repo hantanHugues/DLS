@@ -134,40 +134,35 @@
 
 .tournament-bracket {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
   padding: 2rem;
+  min-width: min-content;
+  overflow-x: auto;
 }
 
 .round {
   display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-  position: relative;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-around;
+  min-width: 280px;
 }
 
 .match-box {
   transition: all 0.3s ease;
+  min-width: 260px;
+  background: white;
+  border: 1px solid #e5e7eb;
 }
 
 .match-box:hover {
-  transform: translateY(-2px);
+  transform: translateX(2px);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 @media (max-width: 768px) {
   .tournament-bracket {
     padding: 1rem;
-  }
-
-  .round {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .match-box {
-    width: 100%;
-    max-width: 320px;
   }
 }

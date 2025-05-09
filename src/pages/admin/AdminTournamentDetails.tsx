@@ -168,9 +168,9 @@ export default function AdminTournamentDetails() {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[600px] w-full rounded-md border">
-              <div className="tournament-bracket p-4" style={{ transform: `scale(${zoom})`, transformOrigin: 'top left', minWidth: '1500px' }}>
+              <div className="tournament-bracket" style={{ transform: `scale(${zoom})`, transformOrigin: 'top left' }}>
                 {Array.from({ length: 10 }, (_, round) => (
-                  <div key={10 - round} className={`round round-${10 - round} flex items-center gap-4 mb-8`} style={{ marginLeft: round * 120 }}>
+                  <div key={10 - round} className={`round round-${10 - round}`}>
                     {matches
                       .filter(match => match.round === 10 - round)
                       .map(match => (
