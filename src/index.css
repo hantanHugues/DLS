@@ -143,20 +143,54 @@
 .tournament-bracket {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 4rem;
+  padding: 2rem;
   min-width: max-content;
+  position: relative;
 }
 
 .round {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  min-width: 200px;
+  gap: 4rem;
+  min-width: 250px;
+  position: relative;
 }
 
 .match-box {
   width: 100%;
+  position: relative;
+}
+
+.match-box::after {
+  content: '';
+  position: absolute;
+  right: -4rem;
+  top: 50%;
+  width: 4rem;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+.match-box[data-winner]::after {
+  background: #10b981;
+}
+
+.round:last-child .match-box::after {
+  display: none;
+}
+
+.match-box::before {
+  content: '';
+  position: absolute;
+  right: -4rem;
+  height: 100%;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.match-box[data-winner]::before {
+  background: #10b981;
 }
 
 .match-box {

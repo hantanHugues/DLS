@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,16 +21,17 @@ export default function AdminTournamentDetails() {
   const { id } = useParams();
   const [zoom, setZoom] = useState(1);
   const [matches, setMatches] = useState<Match[]>([
-    ...Array.from({ length: 1024 }, (_, i) => ({
+    // Exemple de structure de tournoi avec 8 joueurs
+    ...Array.from({ length: 7 }, (_, i) => ({
       id: `${i + 1}`,
-      round: Math.floor(Math.log2(1024 / (i + 1))) + 1,
+      round: i < 4 ? 1 : i < 6 ? 2 : 3,
       position: i + 1,
-      player1: `Équipe ${i * 2 + 1}`,
-      player2: `Équipe ${i * 2 + 2}`,
-      status: i < 10 ? "completed" : i < 20 ? "scheduled" : "pending",
-      winner: i < 10 ? `Équipe ${i * 2 + 1}` : undefined,
-      date: i < 20 ? `2024-${Math.floor(i/4) + 3}-${(i % 4) + 1}` : undefined
-    })).slice(0, 1023)
+      player1: i < 4 ? `User${i * 2 + 1}` : undefined,
+      player2: i < 4 ? `User${i * 2 + 2}` : undefined,
+      status: i < 2 ? "completed" : i < 4 ? "scheduled" : "pending",
+      winner: i < 2 ? `User${i * 2 + 1}` : undefined,
+      date: i < 4 ? `2024-03-${i + 1}` : undefined
+    }))
   ]);
 
   const tournamentInfo = {
@@ -101,7 +101,7 @@ export default function AdminTournamentDetails() {
                 <p>{tournamentInfo.registrationFee}</p>
               </div>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-2">Répartition des Prix</h3>
               <div className="space-y-2">
