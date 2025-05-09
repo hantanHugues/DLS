@@ -105,6 +105,7 @@ const AppContent = () => {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="tournaments" element={<AdminTournaments />} />
+          <Route path="tournaments/:id" element={<AdminTournamentDetails />} />
           <Route path="disputes" element={<AdminDisputes />} />
           <Route path="payments" element={<AdminDashboard />} />
           <Route path="validators" element={<AdminDashboard />} />
