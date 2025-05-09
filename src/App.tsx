@@ -29,9 +29,9 @@ import TwoFactorSetup from "./pages/TwoFactorSetup";
 import Sponsorship from "./pages/Sponsorship";
 import About from "./pages/About";
 import TermsPage from "./pages/Terms";
-import PrivacyPage from "./Privacy";
-import CookiesPage from "./Cookies";
-import SupportPage from "./Support";
+import PrivacyPage from "./pages/Privacy";
+import CookiesPage from "./pages/Cookies";
+import SupportPage from "./pages/Support";
 
 const queryClient = new QueryClient();
 
