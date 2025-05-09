@@ -6,6 +6,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Calendar, Users, DollarSign } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 export default function AdminTournaments() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -104,7 +105,9 @@ export default function AdminTournaments() {
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm">Éditer</Button>
-                          <Button variant="outline" size="sm">Détails</Button>
+                          <Button variant="outline" size="sm" asChild>
+                            <Link to={`/admin/tournaments/${tournament.id}`}>Détails</Link>
+                          </Button>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -160,7 +163,9 @@ export default function AdminTournaments() {
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm">Éditer</Button>
-                          <Button variant="outline" size="sm">Détails</Button>
+                          <Button variant="outline" size="sm" asChild>
+                            <Link to={`/admin/tournaments/${tournament.id}`}>Détails</Link>
+                          </Button>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -216,7 +221,9 @@ export default function AdminTournaments() {
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm">Éditer</Button>
-                          <Button variant="outline" size="sm">Détails</Button>
+                          <Button variant="outline" size="sm" asChild>
+                            <Link to={`/admin/tournaments/${tournament.id}`}>Détails</Link>
+                          </Button>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -272,7 +279,9 @@ export default function AdminTournaments() {
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm">Éditer</Button>
-                          <Button variant="outline" size="sm">Détails</Button>
+                          <Button variant="outline" size="sm" asChild>
+                            <Link to={`/admin/tournaments/${tournament.id}`}>Détails</Link>
+                          </Button>
                         </div>
                       </TableCell>
                     </TableRow>
