@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Trophy, AlertCircle, Calendar } from "lucide-react";
+import { Trophy, AlertCircle, Calendar, ZoomIn, ZoomOut } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Match {
   id: string;
@@ -19,19 +20,19 @@ interface Match {
 
 export default function AdminTournamentDetails() {
   const { id } = useParams();
+  const [zoom, setZoom] = useState(1);
   const [matches, setMatches] = useState<Match[]>([
-    // Round 1 (Quarter-finals)
-    { id: "1", round: 1, position: 1, player1: "Équipe 1", player2: "Équipe 2", winner: "Équipe 1", status: "completed" },
-    { id: "2", round: 1, position: 2, player1: "Équipe 3", player2: "Équipe 4", status: "scheduled", date: "15/03" },
-    { id: "3", round: 1, position: 3, player1: "Équipe 5", player2: "Équipe 6", status: "pending" },
-    { id: "4", round: 1, position: 4, player1: "Équipe 7", player2: "Équipe 8", status: "pending" },
-    
-    // Round 2 (Semi-finals)
-    { id: "5", round: 2, position: 1, player1: "Équipe 1", player2: "À déterminer", status: "pending" },
-    { id: "6", round: 2, position: 2, player1: "À déterminer", player2: "À déterminer", status: "pending" },
-    
-    // Round 3 (Final)
-    { id: "7", round: 3, position: 1, player1: "À déterminer", player2: "À déterminer", status: "pending" },
+    // Génération de 10 étages de matches
+    ...Array.from({ length: 1024 }, (_, i) => ({
+      id: `${i + 1}`,
+      round: Math.floor(Math.log2(1024 / (i + 1))) + 1,
+      position: i + 1,
+      player1: `Équipe ${i * 2 + 1}`,
+      player2: `Équipe ${i * 2 + 2}`,
+      status: i < 10 ? "completed" : i < 20 ? "scheduled" : "pending" as "completed" | "scheduled" | "pending",
+      winner: i < 10 ? `Équipe ${i * 2 + 1}` : undefined,
+      date: i < 20 ? `2024-${Math.floor(i/4) + 3}-${(i % 4) + 1}` : undefined
+    })).slice(0, 1023)
   ]);
 
   const tournamentInfo = {
@@ -44,7 +45,7 @@ export default function AdminTournamentDetails() {
     },
     registrationFee: "5,000 FCFA",
     status: "en cours",
-    totalParticipants: 32,
+    totalParticipants: 1024,
     startDate: "2024-03-01",
     endDate: "2024-03-15"
   };
@@ -70,6 +71,7 @@ export default function AdminTournamentDetails() {
                     (match.round === 1 || matches.some(m => 
                       m.round === match.round - 1 && 
                       m.status === "completed")))
+                  .slice(0, 5)
                   .map(match => (
                     <div key={match.id} className="p-4 border rounded-lg">
                       <h3 className="font-semibold mb-2">Match {match.id}</h3>
@@ -141,44 +143,62 @@ export default function AdminTournamentDetails() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
+        <Card className="relative">
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Trophy className="h-5 w-5" />
               Arbre du tournoi
             </CardTitle>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}
+              >
+                <ZoomOut className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setZoom(prev => Math.min(2, prev + 0.1))}
+              >
+                <ZoomIn className="h-4 w-4" />
+              </Button>
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="tournament-bracket">
-              {[3, 2, 1].map(round => (
-                <div key={round} className={`round round-${round} flex justify-center gap-8 mb-8`}>
-                  {matches
-                    .filter(match => match.round === round)
-                    .map(match => (
-                      <div 
-                        key={match.id} 
-                        className={`match-box p-4 border rounded-lg w-64 
-                          ${match.status === 'completed' ? 'bg-green-50 border-green-200' : 
-                            match.status === 'scheduled' ? 'bg-blue-50 border-blue-200' : 
-                            'bg-gray-50'}`}
-                      >
-                        <div className="text-sm font-semibold mb-2 flex justify-between">
-                          <span>Round {match.round}</span>
-                          {match.date && <span>{match.date}</span>}
-                        </div>
-                        <div className="space-y-2">
-                          <div className={`p-2 rounded ${match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                            {match.player1}
+            <ScrollArea className="h-[600px] w-full rounded-md border">
+              <div className="tournament-bracket p-4" style={{ transform: `scale(${zoom})`, transformOrigin: 'top left', minWidth: '1500px' }}>
+                {Array.from({ length: 10 }, (_, round) => (
+                  <div key={10 - round} className={`round round-${10 - round} flex items-center gap-4 mb-8`} style={{ marginLeft: round * 120 }}>
+                    {matches
+                      .filter(match => match.round === 10 - round)
+                      .map(match => (
+                        <div 
+                          key={match.id} 
+                          className={`match-box p-3 border rounded-lg w-48 shrink-0
+                            ${match.status === 'completed' ? 'bg-green-50 border-green-200' : 
+                              match.status === 'scheduled' ? 'bg-blue-50 border-blue-200' : 
+                              'bg-gray-50'}`}
+                        >
+                          <div className="text-sm font-semibold mb-2 flex justify-between">
+                            <span>Match {match.id}</span>
+                            {match.date && <span className="text-xs">{match.date}</span>}
                           </div>
-                          <div className={`p-2 rounded ${match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                            {match.player2}
+                          <div className="space-y-2">
+                            <div className={`p-2 rounded text-sm ${match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-100'}`}>
+                              {match.player1}
+                            </div>
+                            <div className={`p-2 rounded text-sm ${match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-100'}`}>
+                              {match.player2}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                </div>
-              ))}
-            </div>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
           </CardContent>
         </Card>
       </div>
