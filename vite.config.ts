@@ -14,8 +14,8 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 8080,
     hmr: {
-      host: 'localhost',
-      protocol: 'ws'
+      clientPort: 443,
+      host: 'af7fa590-089d-454d-9636-e538d569e907-00-20ggg32wuiy6f.spock.replit.dev'
     }
   }
 })
