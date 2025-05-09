@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,8 +11,8 @@ interface Match {
   id: string;
   round: number;
   position: number;
-  player1: string;
-  player2: string;
+  player1?: string;
+  player2?: string;
   winner?: string;
   status: "completed" | "scheduled" | "pending";
   date?: string;
@@ -21,7 +22,6 @@ export default function AdminTournamentDetails() {
   const { id } = useParams();
   const [zoom, setZoom] = useState(1);
   const [matches, setMatches] = useState<Match[]>([
-    // Exemple de structure de tournoi avec 8 joueurs
     ...Array.from({ length: 7 }, (_, i) => ({
       id: `${i + 1}`,
       round: i < 4 ? 1 : i < 6 ? 2 : 3,
@@ -175,6 +175,7 @@ export default function AdminTournamentDetails() {
                             ${match.status === 'completed' ? 'bg-green-50 border-green-200' : 
                               match.status === 'scheduled' ? 'bg-blue-50 border-blue-200' : 
                               'bg-gray-50'}`}
+                          data-winner={match.winner}
                         >
                           <div className="text-sm font-semibold mb-2 flex justify-between">
                             <span>Match {match.id}</span>
@@ -182,10 +183,10 @@ export default function AdminTournamentDetails() {
                           </div>
                           <div className="space-y-2">
                             <div className={`p-2 rounded text-sm ${match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                              {match.player1}
+                              {match.player1 || "À déterminer"}
                             </div>
                             <div className={`p-2 rounded text-sm ${match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                              {match.player2}
+                              {match.player2 || "À déterminer"}
                             </div>
                           </div>
                         </div>
