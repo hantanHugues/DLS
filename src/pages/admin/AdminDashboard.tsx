@@ -23,25 +23,129 @@ const dailyData = [
 
 // Données de simulation pour l'arbre du tournoi
 const tournamentTree = {
-  name: "Finale",
-  date: "15/03",
-  player1: "À déterminer",
-  player2: "À déterminer",
-  children: [
+  rounds: [
     {
-      name: "Demi-finale 1",
-      date: "10/03",
-      player1: "John Doe",
-      player2: "Jane Smith",
-      winner: "John Doe",
-      status: "completed"
+      name: "Finale",
+      matches: [
+        {
+          date: "20/03",
+          player1: "À déterminer",
+          player2: "À déterminer",
+          status: "upcoming"
+        }
+      ]
     },
     {
-      name: "Demi-finale 2",
-      date: "10/03",
-      player1: "Alice Brown",
-      player2: "Bob Wilson",
-      status: "upcoming"
+      name: "Demi-finales",
+      matches: [
+        {
+          date: "15/03",
+          player1: "John Doe",
+          player2: "Jane Smith",
+          winner: "John Doe",
+          status: "completed"
+        },
+        {
+          date: "15/03",
+          player1: "Alice Brown",
+          player2: "Bob Wilson",
+          status: "upcoming"
+        }
+      ]
+    },
+    {
+      name: "Quarts de finale",
+      matches: [
+        {
+          date: "10/03",
+          player1: "John Doe",
+          player2: "Mike Johnson",
+          winner: "John Doe",
+          status: "completed"
+        },
+        {
+          date: "10/03",
+          player1: "Jane Smith",
+          player2: "Sarah Davis",
+          winner: "Jane Smith",
+          status: "completed"
+        },
+        {
+          date: "10/03",
+          player1: "Alice Brown",
+          player2: "Tom Wilson",
+          winner: "Alice Brown",
+          status: "completed"
+        },
+        {
+          date: "10/03",
+          player1: "Bob Wilson",
+          player2: "Emma Taylor",
+          winner: "Bob Wilson",
+          status: "completed"
+        }
+      ]
+    },
+    {
+      name: "Huitièmes de finale",
+      matches: [
+        {
+          date: "05/03",
+          player1: "John Doe",
+          player2: "Player 9",
+          winner: "John Doe",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Mike Johnson",
+          player2: "Player 10",
+          winner: "Mike Johnson",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Jane Smith",
+          player2: "Player 11",
+          winner: "Jane Smith",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Sarah Davis",
+          player2: "Player 12",
+          winner: "Sarah Davis",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Alice Brown",
+          player2: "Player 13",
+          winner: "Alice Brown",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Tom Wilson",
+          player2: "Player 14",
+          winner: "Tom Wilson",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Bob Wilson",
+          player2: "Player 15",
+          winner: "Bob Wilson",
+          status: "completed"
+        },
+        {
+          date: "05/03",
+          player1: "Emma Taylor",
+          player2: "Player 16",
+          winner: "Emma Taylor",
+          status: "completed"
+        }
+      ]
     }
   ]
 };
@@ -117,40 +221,50 @@ export default function AdminDashboard() {
             <CardTitle>Tournoi en cours - ASC Premier League</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="tournament-tree p-4">
-              {/* Arbre du tournoi avec lignes de progression */}
-              <div className="flex flex-col items-center space-y-8">
-                <div className="final-match w-64 p-4 border rounded-lg bg-white shadow">
-                  <div className="text-sm font-semibold mb-2">Finale - {tournamentTree.date}</div>
-                  <div className="space-y-2">
-                    <div className="p-2 bg-gray-50 rounded">{tournamentTree.player1}</div>
-                    <div className="p-2 bg-gray-50 rounded">{tournamentTree.player2}</div>
-                  </div>
-                </div>
-                
-                <div className="semifinals flex justify-between w-full">
-                  {tournamentTree.children.map((match, index) => (
-                    <div key={index} className={`match w-64 p-4 border rounded-lg ${match.status === 'completed' ? 'bg-green-50' : 'bg-white'} shadow`}>
-                      <div className="text-sm font-semibold mb-2">{match.name} - {match.date}</div>
-                      <div className="space-y-2">
-                        <div className={`p-2 rounded ${match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-50'}`}>
-                          {match.player1}
+            <div className="tournament-tree p-4 overflow-x-auto">
+              <div className="flex flex-col items-center min-w-[1200px]">
+                {tournamentTree.rounds.map((round, roundIndex) => (
+                  <div key={roundIndex} className="w-full mb-8">
+                    <h3 className="text-center font-semibold mb-4">{round.name}</h3>
+                    <div className={`grid gap-4 ${
+                      round.matches.length === 1 ? 'justify-center' :
+                      `grid-cols-${round.matches.length} justify-between`
+                    }`}>
+                      {round.matches.map((match, matchIndex) => (
+                        <div
+                          key={matchIndex}
+                          className={`match p-4 border rounded-lg shadow ${
+                            match.status === 'completed' ? 'bg-green-50' :
+                            match.status === 'upcoming' ? 'bg-white' : 'bg-gray-50'
+                          }`}
+                        >
+                          <div className="text-sm text-gray-500 mb-2">{match.date}</div>
+                          <div className="space-y-2">
+                            <div className={`p-2 rounded ${
+                              match.winner === match.player1 ? 'bg-green-100' : 'bg-gray-50'
+                            }`}>
+                              {match.player1}
+                            </div>
+                            <div className={`p-2 rounded ${
+                              match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-50'
+                            }`}>
+                              {match.player2}
+                            </div>
+                          </div>
                         </div>
-                        <div className={`p-2 rounded ${match.winner === match.player2 ? 'bg-green-100' : 'bg-gray-50'}`}>
-                          {match.player2}
-                        </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
             
-            <div className="mt-4 flex justify-end space-x-2">
-              <Button size="sm" variant="outline">
+            <div className="mt-4 flex flex-wrap gap-2 justify-end">
+              <Button className="flex-1 sm:flex-none" variant="outline">
+                <Calendar className="h-4 w-4 mr-2" />
                 Programmer les matches
               </Button>
-              <Button size="sm">
+              <Button className="flex-1 sm:flex-none">
                 <MessageSquare className="h-4 w-4 mr-2" />
                 Faire une annonce
               </Button>
