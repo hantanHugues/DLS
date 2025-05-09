@@ -29,9 +29,9 @@ import TwoFactorSetup from "./pages/TwoFactorSetup";
 import Sponsorship from "./pages/Sponsorship";
 import About from "./pages/About";
 import TermsPage from "./pages/Terms";
-import PrivacyPage from "./pages/Privacy";
-import CookiesPage from "./pages/Cookies";
-import SupportPage from "./pages/Support";
+import PrivacyPage from "./Privacy";
+import CookiesPage from "./Cookies";
+import SupportPage from "./Support";
 
 const queryClient = new QueryClient();
 
@@ -98,7 +98,7 @@ const AppContent = () => {
           <Route path="/tournament/details/:id" element={<TournamentDetails />} />
           <Route path="/tournament/registration/:id" element={<TournamentRegistration />} />
         </Route>
-        
+
         {/* Routes Admin */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
@@ -107,14 +107,14 @@ const AppContent = () => {
           <Route path="tournaments" element={<AdminTournaments />} />
           <Route path="tournaments/:id" element={<AdminTournamentDetails />} />
           <Route path="disputes" element={<AdminDisputes />} />
+          <Route path="communications" element={<AdminCommunications />} />
           <Route path="payments" element={<AdminDashboard />} />
           <Route path="validators" element={<AdminDashboard />} />
           <Route path="sponsorship" element={<AdminDashboard />} />
-          <Route path="communications" element={<AdminDashboard />} />
           <Route path="settings" element={<AdminDashboard />} />
           <Route path="logs" element={<AdminDashboard />} />
         </Route>
-        
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
@@ -128,5 +128,6 @@ import AdminTournaments from "./pages/admin/AdminTournaments";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminDisputes from "./pages/admin/AdminDisputes";
 import AdminTournamentDetails from "./pages/admin/AdminTournamentDetails";
+import AdminCommunications from "./pages/admin/AdminCommunications";
 
 export default App;
